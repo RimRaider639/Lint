@@ -1,1 +1,1 @@
-This branch contains the main website frontend
+This branch contains the backend
