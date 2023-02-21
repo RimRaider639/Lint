@@ -26,4 +26,6 @@ productsRouter.get("/", (req, res, next) => {
     .catch(next);
 });
 
+productsRouter.post("/", (req, res) => {});
+
 module.exports = { productsRouter };
