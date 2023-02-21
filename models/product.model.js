@@ -2,7 +2,6 @@ const mg = require("mongoose");
 
 const productSchema = mg.Schema({
   crawl_timestamp: String,
-  product_url: String,
   product_name: String,
   product_category_tree: Array,
   pid: String,
