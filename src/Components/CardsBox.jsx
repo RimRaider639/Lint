@@ -2,8 +2,9 @@ import { Card, CardHeader, CardBody, CardFooter, Heading, Text, Button, Flex } f
 import Sales from './Sales';
 const CardsBox = ()=>{
     return <>
-    <Flex w={'65%'}  h={'70vh'} 
-    flexDirection='column' p={2} gap='10'>
+    <Flex w={{base:'100%', md:'65%'}}  
+    flexDirection='column' justifyContent={'center'}
+    p={2} gap='10'>
             <Card align='center'>
                 <CardHeader>
                     <Heading size='md'> Sales Card</Heading>

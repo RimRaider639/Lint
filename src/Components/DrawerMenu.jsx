@@ -12,6 +12,7 @@ import {
     Flex,
   } from '@chakra-ui/react'
 import { useRef } from 'react'
+import DarkModeButton from "./DarkModeButton";
 
   const DrawerMenu = ()=>{
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -44,10 +45,8 @@ import { useRef } from 'react'
                 </Flex>
             </DrawerBody>
   
-            <DrawerFooter>
-              <Button variant='outline' mr={3} onClick={onClose}>
-                Cancel
-              </Button>
+            <DrawerFooter gap={10}>
+              <DarkModeButton/>
               <Button colorScheme='blue'>Logout</Button>
             </DrawerFooter>
           </DrawerContent>
