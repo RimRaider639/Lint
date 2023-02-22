@@ -17,7 +17,7 @@ let initialData = {
   error: false,
   allData: [],
   productsData: [],
-  filters: {},
+  filters: { category: {}, brands: {} },
   params: initParams,
 };
 

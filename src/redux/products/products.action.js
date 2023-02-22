@@ -7,8 +7,6 @@ import {
 } from "./products.actionType";
 
 export const getAllData = () => async (dispatch) => {
-  dispatch({ type: GET_PRODUCTS_LOADING });
-
   axios
     .get(`https://wide-eyed-pinafore-duck.cyclic.app/products`, {
       params: {
@@ -17,16 +15,26 @@ export const getAllData = () => async (dispatch) => {
     })
     .then(function (response) {
       let data = response.data;
-      let filters = {};
+
+      let filters = { category: {}, brands: {} };
+
       for (let i = 0; i < data.length; i++) {
+        if (filters.brands[data[i].brand] === undefined) {
+          filters.brands[data[i].brand] = 1;
+        } else {
+          filters.brands[data[i].brand]++;
+        }
         for (let j = 0; j < data[i].product_category_tree.length; j++) {
-          if (filters[data[i].product_category_tree[j]] === undefined) {
-            filters[data[i].product_category_tree[j]] = 1;
+          if (
+            filters.category[data[i].product_category_tree[j]] === undefined
+          ) {
+            filters.category[data[i].product_category_tree[j]] = 1;
           } else {
-            filters[data[i].product_category_tree[j]]++;
+            filters.category[data[i].product_category_tree[j]]++;
           }
         }
       }
+
       dispatch({
         type: GET_ALL_DATA_SUCCESS,
         payload: { data, filters },

@@ -1,4 +1,3 @@
-
 import AllRoutes from "./AllRoutes/AllRoutes";
 
 function App() {
@@ -7,7 +6,6 @@ function App() {
       <AllRoutes />
     </div>
   );
-
 }
 
 export default App;
