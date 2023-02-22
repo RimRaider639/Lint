@@ -22,7 +22,6 @@ productsRouter.get("/removeall", (req, res, next) => {
 });
 
 productsRouter.get("/", (req, res, next) => {
-  console.log(req.query);
   const {
     page,
     limit,
@@ -30,6 +29,8 @@ productsRouter.get("/", (req, res, next) => {
     subCategory,
     sub2Category,
     sub3Category,
+    sort,
+    order,
     ...filters
   } = req.query;
   if (category) Object.assign(filters, { "product_category_tree.0": category });
@@ -48,6 +49,7 @@ productsRouter.get("/", (req, res, next) => {
   Product.find(filters)
     .limit(limit)
     .skip(page * limit)
+    .sort({ [sort]: order == "desc" ? -1 : 1 })
     .then((data) => {
       res.send(data);
     })
