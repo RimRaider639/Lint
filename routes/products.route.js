@@ -16,6 +16,7 @@ productsRouter.get("/add", (req, res, next) => {
 });
 
 productsRouter.get("/", (req, res, next) => {
+  console.log(req.query);
   const { page, limit, ...filters } = req.query;
   Product.find(filters)
     .limit(limit)
