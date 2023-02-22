@@ -1,1 +1,1 @@
-This branch contains the admin-panel frontend
+**This is Admin App [FE]**
