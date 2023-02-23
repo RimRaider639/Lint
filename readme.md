@@ -1,4 +1,4 @@
-This branch contains the backend
+# Lint Backend API
 
 Deployed link: https://wide-eyed-pinafore-duck.cyclic.app
 
