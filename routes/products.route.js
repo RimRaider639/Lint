@@ -73,7 +73,7 @@ productsRouter.get("/add", authoriseStrict, (req, res, next) => {
   });
 });
 
-productsRouter.get("/removeall", authoriseStrict, (req, res, next) => {
+productsRouter.get("/removeAll", authoriseStrict, (req, res, next) => {
   Product.remove({})
     .then((_) => res.send({ message: "Data successfully removed" }))
     .catch(next);
