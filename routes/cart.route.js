@@ -6,7 +6,15 @@ const cartRouter = express.Router();
 cartRouter.use(authenticate);
 
 cartRouter.get("/", (req, res, next) => {
-  CartItem.find({ userID: req.body.userID })
+  const { page, limit, ...filters } = req.query;
+
+  CartItem.find({ userID: req.body.userID, ...filters })
+    .populate(
+      "productID",
+      "product_name image retail_price discounted_price discount pid"
+    )
+    .limit(limit)
+    .skip(page * limit)
     .then((data) => res.send(data))
     .catch(next);
 });

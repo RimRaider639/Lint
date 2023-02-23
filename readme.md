@@ -158,6 +158,14 @@ https://wide-eyed-pinafore-duck.cyclic.app/users/all?name_like=ad
 3. `PATCH /` : update a cart item
 4. `DELETE /:id` : delete a cart item by id
 
+### Features
+
+#### `GET /`
+
+- **_Pagination_**: `page`, `limit`
+
+- `productID` gets populated by product data including fields like `_id`, `product_name`, `image`, `retail_price`, `discounted_price`, `discount`, `pid`
+
 ### Cart Schema
 
 ```
