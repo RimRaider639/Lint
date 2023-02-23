@@ -6,13 +6,20 @@ import theme from './theme'
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
 import { ColorModeScript } from '@chakra-ui/react'
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './Redux/store'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ChakraProvider>
-    <ColorModeScript initialColorMode={theme.config.initialColorMode}/>
-    <App />
-  </ChakraProvider>
+  <BrowserRouter>
+  <Provider store={store}>
+    <ChakraProvider>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode}/>
+      <App />
+    </ChakraProvider>
+  </Provider>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

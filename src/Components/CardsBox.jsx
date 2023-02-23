@@ -2,7 +2,7 @@ import { Card, CardHeader, CardBody, CardFooter, Heading, Text, Button, Flex } f
 import Sales from './Sales';
 const CardsBox = ()=>{
     return <>
-    <Flex w={{base:'100%', md:'65%'}}  
+    <Flex w={{base:'100%', md:'68%'}}  
     flexDirection='column' justifyContent={'center'}
     p={2} gap='10'>
             <Card align='center'>
