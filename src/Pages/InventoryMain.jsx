@@ -15,10 +15,12 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../Redux/actions";
 import DeleteButton from "../Components/DeleteButton";
+import { useNavigate } from "react-router-dom";
 
 const InventoryMain = () => {
     const allProducts = useSelector((store)=>store.products);
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     useEffect(()=>{
         if(allProducts.length===0) dispatch(getProducts())
@@ -59,7 +61,8 @@ const InventoryMain = () => {
                         <Td>{el.stock}</Td>
 
                         <Td>
-                            <Button>
+                            <Button 
+                            onClick={()=>navigate(`/edit/${el._id}`)}>
                                 {<EditIcon/>}
                             </Button>
                             <DeleteButton/>
