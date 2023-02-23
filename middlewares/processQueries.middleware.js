@@ -29,16 +29,6 @@ const createComparitives = (obj, gtKeys, ltKeys) => {
   return queries;
 };
 
-const createLt = (obj, arrayOfKeys) => {
-  const queries = {};
-  arrayOfKeys.forEach((key) => {
-    const f = key.split("_");
-    queries[f.slice(0, -1).join("_")] = { $lte: +obj[key] };
-  });
-
-  return queries;
-};
-
 function processQueries(req, res, next) {
   const like = Object.keys(req.query).filter(
     (key) => key.split("_").pop() === "like"

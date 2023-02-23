@@ -20,4 +20,4 @@ const productSchema = mg.Schema({
 
 const Product = mg.model("product", productSchema);
 
-module.exports = { Product };
+module.exports = Product;

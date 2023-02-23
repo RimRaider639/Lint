@@ -1,16 +1,12 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { User } = require("../models/user.model");
+const User = require("../models/user.model");
+const authenticate = require("../middlewares/authenticate.middleware");
+const isAdmin = require("../middlewares/authorise.middleware");
 const saltrounds = 5;
 
 const usersRouter = express.Router();
-
-usersRouter.get("/", (req, res, next) => {
-  User.find(req.query)
-    .then((r) => res.send(r))
-    .catch(next);
-});
 
 usersRouter.post("/register", (req, res, next) => {
   const { email, pwd } = req.body;
@@ -46,6 +42,36 @@ usersRouter.post("/login", (req, res, next) => {
           .send({ message: "Password does not match the given email" });
       });
     })
+    .catch(next);
+});
+
+usersRouter.use(authenticate);
+
+usersRouter.get("/", (req, res, next) => {
+  User.findById(req.body.userID)
+    .then((data) => res.send(data))
+    .catch(next);
+});
+
+usersRouter.patch("/", (req, res, next) => {
+  User.findByIdAndUpdate(req.body.userID)
+    .then((_) => res.send({ message: "User account successfully updated" }))
+    .catch(next);
+});
+
+usersRouter.delete("/:id", (req, res, next) => {
+  User.findByIdAndDelete(req.params.id)
+    .then((_) => res.send({ message: "User account successfully deleted" }))
+    .catch(next);
+});
+
+usersRouter.get("/all", isAdmin, (req, res, next) => {
+  const { sort, order, page, limit } = req.query;
+  User.find(req.query)
+    .limit(limit)
+    .skip(limit * page)
+    .sort({ [sort]: order == "desc" ? -1 : 1 })
+    .then((r) => res.send(r))
     .catch(next);
 });
 

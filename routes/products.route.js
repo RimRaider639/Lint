@@ -1,6 +1,6 @@
 const express = require("express");
 const fs = require("fs");
-const { Product } = require("../models/product.model");
+const Product = require("../models/product.model");
 const authoriseStrict = require("../middlewares/authorise-strict.middleware");
 const authenticate = require("../middlewares/authenticate.middleware");
 const isAdmin = require("../middlewares/authorise.middleware");

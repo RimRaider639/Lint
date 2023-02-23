@@ -95,9 +95,28 @@ https://wide-eyed-pinafore-duck.cyclic.app/products?limit=20&discounted_price_gt
 1. `POST /register` : to register a new user
 2. `POST /login` : user login
 
+- **User Routes:**
+
+1. `GET /` : to get the logged in user's data
+2. `PATCH /` : to update the logged in user's profile
+3. `DELETE /:id` : to delete a user by their ID
+
 - **Admin Routes:**
 
-1. `GET /` : to get all users
+1. `GET /all` : to get all users
+
+### Features:
+
+#### `GET /all`
+
+- **_Pagination_**: `page`, `limit`
+- **_Filtration_**: `[key]`=value where Key is any field in User Schema
+
+```
+https://wide-eyed-pinafore-duck.cyclic.app/users/all?role=customer
+```
+
+- **_Sorting_**: `sort` takes the field name and `order` takes **asc** or **desc**
 
 ### User Schema:
 
