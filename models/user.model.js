@@ -5,7 +5,7 @@ const userSchema = mg.Schema({
   email: { type: String, required: true },
   pwd: { type: String, required: true },
   mobile: { type: String },
-  country: { type: String },
+  country: { type: String, required: true },
   city: { type: String },
   role: {
     type: String,
