@@ -171,6 +171,7 @@ https://wide-eyed-pinafore-duck.cyclic.app/users/all?name_like=ad
 
 ```
 {
+  _id: ObjectId,
   productID: { type: ObjectId, required: true, ref: "product" },
   userID: { type: ObjectId, required: true, ref: "user" },
   count: { type: Number, default: 1 },
