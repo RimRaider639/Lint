@@ -1,10 +1,13 @@
 const express = require("express");
 const fs = require("fs");
 const { Product } = require("../models/product.model");
+const {
+  authenticateStrict,
+} = require("../middlewares/authenticate-strict.middleware");
 
 const productsRouter = express.Router();
 
-productsRouter.get("/add", (req, res, next) => {
+productsRouter.get("/add", authenticateStrict, (req, res, next) => {
   fs.readFile("db.json", "utf8", (err, json) => {
     if (err) {
       next(err);
@@ -15,7 +18,7 @@ productsRouter.get("/add", (req, res, next) => {
   });
 });
 
-productsRouter.get("/removeall", (req, res, next) => {
+productsRouter.get("/removeall", authenticateStrict, (req, res, next) => {
   Product.remove({})
     .then((_) => res.send({ message: "Data successfully removed" }))
     .catch(next);
@@ -56,6 +59,26 @@ productsRouter.get("/", (req, res, next) => {
     .catch(next);
 });
 
-productsRouter.post("/", (req, res) => {});
+productsRouter.get("/:id", (req, res, next) => {
+  const { id } = req.query;
+  Product.findById(id).then(res.send).catch(next);
+});
+
+productsRouter.post("/", (req, res, next) => {
+  const newProduct = new Product(req.body);
+  newProduct
+    .save()
+    .then((_) => res.send({ message: "Product successfully created" }))
+    .catch(next);
+});
+
+productsRouter.patch("/:id", (req, res, next) => {
+  const { id } = req.query;
+  Product.findByIdAndUpdate(id, req.body)
+    .then((_) =>
+      res.send({ message: `Product with ID ${id} is successfully updated` })
+    )
+    .catch(next);
+});
 
 module.exports = { productsRouter };
