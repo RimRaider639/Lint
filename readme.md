@@ -109,14 +109,22 @@ https://wide-eyed-pinafore-duck.cyclic.app/products?limit=20&discounted_price_gt
 
 #### `GET /all`
 
-- **_Pagination_**: `page`, `limit`
-- **_Filtration_**: `[key]`=value where Key is any field in User Schema
+- **_Pagination_** : `page`, `limit`
+- **_Filtration_** : `[key]`=value where Key is any field in User Schema
 
 ```
 https://wide-eyed-pinafore-duck.cyclic.app/users/all?role=customer
 ```
 
-- **_Sorting_**: `sort` takes the field name and `order` takes **asc** or **desc**
+- **_Sorting_** : `sort` takes the field name and `order` takes **asc** or **desc**
+
+* **_Search Similar_** : `_like` suffix added to any field in the schema (case sensitive)
+
+```
+https://wide-eyed-pinafore-duck.cyclic.app/users/all?name_like=ad
+```
+
+- **_Comparitive Search_** : `_gt` and `_lt` suffix for **greater than or equal to** or **less than or equal to**
 
 ### User Schema:
 

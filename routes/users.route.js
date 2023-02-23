@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 const authenticate = require("../middlewares/authenticate.middleware");
 const isAdmin = require("../middlewares/authorise.middleware");
+const processQueries = require("../middlewares/processQueries.middleware");
 const saltrounds = 5;
 
 const usersRouter = express.Router();
@@ -65,7 +66,9 @@ usersRouter.delete("/:id", (req, res, next) => {
     .catch(next);
 });
 
-usersRouter.get("/all", isAdmin, (req, res, next) => {
+usersRouter.use(isAdmin, processQueries);
+
+usersRouter.get("/all", (req, res, next) => {
   const { sort, order, page, limit } = req.query;
   User.find(req.query)
     .limit(limit)
@@ -75,4 +78,4 @@ usersRouter.get("/all", isAdmin, (req, res, next) => {
     .catch(next);
 });
 
-module.exports = { usersRouter };
+module.exports = usersRouter;
