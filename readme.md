@@ -6,6 +6,7 @@ Deployed link: https://wide-eyed-pinafore-duck.cyclic.app
 
 - /products
 - /users
+- /cart
 
 ## /products
 
@@ -143,6 +144,27 @@ https://wide-eyed-pinafore-duck.cyclic.app/users/all?name_like=ad
     lowercase: true,
     default: "customer",
   }, // customer, admin
+}
+```
+
+## /cart
+
+### Routes
+
+- **User routes:**
+
+1. `GET /` : get all cart items of the logged in user
+2. `POST /` : add item to cart (autogenerates userID and count). Increments the count if product already exists in cart
+3. `PATCH /` : update a cart item
+4. `DELETE /:id` : delete a cart item by id
+
+### Cart Schema
+
+```
+{
+  productID: { type: mg.Schema.Types.ObjectId, required: true, ref: "product" },
+  userID: { type: mg.Schema.Types.ObjectId, required: true, ref: "user" },
+  count: { type: Number, default: 1 },
 }
 ```
 
