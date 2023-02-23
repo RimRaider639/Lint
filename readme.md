@@ -131,6 +131,7 @@ https://wide-eyed-pinafore-duck.cyclic.app/users/all?name_like=ad
 
 ```
 {
+  _id: ObjectId,
   name: { type: String, required: true },
   email: { type: String, required: true },
   pwd: { type: String, required: true },
@@ -170,8 +171,8 @@ https://wide-eyed-pinafore-duck.cyclic.app/users/all?name_like=ad
 
 ```
 {
-  productID: { type: mg.Schema.Types.ObjectId, required: true, ref: "product" },
-  userID: { type: mg.Schema.Types.ObjectId, required: true, ref: "user" },
+  productID: { type: ObjectId, required: true, ref: "product" },
+  userID: { type: ObjectId, required: true, ref: "user" },
   count: { type: Number, default: 1 },
 }
 ```
