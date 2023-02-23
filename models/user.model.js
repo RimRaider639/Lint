@@ -7,6 +7,13 @@ const userSchema = mg.Schema({
   mobile: { type: String },
   country: { type: String },
   city: { type: String },
+  role: {
+    type: String,
+    enum: ["customer", "admin"],
+    required: true,
+    lowercase: true,
+    default: "customer",
+  }, // customer, admin
 });
 
 const User = mg.model("user", userSchema);

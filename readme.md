@@ -22,42 +22,48 @@ Deployed link: https://wide-eyed-pinafore-duck.cyclic.app
 
 ### Features:
 
-- Use with **page** and **limit** query when getting all products, else it'll take over a minute to get all the data.
+- Use with `page` and `limit` query when getting all products, else it'll take over a minute to get all the data.
 
 * Any key in the product can be used as a filter.
 
-* Query **category** can be used to filter 0th index of category tree array. Similarly **subCategory**, **sub2Category** & **sub3Category** can be used to filter 1st, 2nd & 3rd index of the category tree array simultaneously.
+* Query `category` can be used to filter 0th index of category tree array. Similarly `subCategory`, `sub2Category` & `sub3Category` can be used to filter 1st, 2nd & 3rd index of the category tree array simultaneously.
 
 ```
 https://wide-eyed-pinafore-duck.cyclic.app/products?category=Computers&sub2Category=Bags&page=1&limit=100
 ```
 
-- For sorting by a field, pass the field in the query **sort**. The query **order** takes asc or desc to sort in ascending (default) or descending order respectively.
+- For sorting by a field, pass the field in the query `sort`. The query `order` takes asc or desc to sort in ascending (default) or descending order respectively.
 
 ```
 https://wide-eyed-pinafore-duck.cyclic.app/products?page=1&limit=100&sort=discounted_price&order=asc
+```
+
+- Use a query with the suffix `_like` to find results with similar values for that key. This is case sensitive.
+
+```
+https://wide-eyed-pinafore-duck.cyclic.app/products?limit=20&subCategory_like=Kids
 ```
 
 ### Product Schema
 
 ```
 {
-  crawl_timestamp: String,
-  product_name: String,
-  product_category_tree: Array,
-  pid: String,
-  retail_price: Number,
-  discounted_price: Number,
-  image: Array,
-  description: String,
-  product_rating: String,
-  overall_rating: String,
-  brand: String,
+  _id: ObjectId,
+  crawl_timestamp: { type: Date, default: Date.now() },
+  product_name: { type: String, required: true },
+  product_category_tree: [{ type: String, required: true }],
+  pid: { type: String, required: true },
+  retail_price: { type: Number, required: true },
+  discounted_price: { type: Number, default: this.retail_price },
+  image: [{ type: String, required: true }],
+  description: { type: String, required: true },
+  product_rating: { type: String, default: "No rating available" },
+  overall_rating: { type: String, default: "No rating available" },
+  brand: { type: String, required: true },
   product_specifications: Object,
-  id: String,
-  rating: Number,
-  stock: Number,
-  discount: Number,
+  rating: { type: Number, required: true },
+  stock: { type: Number, required: true },
+  discount: { type: Number, default: 0 },
 }
 ```
 
@@ -65,8 +71,14 @@ https://wide-eyed-pinafore-duck.cyclic.app/products?page=1&limit=100&sort=discou
 
 ### Routes:
 
-- `POST` /register : to register a new user
-- `POST` /login : user login
+- **Open Routes**
+
+1. `POST` /register : to register a new user
+2. `POST` /login : user login
+
+- **Admin Routes**
+
+1. `GET` / : to get all users
 
 ### User Schema:
 
