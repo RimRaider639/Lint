@@ -10,18 +10,20 @@ const ImageCarousel = ({ image }) => {
   }, 1000);
 
   return (
-    <Flex>
+    <>
       {image.map((image, index) => (
         <Image
+          height="100%"
+          objectFit="cover"
           key={index}
           src={image}
           position={index === currentImageIndex ? "static" : "absolute"}
           opacity={index === currentImageIndex ? 1 : 0}
-          width="50%"
+          width="100%"
           m="auto"
         />
       ))}
-    </Flex>
+    </>
   );
 };
 
@@ -39,8 +41,10 @@ const ImageHover = ({ image }) => {
   return (
     <Box onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <Image
+        height="100%"
+        objectFit="cover"
         src={image[0]}
-        width="50%"
+        width="100%"
         display={isHovering ? "none" : "block"}
         m="auto"
       />

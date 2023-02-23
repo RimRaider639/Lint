@@ -6,8 +6,8 @@ function App() {
   return (
     <div>
       <NavTop />
-      <HomePage />
-      {/* <AllRoutes /> */}
+
+      <AllRoutes />
     </div>
   );
 }

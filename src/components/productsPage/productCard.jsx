@@ -4,9 +4,7 @@ import {
   VStack,
   Card,
   CardBody,
-  Divider,
   Heading,
-  Image,
   Stack,
   Text,
 } from "@chakra-ui/react";
@@ -21,28 +19,30 @@ function ProductCard(props) {
     props;
 
   return (
-    <Card maxW="sm" border={"2px solid blue"}>
+    <Card maxW="sm">
       <CardBody p={"5px"}>
-        <VStack border={"1px solid red"}>
-          <Box border={"1px solid green"}>
+        <VStack p="10px">
+          <Box h="300px" overflow="hidden">
             <ImageHover image={image} />
           </Box>
 
-          <Stack mt="6" spacing="3">
+          <Stack mt="6" spacing="1">
             <Heading size="sm">{product_name}</Heading>
             <RatingSystem rating={rating} />
             <HStack>
-              <Text color="blue.600" fontSize="2xl">
-                Rs.{retail_price}
-              </Text>
-              <Text textDecorationLine={"line-through"}>
+              <Text fontSize="2xl" fontWeight="bold" mb={3} color={"#0076be"}>
                 Rs.{discounted_price}
+              </Text>
+              <Text
+                textDecorationLine={"line-through"}
+                color="gray.500"
+                fontSize="xl">
+                Rs.{retail_price}
               </Text>
             </HStack>
           </Stack>
         </VStack>
       </CardBody>
-      <Divider />
     </Card>
   );
 }
