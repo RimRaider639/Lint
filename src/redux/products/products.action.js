@@ -6,34 +6,80 @@ import {
   GET_PRODUCTS_SUCCESS,
 } from "./products.actionType";
 
-export const getAllData = () => async (dispatch) => {
+export const getAllData = (subCategory_like) => async (dispatch) => {
   axios
     .get(`https://wide-eyed-pinafore-duck.cyclic.app/products`, {
       params: {
-        limit: 500,
+        limit: 200,
+        subCategory_like,
       },
     })
     .then(function (response) {
       let data = response.data;
+      console.log(data);
 
-      let filters = { category: {}, brands: {} };
+      let HeadingObj = {};
+      let CategoryObj = {};
+      let BrandsObj = {};
 
       for (let i = 0; i < data.length; i++) {
-        if (filters.brands[data[i].brand] === undefined) {
-          filters.brands[data[i].brand] = 1;
+        if (BrandsObj[data[i].brand] === undefined) {
+          BrandsObj[data[i].brand] = 1;
         } else {
-          filters.brands[data[i].brand]++;
+          BrandsObj[data[i].brand]++;
         }
-        for (let j = 0; j < data[i].product_category_tree.length; j++) {
+
+        if (HeadingObj[[data[i].product_category_tree[0]]] === undefined) {
+          HeadingObj[[data[i].product_category_tree[0]]] = {};
+        }
+      }
+      let filters = { filterHeading: [], filterCategory: [], filterBrands: [] };
+
+      Object.entries(HeadingObj).map(([name, quantity]) =>
+        filters.filterHeading.push([name, quantity])
+      );
+
+      Object.entries(BrandsObj).map(([name, quantity]) =>
+        filters.filterBrands.push([name, quantity])
+      );
+
+      for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < filters.filterHeading.length; j++) {
           if (
-            filters.category[data[i].product_category_tree[j]] === undefined
+            filters.filterHeading[j][0] ===
+            [data[i].product_category_tree[0]][0]
           ) {
-            filters.category[data[i].product_category_tree[j]] = 1;
-          } else {
-            filters.category[data[i].product_category_tree[j]]++;
+            if (CategoryObj[[data[i].product_category_tree[2]]] === undefined) {
+              CategoryObj[[data[i].product_category_tree[2]]] = 1;
+            } else {
+              CategoryObj[[data[i].product_category_tree[2]]]++;
+            }
           }
         }
       }
+
+      for (let j = 0; j < filters.filterHeading.length; j++) {
+        for (let i = 0; i < data.length; i++) {
+          if (
+            filters.filterHeading[j][0] ===
+            [data[i].product_category_tree[0]][0]
+          ) {
+            if (
+              filters.filterHeading[j][1][
+                [data[i].product_category_tree[2]]
+              ] === undefined
+            ) {
+              filters.filterHeading[j][1][
+                [data[i].product_category_tree[2]]
+              ] = 1;
+            } else {
+              filters.filterHeading[j][1][[data[i].product_category_tree[2]]]++;
+            }
+          }
+        }
+      }
+
+      filters.filterCategory = CategoryObj;
 
       dispatch({
         type: GET_ALL_DATA_SUCCESS,

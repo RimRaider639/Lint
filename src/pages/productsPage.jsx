@@ -7,19 +7,28 @@ import {
   Box,
   Checkbox,
   Divider,
+  Drawer,
+  DrawerContent,
+  DrawerOverlay,
   Grid,
   Heading,
   HStack,
+  Image,
   Select,
   Stack,
   Text,
+  useDisclosure,
   VStack,
 } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ProductCard from "../components/productCard";
+
+import Filters from "../components/productsPage/filters";
+import ProductCard from "../components/productsPage/productCard";
+import FilterDrawer from "../components/productsPage/filterDrawer";
 
 import { getAllData, getProducts } from "../redux/products/products.action";
+import { useParams } from "react-router-dom";
 const price = [
   "Under Rs.499",
   "RS.500 to Rs.999",
@@ -28,6 +37,10 @@ const price = [
 ];
 
 const ProductsPage = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const { path } = useParams();
+
   let { loading, productsData, allData, params, filters } = useSelector(
     (store) => store.ProductsManager
   );
@@ -35,167 +48,76 @@ const ProductsPage = () => {
   let dispatch = useDispatch();
 
   useEffect(() => {
+    params.subCategory_like = path;
     dispatch(getProducts(params));
-  }, [productsData.length, dispatch, params]);
+  }, [productsData.length, dispatch, params, path]);
 
   useEffect(() => {
-    dispatch(getAllData());
-  }, [allData.length]);
+    let subCategory_like = path;
 
-  let category = [];
-  Object.entries(filters.category).map(([name, quantity]) =>
-    category.push([name, quantity])
-  );
+    dispatch(getAllData(subCategory_like));
+  }, [allData.length, path, dispatch]);
 
-  let brands = [];
-  Object.entries(filters.brands).map(([name, quantity]) =>
-    brands.push([name, quantity])
-  );
+  // { filterHeading: [], filterCategory: [], filterBrands: [] }
 
   if (productsData.length === 0) {
-    return "please wait... ";
+    return (
+      <Image src="https://media0.giphy.com/media/hWZBZjMMuMl7sWe0x8/giphy.gif?cid=ecf05e47miq5cngzblyhk1rx2cq7qjkem5ilbc3fg1fvkbkc&rid=giphy.gif&ct=g" />
+    );
   } else {
     return (
       <>
-        {console.log(loading)}
-        {console.log("productsData", productsData)}
-        <Box width={"90%"} margin="auto">
-          <Grid
-            border="2px solid black"
-            gridTemplateColumns={"25% 75%"}
-            gap={"5px"}>
-            <VStack p="10px" border="2px solid green">
-              <Heading>Filters</Heading>
-              <Divider></Divider>
-              {/* Category 1 */}
-              <Box maxH="400px" overflowY="scroll" w="full">
-                <Accordion defaultIndex={[0]} flex="1" allowMultiple>
-                  <AccordionItem>
-                    <h2>
-                      <AccordionButton>
-                        <Box
-                          as="span"
-                          flex="1"
-                          textAlign="left"
-                          fontWeight={"bold"}>
-                          {""}
-                          Category
-                          {""}
-                        </Box>
-                        <AccordionIcon />
-                      </AccordionButton>
-                    </h2>
+        <Box width={"90%"} margin="auto" mt={"40px"}>
+          <Grid gridTemplateColumns={{ sm: "100%", md: "25% 75%" }} gap={"5px"}>
+            {/* filters section start */}
+            {/* for large screen */}
+            <Box display={{ base: "none", sm: "none", md: "block" }}>
+              <Filters
+                filterHeading={filters.filterHeading}
+                filterBrands={filters.filterBrands}
+                price={price}
+              />
+            </Box>
+            {/* for small screen */}
+            <Box display={{ base: "block", sm: "block", md: "none" }}>
+              <FilterDrawer
+                filterHeading={filters.filterHeading}
+                filterBrands={filters.filterBrands}
+                price={price}
+              />
+            </Box>
 
-                    {category &&
-                      category.map((e, i) => (
-                        <Box key={i}>
-                          {" "}
-                          <AccordionPanel mb={-3}>
-                            <HStack borderBottom={"1px solid black"}>
-                              <Text fontWeight={"medium"}>{e[0]}</Text>
-                              <Text color={"gray"}>({e[1]})</Text>
-                            </HStack>
-                          </AccordionPanel>
-                        </Box>
-                      ))}
-                  </AccordionItem>
-                </Accordion>
-              </Box>
-
-              {/* Category 2 by brands */}
-              <Box maxH="400px" overflowY="scroll" w="full">
-                <Accordion defaultIndex={[0]} flex="1" allowMultiple>
-                  <AccordionItem>
-                    <h2>
-                      <AccordionButton>
-                        <Box
-                          as="span"
-                          flex="1"
-                          textAlign="left"
-                          fontWeight={"bold"}>
-                          {""}
-                          Brands
-                          {""}
-                        </Box>
-                        <AccordionIcon />
-                      </AccordionButton>
-                    </h2>
-
-                    {brands &&
-                      brands.map((e, i) => (
-                        <Box key={i} pl="15px">
-                          {" "}
-                          <AccordionPanel p="5px">
-                            <Stack direction="col">
-                              <Checkbox w="full">
-                                <HStack w="full">
-                                  <Text fontWeight={"medium"}>{e[0]}</Text>
-                                  <Text color={"gray"}>({e[1]})</Text>
-                                </HStack>
-                              </Checkbox>
-                            </Stack>
-                          </AccordionPanel>
-                        </Box>
-                      ))}
-                  </AccordionItem>
-                </Accordion>
-              </Box>
-              {/* Category 3 by Price Range */}
-              <Box maxH="400px" overflowY="scroll" w="full">
-                <Accordion defaultIndex={[0]} flex="1" allowMultiple>
-                  <AccordionItem>
-                    <h2>
-                      <AccordionButton>
-                        <Box
-                          as="span"
-                          flex="1"
-                          textAlign="left"
-                          fontWeight={"bold"}>
-                          {""}
-                          Price
-                          {""}
-                        </Box>
-                        <AccordionIcon />
-                      </AccordionButton>
-                    </h2>
-
-                    {price &&
-                      price.map((e, i) => (
-                        <Box key={i}>
-                          {" "}
-                          <AccordionPanel mb={-3}>
-                            <HStack borderBottom={"1px solid black"}>
-                              <Text fontWeight={"medium"}>{e}</Text>
-                              {/* <Text color={"gray"}>({e[1]})</Text> */}
-                            </HStack>
-                          </AccordionPanel>
-                        </Box>
-                      ))}
-                  </AccordionItem>
-                </Accordion>
-              </Box>
-            </VStack>
-            <VStack border="2px solid red" justify={"space-between"} p="10px">
-              <HStack
-                border="1px solid yellow"
-                justify={"space-between"}
-                w="full">
-                <Heading>Products</Heading>
-                <HStack>
-                  <Text>Sort</Text>
-                  <Select placeholder="Select option">
+            {/* products section start */}
+            <VStack justify={"space-between"} p="10px">
+              <HStack justify={"space-between"} w="full">
+                <Heading
+                  fontWeight={"medium"}
+                  fontSize={{
+                    base: "20px",
+                    sm: "30px",
+                    md: "30px",
+                    lg: "35px",
+                  }}>
+                  Products
+                </Heading>
+                <HStack
+                  w={{ sm: "60%", md: "50%", lg: "40%" }}
+                  justify={"space-between"}>
+                  <Text fontSize={"xl"}>Sort</Text>
+                  <Select placeholder="Select option" w="80%">
                     <option value="option1">Price: Low to High</option>
                     <option value="option2">Price: High to low</option>
                   </Select>
                 </HStack>
               </HStack>
-              <Divider></Divider>
+              <Divider borderColor={"black"} />
               <Grid
                 gridTemplateColumns={{
                   sm: "repeat(2,1fr)",
                   md: "repeat(3,1fr)",
                   lg: "repeat(4,1fr)",
-                }}>
+                }}
+                gap="5">
                 {productsData &&
                   productsData.map((e) => (
                     <ProductCard
