@@ -105,3 +105,9 @@ https://wide-eyed-pinafore-duck.cyclic.app/products?limit=20&subCategory_like=Ki
   city: { type: String },
 }
 ```
+
+## Middlewares
+
+1. **authenticate**: Verifies the token in header to check whether logged in
+2. **authorise**: Checks whether the logged in user is an admin
+3. **authorise-strict**: Checks whether a secret access code (password) is present in the header
