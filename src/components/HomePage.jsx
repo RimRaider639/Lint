@@ -2,6 +2,7 @@ import React from 'react'
 import { Stack, Box, Divider, Flex, VStack, Image, Grid, HStack, Center, Text, Button, GridItem } from "@chakra-ui/react"
 import Carousel from "better-react-carousel"
 import "../styles/Hamburger.css"
+import NavigatetoTop from './NavigatetoTop'
 const HomePage = () => {
     const items = [
         { id: 1, title: "Item 1", imageUrl: "https://belk.scene7.com/is/image/Belk/wk04_022123_hp_4c_carl2?$DWP_PHOTO$" },
@@ -56,9 +57,25 @@ const HomePage = () => {
         { id: 9, title: "Comforters" },
     ]
 
+    const brands = [
+        { id: 1, title: "Brahmin" },
+        { id: 2, title: "Estee Lauder" },
+        { id: 3, title: "Michael Kord" },
+        { id: 4, title: "Columbia" },
+        { id: 5, title: "Levi's" },
+        { id: 6, title: "Sperry's" },
+        { id: 7, title: "Cuisinart" },
+        { id: 8, title: "Clinique" },
+        { id: 9, title: "Tommy Hilfiger" },
+        { id: 10, title: "Ugg" },
+        { id: 11, title: "Le Vian" },
+        { id: 12, title: "Free People" },
+        { id: 13, title: "Nine West" },
+    ]
+
     return (
-        <Stack >
-            <VStack w={"88%"} margin="auto" mt={'25px'}>
+        <Stack id='home' >
+            <VStack w={"88%"} margin="auto" mt={{sm:'120px',md:'90px',lg:'150px'}}>
                 <Image align={"center"} w="100%" mx="auto" src='https://belk.scene7.com/is/image/Belk/wk01_2023_clinique_gwp_hp?$DWP_PHOTO$' />
                 <VStack w={"100%"} >
                     <Box mt={'20px'} w={"100%"}>
@@ -170,7 +187,7 @@ const HomePage = () => {
                 </VStack>
                 <VStack w={'100%'}>
                     <Text fontSize="24px" textAlign={'left'} mt={'20px'}>Top Sellers</Text>
-                    <Divider borderColor="blue.500" borderWidth="2px" />
+                    <Divider borderColor="gray.500" borderWidth="1px" />
                 </VStack>
                 <VStack>
                     <Box mt={'22px'} >
@@ -197,7 +214,7 @@ const HomePage = () => {
                 </VStack>
                 <VStack w={'100%'}>
                     <Text fontSize="24px" align="left" mt={'20px'}> Belk - Shop & Save Today</Text>
-                    <Divider borderColor="blue.500" borderWidth="2px" />
+                    <Divider borderColor="gray.500" borderWidth="1px" />
                 </VStack>
                 <VStack>
                     <Text mt={'20px'} align="left">
@@ -206,17 +223,31 @@ const HomePage = () => {
                 </VStack>
                 <VStack w={'100%'}>
                     <Text fontSize="24px" align="left" mt={'20px'}>Trending Categories</Text>
-                    <Divider borderColor="blue.500" borderWidth="2px" />
+                    <Divider borderColor="gray.500" borderWidth="1px" />
                 </VStack>
-                {/* <Grid  >
+                <Grid templateColumns={{ sm: 'repeat(3, 1fr)', md: 'repeat(5, 1fr)', lg: 'repeat(9, 1fr)' }} justifyContent={"space-around"} gap={5} >
                     {
-                        btn1?.map(el=><GridItem key={el.id} templateColumns={{sm:'repeat(2, 1fr)',md:'repeat(5, 1fr)',lg:'repeat(9, 1fr)'}}>
-                             {el.title}
-                          
+                        btn1?.map(el => <GridItem border={'1px solid'} key={el.id} textAlign="center" p={'5px'}>{el.title}
                         </GridItem>)
                     }
-                </Grid> */}
+                </Grid>
+                <VStack w={'100%'}>
+                    <Text fontSize="24px" align="left" mt={'20px'}>Trending Brands</Text>
+                    <Divider borderColor="gray.500" borderWidth="1px" />
+                </VStack>
+                <Grid templateColumns={{ sm: 'repeat(3, 1fr)', md: 'repeat(5, 1fr)', lg: 'repeat(10, 1fr)' }} justifyContent={"space-around"} gap={5} >
+                    {
+                        brands?.map(el => <GridItem border={'1px solid'} key={el.id} textAlign="center" p={'5px'}>{el.title}
+                        </GridItem>)
+                    }
+                </Grid>
+                <VStack  >
+                    <Text mt='20px' fontSize={'18px'}>†, 1 See offer details. Exclusions and restrictions apply. Pricing, promotions and availability may vary by location and at belk.com.</Text>
+                </VStack>
+                <Divider borderColor="gray.900" borderWidth="1px" />
             </VStack>
+            <NavigatetoTop />
+            
         </Stack>
     )
 }

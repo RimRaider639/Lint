@@ -1,0 +1,39 @@
+#up {
+    height: 50px;
+    /* width: 45px; */
+    width: 4%;
+    position: fixed;
+    font-size: 35px;
+    bottom: 75px;
+    left: 95%;
+    padding: 0px 11px 10px 11px;
+    border: none;
+    /* border-radius: 50%; */
+    color: white;
+    /* background-color: rgb(78, 215, 83); */
+    /* border: 1px solid rgb(197, 195, 195); */
+}
+
+#up:hover{
+cursor: pointer;
+}
+
+.feedback {
+    width: 2.5%;
+    left: 97%;
+    position: fixed;
+    bottom:40%
+}
+
+@media screen and (max-width:1024px) {
+    #up {display: none;}
+    .feedback {display: none;}
+
+}
+
+
+@media screen and (max-width:600) {
+    #up {display: none;}
+    .feedback {display: none;}
+
+}

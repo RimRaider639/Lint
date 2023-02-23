@@ -42,6 +42,90 @@
     left: 0;
 }
 
+/* dropdown Styling */
+
+#dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#dropcont {
+    position: fixed;
+    top: 14.8%;
+    left: 6%;
+    bottom: 0%;
+    right: 3%;
+    /* border: 1px solid red; */
+    display: none;
+    /* position: absolute; */
+    width: 1338px;
+    height: 580px;
+    z-index: 10;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+#dropdown:hover #dropcont {
+    display: block;
+}
+
+#parent {
+    /* border: 1px solid red; */
+    width: 20%;
+    padding: 15px;
+    margin: 15px 15px;
+    height: 100%;
+    background-color: #f5f5f5;
+}
+
+.q {
+    font-size: 20px;
+    text-align: left;
+    font-family: sans-serif;
+    line-height: 30px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.hub {
+    font-size: 17px;
+    text-align: left;
+    font-family: sans-serif;
+    line-height: 30px;
+    font-weight: 400;
+    color: black;
+    padding-left:10px;
+}
+
+.hub:hover {
+    cursor: pointer;
+    border-left:2px solid ;
+}
+
+.big_parent {
+    display: flex;
+    justify-content: space-around;
+}
+
+.grid_head {
+    font-size: 15px;
+    text-align: left;
+    font-family: sans-serif;
+    line-height: 30px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.right_grid {
+    width: 60%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    margin-top: 20px;
+}
+
 @media screen and (max-width:1024px) {
 
     #bottom_category li {
