@@ -3,8 +3,8 @@
 }
 
 .carousel img {
-  width: 100%; /* set the width of the carousel images to 100% of their container */
-  height: auto; /* maintain the aspect ratio of the images */
+  width: 100%; 
+  height: auto;
 }
 
 @media screen and (max-width:650px) {

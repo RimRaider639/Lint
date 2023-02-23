@@ -1,0 +1,87 @@
+.account-dropdown {
+    position: relative;
+    background-color: white;
+    z-index: 10;
+
+}
+
+.fle{
+    display: grid;
+
+}
+
+.dropdown-menu {
+    width: 250%;
+    margin-left: 500px;
+   
+}
+
+.account-dropdown .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    transition: .2s ease-in-out;
+}
+
+.dropdown-menu span {
+    width: 88%;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    margin: auto;
+    align-items: center;
+    margin-top: 5px;
+  
+}
+
+.dropdown-menu span:hover {
+    background-color: lightgray;
+}
+
+.dropdown-menu span svg {
+    font-size: 18px;
+
+}
+
+.dropdown-menu p {
+    font-size: 15px;
+
+}
+
+.btn_acc{
+    width: 90%;
+    margin: auto;
+    background-color: #0076be;
+    color: white;
+    font-weight: 500;
+    padding: 8px 10px;
+    border-radius: 5px;
+}
+
+.btn_acc:hover{
+background-color: #03639f;
+}
+
+.btn_accc{
+    border: 2px solid #0076be;
+    width: 88%;
+    margin: auto;
+    color: #0076be;
+    font-weight: 500;
+    padding: 8px 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.btn_accc:hover{
+    border-inline: 3px solid #0076be;
+}
+
+.dot{
+    margin-top: 20px;
+}
