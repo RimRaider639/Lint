@@ -1,4 +1,4 @@
-This branch contains the backend
+# Lint Backend API
 
 Deployed link: https://wide-eyed-pinafore-duck.cyclic.app
 
@@ -6,6 +6,7 @@ Deployed link: https://wide-eyed-pinafore-duck.cyclic.app
 
 - /products
 - /users
+- /cart
 
 ## /products
 
@@ -130,6 +131,7 @@ https://wide-eyed-pinafore-duck.cyclic.app/users/all?name_like=ad
 
 ```
 {
+  _id: ObjectId,
   name: { type: String, required: true },
   email: { type: String, required: true },
   pwd: { type: String, required: true },
@@ -143,6 +145,36 @@ https://wide-eyed-pinafore-duck.cyclic.app/users/all?name_like=ad
     lowercase: true,
     default: "customer",
   }, // customer, admin
+}
+```
+
+## /cart
+
+### Routes
+
+- **User routes:**
+
+1. `GET /` : get all cart items of the logged in user
+2. `POST /` : add item to cart (autogenerates userID and count). Increments the count if product already exists in cart
+3. `PATCH /` : update a cart item
+4. `DELETE /:id` : delete a cart item by id
+
+### Features
+
+#### `GET /`
+
+- **_Pagination_**: `page`, `limit`
+
+- `productID` gets populated by product data including fields like `_id`, `product_name`, `image`, `retail_price`, `discounted_price`, `discount`, `pid`
+
+### Cart Schema
+
+```
+{
+  _id: ObjectId,
+  productID: { type: ObjectId, required: true, ref: "product" },
+  userID: { type: ObjectId, required: true, ref: "user" },
+  count: { type: Number, default: 1 },
 }
 ```
 
