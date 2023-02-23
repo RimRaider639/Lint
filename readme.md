@@ -13,20 +13,33 @@ Deployed link: https://wide-eyed-pinafore-duck.cyclic.app
 
 - **Open routes**:
 
-1. `GET` / : get all products
+1. `GET /` : get all products
+2. `GET /:id` : get a product by its ID
+
+- **Admin Routes:**
+
+1. `POST /` : create a new product
+2. `PATCH /:id` : update a product by its ID
+3. `DELETE /:id` : delete a product
 
 - **Restricted routes**:
 
-1. `GET` /add : to add whatever is in the db.json in the products collection
-2. `GET` /removeall : to remove all documents from products collection
+1. `GET /add` : to add whatever is in the db.json in the products collection
+2. `GET /removeAll` : to remove all documents from products collection
 
 ### Features:
 
-- Use with `page` and `limit` query when getting all products, else it'll take over a minute to get all the data.
+#### `GET /`
 
-* Any key in the product can be used as a filter.
+- Use with `limit` query, else it'll take over a minute to get all the data. `page` and `limit` queries can be used for pagination.
 
-* Query `category` can be used to filter 0th index of category tree array. Similarly `subCategory`, `sub2Category` & `sub3Category` can be used to filter 1st, 2nd & 3rd index of the category tree array simultaneously.
+```
+https://wide-eyed-pinafore-duck.cyclic.app/products?page=1&limit=100
+```
+
+- Any key in the product can be used as a filter.
+
+- Query `category` can be used to filter 0th index of category tree array. Similarly `subCategory`, `sub2Category` & `sub3Category` can be used to filter 1st, 2nd & 3rd index of the category tree array simultaneously.
 
 ```
 https://wide-eyed-pinafore-duck.cyclic.app/products?category=Computers&sub2Category=Bags&page=1&limit=100
@@ -71,14 +84,14 @@ https://wide-eyed-pinafore-duck.cyclic.app/products?limit=20&subCategory_like=Ki
 
 ### Routes:
 
-- **Open Routes**
+- **Open Routes:**
 
-1. `POST` /register : to register a new user
-2. `POST` /login : user login
+1. `POST /register` : to register a new user
+2. `POST /login` : user login
 
-- **Admin Routes**
+- **Admin Routes:**
 
-1. `GET` / : to get all users
+1. `GET /` : to get all users
 
 ### User Schema:
 
@@ -92,3 +105,9 @@ https://wide-eyed-pinafore-duck.cyclic.app/products?limit=20&subCategory_like=Ki
   city: { type: String },
 }
 ```
+
+## Middlewares
+
+1. **authenticate**: Verifies the token in header to check whether logged in
+2. **authorise**: Checks whether the logged in user is an admin
+3. **authorise-strict**: Checks whether a secret access code (password) is present in the header
