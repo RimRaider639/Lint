@@ -51,7 +51,7 @@ const NavBottom = () => {
         }
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default NavBottom
+export default NavBottom;

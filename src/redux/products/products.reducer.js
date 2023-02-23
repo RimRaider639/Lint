@@ -5,11 +5,19 @@ import {
   GET_PRODUCTS_SUCCESS,
 } from "./products.actionType";
 
+// subCategory_like = to get category-wise Data for page, index=1
+// category= 1st subcategory(showed on filter heading ), index=0
+// sub2Category= 2nd subcategory(show inside the filters), index=2
+// limit=2&subCategory_like=Women&category=Footwear&sub2Category=Flats
+
 const initParams = {
   page: 1,
   limit: 10,
-  category: ["men"],
-  sort: "",
+  subCategory_like: "",
+  category: "",
+  sub2Category: "",
+  order: "",
+  sort: null,
 };
 
 let initialData = {
@@ -17,7 +25,7 @@ let initialData = {
   error: false,
   allData: [],
   productsData: [],
-  filters: { category: {}, brands: {} },
+  filters: { filterHeading: [], filterCategory: {}, filterBrands: [] },
   params: initParams,
 };
 
@@ -31,6 +39,7 @@ const ProductsReducer = (state = initialData, { type, payload }) => {
     }
 
     case GET_ALL_DATA_SUCCESS: {
+      console.log(payload.filters);
       return {
         ...state,
         loading: false,

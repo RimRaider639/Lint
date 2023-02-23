@@ -8,6 +8,7 @@ function App() {
   return (
     <div>
       <NavTop />
+
       <AllRoutes />
       <UpperFooter />
     </div>
