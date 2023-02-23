@@ -4,44 +4,14 @@ const { Product } = require("../models/product.model");
 const authoriseStrict = require("../middlewares/authorise-strict.middleware");
 const authenticate = require("../middlewares/authenticate.middleware");
 const isAdmin = require("../middlewares/authorise.middleware");
+const processQueries = require("../middlewares/processQueries.middleware");
 const productsRouter = express.Router();
 
 //open routes
 
-createRegex = (obj, arrayOfKeys) => {
-  const queries = {};
-  arrayOfKeys.forEach((key) => {
-    const [field, ..._] = key.split("_");
-    queries[field] = { $regex: obj[key] };
-  });
-
-  return queries;
-};
-
-productsRouter.get("/", (req, res, next) => {
-  const like = Object.keys(req.query).filter(
-    (key) => key.split("_").pop() === "like"
-  );
-  const queries = createRegex(req.query, like);
-  let {
-    page,
-    limit,
-    category,
-    subCategory,
-    sub2Category,
-    sub3Category,
-    sort,
-    order,
-    ...filters
-  } = { ...req.query, ...queries };
-
-  if (category) Object.assign(filters, { "product_category_tree.0": category });
-  if (subCategory)
-    Object.assign(filters, { "product_category_tree.1": subCategory });
-  if (sub2Category)
-    Object.assign(filters, { "product_category_tree.2": sub2Category });
-  if (sub3Category)
-    Object.assign(filters, { "product_category_tree.2": sub3Category });
+productsRouter.get("/", processQueries, (req, res, next) => {
+  let { page, limit, sort, order, ...filters } = req.query;
+  console.log(filters);
   Product.find(filters)
     .limit(limit)
     .skip(page * limit)

@@ -37,7 +37,7 @@ Deployed link: https://wide-eyed-pinafore-duck.cyclic.app
 https://wide-eyed-pinafore-duck.cyclic.app/products?page=1&limit=100
 ```
 
-- Any key in the product can be used as a filter.
+- Any key in the product schema can be used as a filter.
 
 - Query `category` can be used to filter 0th index of category tree array. Similarly `subCategory`, `sub2Category` & `sub3Category` can be used to filter 1st, 2nd & 3rd index of the category tree array simultaneously.
 
@@ -55,6 +55,12 @@ https://wide-eyed-pinafore-duck.cyclic.app/products?page=1&limit=100&sort=discou
 
 ```
 https://wide-eyed-pinafore-duck.cyclic.app/products?limit=20&subCategory_like=Kids
+```
+
+- For comparative operators in queries, use the suffix `_gt` and `_lt` after any query for **greater than or equal to** or **less than or equal to** respectively.
+
+```
+https://wide-eyed-pinafore-duck.cyclic.app/products?limit=20&discounted_price_gt=900&discounted_price_lt=1000
 ```
 
 ### Product Schema
@@ -101,8 +107,15 @@ https://wide-eyed-pinafore-duck.cyclic.app/products?limit=20&subCategory_like=Ki
   email: { type: String, required: true },
   pwd: { type: String, required: true },
   mobile: { type: String },
-  country: { type: String },
+  country: { type: String, required: true },
   city: { type: String },
+  role: {
+    type: String,
+    enum: ["customer", "admin"],
+    required: true,
+    lowercase: true,
+    default: "customer",
+  }, // customer, admin
 }
 ```
 
@@ -110,4 +123,5 @@ https://wide-eyed-pinafore-duck.cyclic.app/products?limit=20&subCategory_like=Ki
 
 1. **authenticate**: Verifies the token in header to check whether logged in
 2. **authorise**: Checks whether the logged in user is an admin
-3. **authorise-strict**: Checks whether a secret access code (password) is present in the header
+3. **authoriseStrict**: Checks whether a secret access code (password) is present in the header
+4. **processQueries**: Deals with custom queries by converting them to appropriate database filters
