@@ -38,7 +38,7 @@ https://wide-eyed-pinafore-duck.cyclic.app/products?category=Computers&sub2Categ
 https://wide-eyed-pinafore-duck.cyclic.app/products?page=1&limit=100&sort=discounted_price&order=asc
 ```
 
-- Use a query with the prefix `_like` to find results with similar values for that key. This is case sensitive.
+- Use a query with the suffix `_like` to find results with similar values for that key. This is case sensitive.
 
 ```
 https://wide-eyed-pinafore-duck.cyclic.app/products?limit=20&subCategory_like=Kids
