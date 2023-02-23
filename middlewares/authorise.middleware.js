@@ -1,9 +1,10 @@
 /*
 Checks whether the logged in user is an admin
 */
-const { User } = require("../models/user.model");
+const User = require("../models/user.model");
 
 function isAdmin(req, res, next) {
+  console.log("body", req.body.userID);
   User.findById(req.body.userID)
     .then((user) =>
       user.role === "admin"

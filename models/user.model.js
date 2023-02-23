@@ -18,4 +18,4 @@ const userSchema = mg.Schema({
 
 const User = mg.model("user", userSchema);
 
-module.exports = { User };
+module.exports = User;
