@@ -2,9 +2,14 @@ import { cart } from "./cart.actionTypes";
 
 const initState = {
   items: [],
-  count: 0,
+  total: {
+    items: 0,
+    price: 0,
+    count: 0,
+  },
   loading: false,
   error: false,
+  message: "",
 };
 
 export default function cartReducer(state = initState, action) {
@@ -18,7 +23,15 @@ export default function cartReducer(state = initState, action) {
         loading: false,
         error: false,
         items: payload,
-        count: payload.length,
+        total: {
+          ...state.total,
+          count: payload.length,
+          price: payload.reduce(
+            (acc, item) => acc + item.productID.discounted_price,
+            0
+          ),
+          items: payload.reduce((acc, item) => acc + item.count, 0),
+        },
       };
     case cart.GET_ITEMS_ERROR:
       return { ...state, loading: false, error: true };
@@ -34,6 +47,12 @@ export default function cartReducer(state = initState, action) {
         ),
       };
     case cart.UPDATE_COUNT_ERROR:
+      return { ...state, loading: false, error: true };
+    case cart.DELETE_ITEM_LOADING:
+      return { ...state, loading: true, error: false };
+    case cart.DELETE_ITEM_SUCCESS:
+      return { ...state, loading: false, message: payload.data.message };
+    case cart.DELETE_ITEM_ERROR:
       return { ...state, loading: false, error: true };
     default:
       return initState;
