@@ -15,28 +15,40 @@ import {
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getProducts } from "../Redux/actions";
+import { getProducts, updateProduct } from "../Redux/actions";
 
 const EditTable = () => {
   const { id } = useParams();
   const allProducts = useSelector((store) => store.products);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [currentProduct, setCurrentProduct] = useState();
+  const [currentProduct, setCurrentProduct] = useState({
+    brand: "",
+    product_name: "",
+    pid: "",
+    retail_price: 0,
+    discounted_price: 0,
+    discount: 0,
+    product_category_tree: ["xyz", "xcv"],
+    stock: 10,
+  });
 
-  useEffect(()=>{
-    if(allProducts.length===0) dispatch(getProducts())
-
-    console.log(allProducts);
-
-},[allProducts.length, dispatch, allProducts])
-
-  useEffect(()=>{
-    if(id){
-      const product = allProducts.find((el)=>el._id==(id));
-      product && setCurrentProduct(product);
+  const handleSubmit = () => {
+    dispatch(updateProduct(id, currentProduct)).then((res)=>{
+      console.log(res)
     }
-  },[id, allProducts])
+    )
+  };
+
+  useEffect(() => {
+    if (allProducts.length === 0) dispatch(getProducts());
+
+    if (id) {
+      const product = allProducts.find((el) => el._id === id);
+      product && setCurrentProduct(product);
+      // console.log(currentProduct);
+    }
+  }, [allProducts.length, dispatch, id, allProducts]);
 
   return (
     <>
@@ -56,54 +68,119 @@ const EditTable = () => {
             <Tr>
               <Td>Brand</Td>
               <Td>
-                <Input  />
+                <Input
+                  value={currentProduct.brand}
+                  onChange={(e) =>
+                    setCurrentProduct({
+                      ...currentProduct,
+                      brand: e.target.value,
+                    })
+                  }
+                />
               </Td>
             </Tr>
             <Tr>
               <Td>Product Name</Td>
               <Td>
-                <Input  />
+                <Input
+                  value={currentProduct.product_name}
+                  onChange={(e) =>
+                    setCurrentProduct({
+                      ...currentProduct,
+                      product_name: e.target.value,
+                    })
+                  }
+                />
               </Td>
             </Tr>
             <Tr>
               <Td>PID</Td>
               <Td>
-                <Input  />
+                <Input
+                  value={currentProduct.pid}
+                  onChange={(e) =>
+                    setCurrentProduct({
+                      ...currentProduct,
+                      pid: e.target.value,
+                    })
+                  }
+                />
               </Td>
             </Tr>
             <Tr>
               <Td>MRP</Td>
               <Td>
-                <Input  />
+                <Input
+                  value={currentProduct.retail_price}
+                  onChange={(e) =>
+                    setCurrentProduct({
+                      ...currentProduct,
+                      retail_price: e.target.value,
+                    })
+                  }
+                />
               </Td>
             </Tr>
             <Tr>
               <Td>Selling Price</Td>
               <Td>
-                <Input  />
+                <Input
+                  value={currentProduct.discounted_price}
+                  onChange={(e) =>
+                    setCurrentProduct({
+                      ...currentProduct,
+                      discounted_price: e.target.value,
+                    })
+                  }
+                />
               </Td>
             </Tr>
             <Tr>
               <Td>Discount</Td>
               <Td>
-                <Input  />
+                <Input
+                  value={currentProduct.discount}
+                  onChange={(e) =>
+                    setCurrentProduct({
+                      ...currentProduct,
+                      discount: e.target.value,
+                    })
+                  }
+                />
               </Td>
             </Tr>
             <Tr>
               <Td>Category</Td>
               <Td>
-                <Select variant='filled'
-                  placeholder="Select option">
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
-                  <option value="option3">Option 3</option>
+                <Select
+                  variant="filled"
+                  value={currentProduct.product_category_tree[0]}
+                  onChange={(e) =>
+                    setCurrentProduct({
+                      ...currentProduct,
+                      product_category_tree: e.target.value,
+                    })
+                  }
+                  placeholder="Select option"
+                >
+                  <option value="clothing">Clothing</option>
+                  <option value="footwear">Footwear</option>
+                  <option value="other">Other</option>
                 </Select>
               </Td>
             </Tr>
             <Tr>
               <Td>Stock</Td>
               <Td>
-                <Input  />
+                <Input
+                  value={currentProduct.stock}
+                  onChange={(e) =>
+                    setCurrentProduct({
+                      ...currentProduct,
+                      tock: e.target.value,
+                    })
+                  }
+                />
               </Td>
             </Tr>
           </Tbody>
@@ -111,7 +188,9 @@ const EditTable = () => {
           <Tfoot>
             <Tr>
               <Th>
-                <Button colorScheme="blue">Save Changes</Button>
+                <Button onClick={handleSubmit} colorScheme="blue">
+                  Save Changes
+                </Button>
               </Th>
             </Tr>
           </Tfoot>
