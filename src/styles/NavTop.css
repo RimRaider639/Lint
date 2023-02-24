@@ -3,7 +3,7 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     width: 100%;
     position: fixed;
-    z-index: 10;
+    z-index: 1000000000;
 }
 
 .container {
@@ -12,10 +12,13 @@
     width: 90%;
     margin: auto;
     align-items: center;
+    z-index: 10000000;
+    background-color: white;
 }
 
 .logo {
-    width: 10%;
+    width: 9%;
+    cursor: pointer;
 }
 
 
