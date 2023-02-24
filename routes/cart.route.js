@@ -19,25 +19,34 @@ cartRouter.get("/", (req, res, next) => {
     .catch(next);
 });
 
-cartRouter.post("/", async (req, res, next) => {
-  try {
-    const found = await CartItem.find({ productID: req.body.productID });
+cartRouter.post("/", (req, res, next) => {
+  CartItem.find({ productID: req.body.productID }).then((found) => {
     if (found.length)
-      await CartItem.findByIdAndUpdate(found[0]._id, {
-        count: found[0].count + 1,
-      });
-    else await CartItem.insertMany([req.body]);
-    res.send({ data: found[0], message: "Item successfully added to cart" });
-  } catch (error) {
-    next(error);
-  }
+      CartItem.findByIdAndUpdate(found[0]._id, {
+        count: ++found[0].count,
+      })
+        .then((_) =>
+          res.send({
+            data: found[0],
+            message: "Item successfully added to cart",
+          })
+        )
+        .catch(next);
+    else
+      CartItem.insertMany([req.body])
+        .then((_) =>
+          res.send({
+            data: found[0],
+            message: "Item successfully added to cart",
+          })
+        )
+        .catch(next);
+  });
 });
 
 cartRouter.patch("/:id", (req, res, next) => {
   CartItem.findByIdAndUpdate(req.params.id, req.body)
-    .then((data) =>
-      res.send({ data, message: "Cart item successfully updated" })
-    )
+    .then((_) => res.send({ message: "Cart item successfully updated" }))
     .catch(next);
 });
 
