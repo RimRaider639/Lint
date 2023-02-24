@@ -1,167 +1,164 @@
 #maindiv {
-    background-color: white;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    width: 100%;
-    position: fixed;
-    z-index: 1000000000;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
 }
 
 .container {
-    display: flex;
-    justify-content: space-around;
-    width: 90%;
-    margin: auto;
-    align-items: center;
-    z-index: 10000000;
-    background-color: white;
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  margin: auto;
+  align-items: center;
 }
 
 .logo {
-    width: 9%;
-    cursor: pointer;
+  width: 10%;
 }
 
 
 .logo img {
-    width: 100%;
+  width: 100%;
 }
 
 .logo>img:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .search {
-    /* border: 1px solid blue; */
-    display: flex;
-    justify-content: space-around;
-    width: 50%;
-    border-radius: 5px;
-    border: 2px solid gray;
-    align-items: center;
+  /* border: 1px solid blue; */
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  border-radius: 5px;
+  border: 2px solid gray;
+  align-items: center;
 }
 
 .search input {
-    background: transparent;
-    border: none;
-    outline: none;
-    width: 100%;
-    padding: 10px;
-    background-color: white;
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 10px;
+  background-color: white;
 }
 
 .search input::placeholder {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 .search svg {
-    font-size: 30px;
-    margin-right: 10px;
-    margin-left: 10px;
+  font-size: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
 
 }
 
 .icon_collection {
-    width: 30%;
-    display: flex;
-    justify-content: space-around;
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
 }
 
 .icon_collection span p {
-    align-content: center;
+  align-content: center;
 }
 
 .icon_collection span :hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .icon_collection span svg {
-    font-size: 30px;
-    margin: auto;
+  font-size: 30px;
+  margin: auto;
 }
 /* #mod{
-    border: 1px solid red;
-    margin-top: 5px;
+  border: 1px solid red;
+  margin-top: 5px;
 } */
 @media screen and (max-width:1024px) {
-    .logo {
-        width: 8%;
-    }
+  .logo {
+      width: 8%;
+  }
 
-    .search {
-        /* border: 1px solid blue; */
-        width: 40%;
-        border-radius: 5px;
-        border: 1px solid gray;
-        align-items: center;
-    }
+  .search {
+      /* border: 1px solid blue; */
+      width: 40%;
+      border-radius: 5px;
+      border: 1px solid gray;
+      align-items: center;
+  }
 
-    .search input {
-        background: transparent;
-        border: none;
-        outline: none;
-        width: 100%;
-        padding: 5px;
-        background-color: white;
-    }
+  .search input {
+      background: transparent;
+      border: none;
+      outline: none;
+      width: 100%;
+      padding: 5px;
+      background-color: white;
+  }
 
-    .search svg {
-        font-size: 20px;
-        margin-right: 8px;
-        margin-left: 8px;
+  .search svg {
+      font-size: 20px;
+      margin-right: 8px;
+      margin-left: 8px;
 
-    }
+  }
 
-    .icon_collection span svg {
-        font-size: 20px;
-        margin: auto;
-    }
+  .icon_collection span svg {
+      font-size: 20px;
+      margin: auto;
+  }
 
-    .icon_collection span p {
-        font-size: 10px;
-    }
+  .icon_collection span p {
+      font-size: 10px;
+  }
 
-    /* .icon_collection {
-        width: 30%;
-        display: flex;
-        justify-content: space-around;
-    } */
+  /* .icon_collection {
+      width: 30%;
+      display: flex;
+      justify-content: space-around;
+  } */
 }
 
 @media screen and (max-width:650px) {
-    .logo {
-        width: 15%;
-        margin-right: 20px;
-    }
-    .search{
+  .logo {
+      width: 15%;
+      margin-right: 20px;
+  }
+  .search{
+   display: none;
+
+  }
+  .search input {
+      display: none;
+  }
+  .search span svg {
      display: none;
+  }
+  /* .search input {
+      background: transparent;
+      border: none;
+      outline: none;
+      width: 100%;
+      padding: 10px;
+      background-color: white;
+  } */
+  /* #inp{
+      display: none;
+  } */
+  .search input::placeholder {
+      font-size: 2px;
+  }
+  .icon_collection span svg {
+      display: none;
+  }
 
-    }
-    .search input {
-        display: none;
-    }
-    .search span svg {
-       display: none;
-    }
-    /* .search input {
-        background: transparent;
-        border: none;
-        outline: none;
-        width: 100%;
-        padding: 10px;
-        background-color: white;
-    } */
-    /* #inp{
-        display: none;
-    } */
-    .search input::placeholder {
-        font-size: 2px;
-    }
-    .icon_collection span svg {
-        display: none;
-    }
+  .icon_collection span p {
+      display: none;
 
-    .icon_collection span p {
-        display: none;
-
-    }
+  }
 }

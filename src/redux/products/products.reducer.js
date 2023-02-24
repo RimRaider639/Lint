@@ -6,8 +6,11 @@ import {
 } from "./products.actionType";
 
 // subCategory_like = to get category-wise Data for page, index=1
+
 // category= 1st subcategory(showed on filter heading ), index=0
+
 // sub2Category= 2nd subcategory(show inside the filters), index=2
+
 // limit=2&subCategory_like=Women&category=Footwear&sub2Category=Flats
 
 const initParams = {
@@ -15,9 +18,12 @@ const initParams = {
   limit: 10,
   subCategory_like: "",
   category: "",
-  sub2Category: "",
+  sub2Category: {},
+  brand: {},
   order: "",
   sort: null,
+  discounted_price_gt: null,
+  discounted_price_lt: null,
 };
 
 let initialData = {
@@ -25,7 +31,7 @@ let initialData = {
   error: false,
   allData: [],
   productsData: [],
-  filters: { filterHeading: [], filterCategory: {}, filterBrands: [] },
+  filters: { filterHeading: [] },
   params: initParams,
 };
 
