@@ -10,7 +10,7 @@ import {
 
 import Filters from "./filters";
 
-function FilterDrawer({ filterHeading, filterBrands, price }) {
+function FilterDrawer({ filterHeading, price }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -24,11 +24,7 @@ function FilterDrawer({ filterHeading, filterBrands, price }) {
       <Drawer placement={"left"} onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
-          <Filters
-            filterHeading={filterHeading}
-            filterBrands={filterBrands}
-            price={price}
-          />
+          <Filters filterHeading={filterHeading} price={price} />
         </DrawerContent>
       </Drawer>
     </Box>
