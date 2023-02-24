@@ -1,22 +1,22 @@
 import { Card, CardHeader, CardBody, Heading } from "@chakra-ui/react";
 import AddTable from "../Components/AddTable";
 
-const AddProducts = ()=>{
-
-    return <>
-    <Card align="center" bg='transparent'>
+const AddProducts = () => {
+  return (
+    <>
+      <Card align="center" bg="transparent">
         <CardHeader>
           <Heading size="md"> Add Details</Heading>
         </CardHeader>
         <CardBody>
-            <AddTable/>
+          <AddTable />
         </CardBody>
       </Card>
     </>
-}
+  );
+};
 
 export default AddProducts;
-
 
 // {
 //     _id: ObjectId,

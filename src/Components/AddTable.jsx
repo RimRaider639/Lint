@@ -271,7 +271,7 @@ import {
               <Tr>
                 <Th>
                   <Button onClick={handleSubmit} colorScheme="blue">
-                    Save Changes
+                    Add Product
                   </Button>
                 </Th>
               </Tr>
