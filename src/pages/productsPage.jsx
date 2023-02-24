@@ -1,21 +1,12 @@
 import {
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
   Box,
-  Checkbox,
   Divider,
-  Drawer,
-  DrawerContent,
-  DrawerOverlay,
+  Flex,
   Grid,
   Heading,
   HStack,
   Image,
   Select,
-  Stack,
   Text,
   useDisclosure,
   VStack,
@@ -29,28 +20,58 @@ import FilterDrawer from "../components/productsPage/filterDrawer";
 
 import { getAllData, getProducts } from "../redux/products/products.action";
 import { useParams } from "react-router-dom";
+// import Pagination from "../components/pagination";
+import ReactPaginate from "react-paginate";
+import Pagination from "../components/pagination";
 const price = [
-  "Under Rs.499",
-  "RS.500 to Rs.999",
-  "RS.1000 to Rs.1499",
-  "Above Rs.1500",
+  {
+    title: "Under Rs.499",
+    discounted_price_gt: null,
+    discounted_price_lt: "499",
+    isChecked: false,
+  },
+  {
+    title: "Rs.500 to Rs.999",
+    discounted_price_gt: "500",
+    discounted_price_lt: "999",
+    isChecked: false,
+  },
+  {
+    title: "Rs.1000 to Rs.1499",
+    discounted_price_gt: "1000",
+    discounted_price_lt: "1499",
+    isChecked: false,
+  },
+  {
+    title: "Above Rs.1500",
+    discounted_price_gt: "1500",
+    discounted_price_lt: null,
+    isChecked: false,
+  },
 ];
 
 const ProductsPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   const { path } = useParams();
-
   let { loading, productsData, allData, params, filters } = useSelector(
     (store) => store.ProductsManager
   );
+
+  const [sortingByPrice, setSortingByPrice] = React.useState({
+    sort: "discounted_price",
+    order: "",
+  });
+
+  // Pagination
+
+  // Pagination
 
   let dispatch = useDispatch();
 
   useEffect(() => {
     params.subCategory_like = path;
     dispatch(getProducts(params));
-  }, [productsData.length, dispatch, params, path]);
+  }, [productsData.length, dispatch, params, path, sortingByPrice]);
 
   useEffect(() => {
     let subCategory_like = path;
@@ -67,7 +88,7 @@ const ProductsPage = () => {
   } else {
     return (
       <>
-        <Box width={"90%"} margin="auto" mt={"40px"}>
+        <Box width={"90%"} margin="auto" pt={"160px"}>
           <Grid gridTemplateColumns={{ sm: "100%", md: "25% 75%" }} gap={"5px"}>
             {/* filters section start */}
             {/* for large screen */}
@@ -104,9 +125,21 @@ const ProductsPage = () => {
                   w={{ sm: "60%", md: "50%", lg: "40%" }}
                   justify={"space-between"}>
                   <Text fontSize={"xl"}>Sort</Text>
-                  <Select placeholder="Select option" w="80%">
-                    <option value="option1">Price: Low to High</option>
-                    <option value="option2">Price: High to low</option>
+                  <Select
+                    placeholder="Select option"
+                    w="80%"
+                    value={sortingByPrice.order}
+                    onChange={(e) => {
+                      params.sort = "discounted_price";
+                      params.order = e.target.value;
+
+                      setSortingByPrice({
+                        ...sortingByPrice,
+                        order: e.target.value,
+                      });
+                    }}>
+                    <option value="asc">Price: Low to High</option>
+                    <option value="desc">Price: High to low</option>
                   </Select>
                 </HStack>
               </HStack>
@@ -122,7 +155,7 @@ const ProductsPage = () => {
                   productsData.map((e) => (
                     <ProductCard
                       key={e.id}
-                      id={e.id}
+                      id={e._id}
                       image={e.image}
                       product_name={e.product_name}
                       retail_price={e.retail_price}
@@ -133,6 +166,21 @@ const ProductsPage = () => {
               </Grid>
             </VStack>
           </Grid>
+          <Box>
+            <Flex justify={{ base: "center", md: "flex-end" }}>
+              {productsData.length > 1 && (
+                <Pagination
+                  current={params.page}
+                  total={Math.ceil(allData.length / params.limit)}
+                  handlePageChange={(page) => {
+                    params.page = page;
+                    dispatch(getProducts(params));
+                    console.log(page);
+                  }}
+                />
+              )}
+            </Flex>
+          </Box>
         </Box>
       </>
     );
