@@ -1,3 +1,4 @@
+import { useComponentStyles__unstable } from "@chakra-ui/react";
 import axios from "axios";
 import {
   GET_ALL_DATA_SUCCESS,
@@ -18,46 +19,25 @@ export const getAllData = (subCategory_like) => async (dispatch) => {
       let data = response.data;
       console.log(data);
 
+      // storing in object locally
       let HeadingObj = {};
-      let CategoryObj = {};
-      let BrandsObj = {};
 
       for (let i = 0; i < data.length; i++) {
-        if (BrandsObj[data[i].brand] === undefined) {
-          BrandsObj[data[i].brand] = 1;
-        } else {
-          BrandsObj[data[i].brand]++;
-        }
-
         if (HeadingObj[[data[i].product_category_tree[0]]] === undefined) {
-          HeadingObj[[data[i].product_category_tree[0]]] = {};
+          HeadingObj[[data[i].product_category_tree[0]]] = [{}, {}];
         }
       }
-      let filters = { filterHeading: [], filterCategory: [], filterBrands: [] };
 
+      let filters = { filterHeading: [] };
+
+      // converting object into array to store in redux
       Object.entries(HeadingObj).map(([name, quantity]) =>
         filters.filterHeading.push([name, quantity])
       );
 
-      Object.entries(BrandsObj).map(([name, quantity]) =>
-        filters.filterBrands.push([name, quantity])
-      );
+      // filterHeading=[Heading,{obj for sub category},{object for brand of particular category}]
 
-      for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < filters.filterHeading.length; j++) {
-          if (
-            filters.filterHeading[j][0] ===
-            [data[i].product_category_tree[0]][0]
-          ) {
-            if (CategoryObj[[data[i].product_category_tree[2]]] === undefined) {
-              CategoryObj[[data[i].product_category_tree[2]]] = 1;
-            } else {
-              CategoryObj[[data[i].product_category_tree[2]]]++;
-            }
-          }
-        }
-      }
-
+      // Loop for {obj for sub category}
       for (let j = 0; j < filters.filterHeading.length; j++) {
         for (let i = 0; i < data.length; i++) {
           if (
@@ -65,21 +45,38 @@ export const getAllData = (subCategory_like) => async (dispatch) => {
             [data[i].product_category_tree[0]][0]
           ) {
             if (
-              filters.filterHeading[j][1][
+              filters.filterHeading[j][1][0][
                 [data[i].product_category_tree[2]]
               ] === undefined
             ) {
-              filters.filterHeading[j][1][
+              filters.filterHeading[j][1][0][
                 [data[i].product_category_tree[2]]
               ] = 1;
             } else {
-              filters.filterHeading[j][1][[data[i].product_category_tree[2]]]++;
+              filters.filterHeading[j][1][0][
+                [data[i].product_category_tree[2]]
+              ]++;
             }
           }
         }
       }
 
-      filters.filterCategory = CategoryObj;
+      // Loop for {object for brand of particular category}
+
+      for (let j = 0; j < filters.filterHeading.length; j++) {
+        for (let i = 0; i < data.length; i++) {
+          if (
+            filters.filterHeading[j][0] ===
+            [data[i].product_category_tree[0]][0]
+          ) {
+            if (filters.filterHeading[j][1][1][[data[i].brand]] === undefined) {
+              filters.filterHeading[j][1][1][[data[i].brand]] = 1;
+            } else {
+              filters.filterHeading[j][1][1][[data[i].brand]]++;
+            }
+          }
+        }
+      }
 
       dispatch({
         type: GET_ALL_DATA_SUCCESS,
@@ -92,30 +89,42 @@ export const getAllData = (subCategory_like) => async (dispatch) => {
 };
 
 export const getProducts = (params) => async (dispatch) => {
+  const brandArray = [];
+  const sub2CategoryArray = [];
+
+  if (Object.keys(params.brand).length !== 0) {
+    Object.entries(params.brand).map(([name, state]) =>
+      state ? brandArray.push(name) : null
+    );
+  }
+  // console.log(brandArray);
+  if (Object.keys(params.sub2Category).length !== 0) {
+    Object.entries(params.sub2Category).map(([name, state]) =>
+      state ? sub2CategoryArray.push(name) : null
+    );
+  }
+
   dispatch({ type: GET_PRODUCTS_LOADING });
 
-  axios
-    .get(`https://wide-eyed-pinafore-duck.cyclic.app/products`, {
-      params: params,
-    })
-    .then(function (response) {
-      let data = response.data;
-      let filters = {};
-      for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data[i].product_category_tree.length; j++) {
-          if (filters[data[i].product_category_tree[j]] === undefined) {
-            filters[data[i].product_category_tree[j]] = 1;
-          } else {
-            filters[data[i].product_category_tree[j]]++;
-          }
-        }
+  try {
+    const response = await axios.get(
+      `https://wide-eyed-pinafore-duck.cyclic.app/products`,
+      {
+        params: {
+          ...params,
+          brand: brandArray,
+          sub2Category: sub2CategoryArray,
+        },
       }
-      dispatch({
-        type: GET_PRODUCTS_SUCCESS,
-        payload: { data, params, filters },
-      });
-    })
-    .catch(function (error) {
-      dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });
+    );
+    let data = response.data;
+
+    dispatch({
+      type: GET_PRODUCTS_SUCCESS,
+      payload: { data, params },
     });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });
+  }
 };

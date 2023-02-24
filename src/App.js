@@ -1,16 +1,18 @@
 import AllRoutes from "./AllRoutes/AllRoutes";
 import UpperFooter from "./components/UpperFooter";
+<<<<<<< HEAD
+=======
+
+>>>>>>> 93d21bbbcbf487d1b5aeb78c36bf2ebe2b9b1458
 import NavTop from "./components/Navbar/NavTop";
-import LowerFooter from "./components/LowerFooter";
 
 function App() {
   return (
-    <div>
+    <>
       <NavTop />
-
       <AllRoutes />
       <UpperFooter />
-    </div>
+    </>
   );
 }
 
