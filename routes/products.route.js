@@ -32,7 +32,7 @@ productsRouter.get("/:id", (req, res, next) => {
 
 // requires access code
 
-productsRouter.get("/add", authoriseStrict, (req, res, next) => {
+productsRouter.get("/add/all", authoriseStrict, (req, res, next) => {
   fs.readFile("db.json", "utf8", (err, json) => {
     if (err) {
       next(err);
@@ -43,8 +43,8 @@ productsRouter.get("/add", authoriseStrict, (req, res, next) => {
   });
 });
 
-productsRouter.get("/removeAll", authoriseStrict, (req, res, next) => {
-  Product.remove({})
+productsRouter.get("/remove/all", authoriseStrict, (req, res, next) => {
+  Product.deleteMany({})
     .then((_) => res.send({ message: "Data successfully removed" }))
     .catch(next);
 });
