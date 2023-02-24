@@ -4,13 +4,13 @@ import SidePannel from "./SidePannel";
 
 const Body = ()=>{
     return <>
-    <Box w={'92%'} boxShadow='rgba(149, 157, 165, 0.2) 0px 8px 24px'
+    <Box w={'95%'} boxShadow='rgba(149, 157, 165, 0.2) 0px 8px 24px'
     m={'auto'} mt='8' h={'78vh'} p={4}>
-        <Flex justify={'space-around'} align='center'>
+        <Flex justify={'space-between'} align='center'>
             <SidePannel/>
 
             {/* Right Side Panel */}
-            <Box  w={{base:'100%', md:'70%'}}
+            <Box  w={{base:'100%', md:'85%'}}
             align={'center'} h='70vh' overflowX={'hidden'} >
 
                 <MainRoutes/>

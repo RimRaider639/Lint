@@ -53,7 +53,7 @@ const InventoryMain = () => {
               <Th>Product Name</Th>
               <Th>PID</Th>
               <Th isNumeric>MRP</Th>
-              <Th>Selling Price</Th>
+              <Th>Price</Th>
               <Th>Discount</Th>
               <Th>Category</Th>
               <Th>Stock</Th>
