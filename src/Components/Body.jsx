@@ -8,10 +8,13 @@ const Body = ()=>{
     m={'auto'} mt='8' h={'78vh'} p={4}>
         <Flex justify={'space-around'} align='center'>
             <SidePannel/>
+
             {/* Right Side Panel */}
-            <Box  w={{base:'100%', md:'68%'}}
-            align={'center'} h='70vh' overflowX={'hidden'}>
+            <Box  w={{base:'100%', md:'70%'}}
+            align={'center'} h='70vh' overflowX={'hidden'} >
+
                 <MainRoutes/>
+
             </Box>
 
         </Flex>

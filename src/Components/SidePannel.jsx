@@ -12,7 +12,7 @@ const SidePannel = () => {
         <Flex direction={"column"} gap={10}>
           <Button onClick={()=>navigate('/')}>Home</Button>
           <Button onClick={()=>navigate('/inventory')}>Inventory</Button>
-          <Button>Sales</Button>
+          <Button onClick={()=>navigate('/add')}>Add Products</Button>
           <Button>Settings</Button>
           <Button>Profile</Button>
         </Flex>
