@@ -17,8 +17,7 @@ const SidePannel = () => {
           <Button onClick={() => navigate("/")}>Home</Button>
           <Button onClick={() => navigate("/inventory")}>Inventory</Button>
           <Button onClick={() => navigate("/add")}>Add Products</Button>
-          
-          <Button>Users</Button>
+          <Button onClick={() => navigate("/users")}>Users</Button>
         </Flex>
       </Box>
     </>

@@ -53,7 +53,7 @@ import DarkModeButton from "./DarkModeButton";
                     }}>Add Products</Button>
                     
                     <Button onClick={()=>{
-                      navigate('/')
+                      navigate('/users')
                       onClose()
                     }}>Users</Button>
                 </Flex>

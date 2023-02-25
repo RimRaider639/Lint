@@ -7,8 +7,8 @@ import DarkModeButton from "./DarkModeButton";
 
 const Navbar = () => {
   return (
-    <Box boxShadow= 'rgba(0, 0, 0, 0.24) 0px 3px 8px'>
-      <Flex justify="space-between" align="center" p={2}>
+    <Box boxShadow= 'rgba(0, 0, 0, 0.24) 0px 3px 8px' p='6'>
+      <Flex justify="space-between" align="center" >
         <Box>
           <Image src={brand} w={100} />
         </Box>

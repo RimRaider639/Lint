@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../Redux/actions";
+import { addProduct, getProducts } from "../Redux/actions";
 
 const AddTable = () => {
   const dispatch = useDispatch();
@@ -60,7 +60,9 @@ const AddTable = () => {
         isClosable: true,
         position: "top",
       });
-    });
+    }).then((res)=>{
+      dispatch(getProducts())
+    })
   };
 
   if (isLoading) {
@@ -70,8 +72,8 @@ const AddTable = () => {
       <>
         <TableContainer mt={"-10"}>
           <Table variant="simple" colorScheme="teal">
-            <TableCaption>
-              Please verify all details before adding details
+            <TableCaption color='tomato'>
+              Please verify all details before adding product
             </TableCaption>
             <Thead>
               <Tr>

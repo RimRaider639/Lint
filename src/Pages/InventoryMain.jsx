@@ -26,8 +26,8 @@ const InventoryMain = () => {
   useEffect(() => {
     if (products.length === 0)
       dispatch(getProducts())
-    console.log(isLoading);
-  }, [products.length, dispatch, products, isLoading]);
+    // console.log(isLoading);
+  }, [ dispatch, products, isLoading]);
 
   if (isLoading === true) {
     return <Progress size='xs' isIndeterminate />;
