@@ -2,6 +2,7 @@ const express = require("express");
 const CartItem = require("../models/cartItem.model");
 const authenticate = require("../middlewares/authenticate.middleware");
 const cartRouter = express.Router();
+const qtdLimit = 6;
 
 cartRouter.use(authenticate);
 
@@ -23,7 +24,7 @@ cartRouter.post("/", (req, res, next) => {
   CartItem.find({ productID: req.body.productID }).then((found) => {
     if (found.length)
       CartItem.findByIdAndUpdate(found[0]._id, {
-        count: ++found[0].count,
+        count: found[0].count < qtdLimit ? ++found[0].count : found[0].count,
       })
         .then((_) =>
           res.send({

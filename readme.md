@@ -188,6 +188,10 @@ https://wide-eyed-pinafore-duck.cyclic.app/users/all?name_like=ad
 
 - `productID` gets populated by product data including fields like `_id`, `product_name`, `image`, `retail_price`, `discounted_price`, `discount`, `pid`
 
+#### `POST /`
+
+- On adding a product, if the product already exists, the count of that product increments in the cart (upto a quantity limit), otherwise it gets added. The response looks like `{ data, message: "Item successfully added to cart" }`, where data is the cart item after updation.
+
 ### Cart Schema
 
 ```
