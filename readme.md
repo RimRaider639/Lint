@@ -71,6 +71,12 @@ https://wide-eyed-pinafore-duck.cyclic.app/products?limit=20&subCategory_like=Ki
 https://wide-eyed-pinafore-duck.cyclic.app/products?limit=20&discounted_price_gt=900&discounted_price_lt=1000
 ```
 
+- For full-text search, use `q` query to pass in the keyword.
+
+```
+https://wide-eyed-pinafore-duck.cyclic.app/products/?q=blush&limit=20
+```
+
 ### Product Schema
 
 ```
@@ -84,11 +90,9 @@ https://wide-eyed-pinafore-duck.cyclic.app/products?limit=20&discounted_price_gt
   discounted_price: { type: Number, default: this.retail_price },
   image: [{ type: String, required: true }],
   description: { type: String, required: true },
-  product_rating: { type: Mixed, default: "No rating available" },
-  overall_rating: { type: Mixed, default: "No rating available" },
   brand: { type: String, required: true },
   product_specifications: { type: Object },
-  rating: { type: Number, required: true },
+  rating: { type: mg.Schema.Types.Mixed, default: "No rating available" },
   stock: { type: Number, required: true },
   discount: { type: Number, default: 0 },
 }

@@ -9,19 +9,16 @@ const productSchema = mg.Schema({
   discounted_price: { type: Number, default: this.retail_price },
   image: [{ type: String, required: true }],
   description: { type: String, required: true },
-  product_rating: {
-    type: mg.Schema.Types.Mixed,
-    default: "No rating available",
-  },
-  overall_rating: {
-    type: mg.Schema.Types.Mixed,
-    default: "No rating available",
-  },
   brand: { type: String, required: true },
   product_specifications: { type: Object },
-  rating: { type: Number, required: true },
+  rating: { type: mg.Schema.Types.Mixed, default: "No rating available" },
   stock: { type: Number, required: true },
   discount: { type: Number, default: 0 },
+});
+
+productSchema.index({
+  "$**": "text",
+  "product_category_tree.$**": "text",
 });
 
 const Product = mg.model("product", productSchema);

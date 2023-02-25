@@ -10,9 +10,8 @@ const productsRouter = express.Router();
 //open routes
 
 productsRouter.get("/", processQueries, (req, res, next) => {
-  let { page, limit, sort, order, ...filters } = req.query;
-  console.log(filters);
-  Product.find(filters)
+  let { page, limit, sort, order, q, ...filters } = req.query;
+  Product.find({ ...filters, $text: { $search: q } })
     .limit(limit)
     .skip(page * limit)
     .sort({ [sort]: order == "desc" ? -1 : 1 })
