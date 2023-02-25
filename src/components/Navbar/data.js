@@ -74,7 +74,8 @@ export const gift = [
         },
       ],
     },
-
+  },
+  {
     text: "Women",
     lists: {
       title: "Women",
@@ -94,7 +95,7 @@ export const gift = [
       ],
       alldata: [
         {
-          heading: "Women`s Clothing",
+          heading: "Clothing",
           child: [
             "Bras, Panties & Lingerie",
             "Coats & Outerwear",
@@ -659,7 +660,8 @@ export const gift = [
         },
       ],
     },
-
+  },
+  {
     text: "Home",
     lists: {
       title: "Home",
