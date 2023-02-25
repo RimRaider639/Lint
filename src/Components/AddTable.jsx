@@ -1,67 +1,71 @@
 import {
-    Table,
-    Thead,
-    Tbody,
-    Tfoot,
-    Tr,
-    Th,
-    Td,
-    TableCaption,
-    TableContainer,
-    useToast,
-    Button,
-    Input,
-    Select,
-  } from "@chakra-ui/react";
-  import { useState } from "react";
-  import { useDispatch } from "react-redux";
-  import { addProduct } from "../Redux/actions";
-  
-  const AddTable = () => {
-    const dispatch = useDispatch();
-    const toast = useToast()
-    const [img1, setImg1] = useState('');
-    const [img2, setImg2] = useState('');
-    const [img3, setImg3] = useState('');
-    const [img4, setImg4] = useState('');
-    const [cat1, setCat1] = useState('');
-    const [cat2, setCat2] = useState('');
-    const [cat3, setCat3] = useState('');
-    const [currentProduct, setCurrentProduct] = useState({
-        product_name: '',
-        product_category_tree: [''],
-        pid: 'ERTYUI4356789',
-        retail_price:0,
-        discounted_price: 0,
-        image: [],
-        description: '',
-        brand: '',
-        rating: 0,
-        stock: 0,
-        discount: 0
-    })
-  
-    const handleSubmit = () => {
-        const imgArr = [img1,img2,img3,img4];
-        const catArr = [cat1,cat2,cat3];
-        currentProduct.image = imgArr;
-        currentProduct.product_category_tree = catArr;
-        console.log(currentProduct)
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+  useToast,
+  Button,
+  Input,
+  Select,
+  CircularProgress,
+} from "@chakra-ui/react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addProduct } from "../Redux/actions";
 
-      dispatch(addProduct(currentProduct)).then((res)=>{
-        toast({
-          title: 'Product Added',
-          description: "The product is added successfully",
-          status: 'success',
-          duration: 1500,
-          isClosable: true,
-          position:'top'
-        })
-      }
-      )
-    };
-  
-    
+const AddTable = () => {
+  const dispatch = useDispatch();
+  const toast = useToast();
+  const { isLoading } = useSelector((store) => store);
+
+  const [img1, setImg1] = useState("");
+  const [img2, setImg2] = useState("");
+  const [img3, setImg3] = useState("");
+  const [img4, setImg4] = useState("");
+  const [cat1, setCat1] = useState("");
+  const [cat2, setCat2] = useState("");
+  const [cat3, setCat3] = useState("");
+  const [currentProduct, setCurrentProduct] = useState({
+    product_name: "",
+    product_category_tree: [""],
+    pid: "ERTYUI4356789",
+    retail_price: 0,
+    discounted_price: 0,
+    image: [],
+    description: "",
+    brand: "",
+    rating: 0,
+    stock: 0,
+    discount: 0,
+  });
+
+  const handleSubmit = () => {
+    const imgArr = [img1, img2, img3, img4];
+    const catArr = [cat1, cat2, cat3];
+    currentProduct.image = imgArr;
+    currentProduct.product_category_tree = catArr;
+    console.log(currentProduct);
+
+    dispatch(addProduct(currentProduct)).then((res) => {
+      toast({
+        title: "Product Added",
+        description: "The product is added successfully",
+        status: "success",
+        duration: 1500,
+        isClosable: true,
+        position: "top",
+      });
+    });
+  };
+
+  if (isLoading) {
+    return <CircularProgress isIndeterminate color="green.300" />;
+  } else {
     return (
       <>
         <TableContainer mt={"-10"}>
@@ -75,7 +79,7 @@ import {
                 <Th></Th>
               </Tr>
             </Thead>
-  
+
             <Tbody>
               <Tr>
                 <Td>Brand</Td>
@@ -217,10 +221,13 @@ import {
                   <Select
                     variant="filled"
                     value={cat1}
-                    onChange={(e) => setCat1(e.target.value)}>
+                    onChange={(e) => setCat1(e.target.value)}
+                  >
                     <option value="Clothing">Clothing</option>
                     <option value="Footwear">Footwear</option>
-                    <option value="Beauty and Personal Care">Beauty and Personal Care</option>
+                    <option value="Beauty and Personal Care">
+                      Beauty and Personal Care
+                    </option>
                     <option value="Baby Care">Baby Care</option>
                     <option value="Home Furnishing">Home Furnishing</option>
                     <option value="Jewellery">Jewellery</option>
@@ -235,10 +242,13 @@ import {
                   <Select
                     variant="filled"
                     value={cat2}
-                    onChange={(e) => setCat2(e.target.value)}>
+                    onChange={(e) => setCat2(e.target.value)}
+                  >
                     <option value="Clothing">Clothing</option>
                     <option value="Footwear">Footwear</option>
-                    <option value="Beauty and Personal Care">Beauty and Personal Care</option>
+                    <option value="Beauty and Personal Care">
+                      Beauty and Personal Care
+                    </option>
                     <option value="Baby Care">Baby Care</option>
                     <option value="Home Furnishing">Home Furnishing</option>
                     <option value="Jewellery">Jewellery</option>
@@ -253,10 +263,13 @@ import {
                   <Select
                     variant="filled"
                     value={cat3}
-                    onChange={(e) => setCat3(e.target.value)}>
+                    onChange={(e) => setCat3(e.target.value)}
+                  >
                     <option value="Clothing">Clothing</option>
                     <option value="Footwear">Footwear</option>
-                    <option value="Beauty and Personal Care">Beauty and Personal Care</option>
+                    <option value="Beauty and Personal Care">
+                      Beauty and Personal Care
+                    </option>
                     <option value="Baby Care">Baby Care</option>
                     <option value="Home Furnishing">Home Furnishing</option>
                     <option value="Jewellery">Jewellery</option>
@@ -294,7 +307,7 @@ import {
                 </Td>
               </Tr>
             </Tbody>
-  
+
             <Tfoot>
               <Tr>
                 <Th>
@@ -308,9 +321,9 @@ import {
         </TableContainer>
       </>
     );
-  };
-  
-  export default AddTable;
-  
+  }
+};
+
+export default AddTable;
 
 //   http://img6a.flixcart.com/image/t-shirt/s/y/2/ovnrdvnfs01-oviyon-xs-original-imae96dn8kttjkhx.jpeg
