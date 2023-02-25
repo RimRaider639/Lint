@@ -74,266 +74,277 @@ export const gift = [
         },
       ],
     },
-  },
-  {
-    text: "Women",
-    lists: {
-      title: "Women",
-      Sidebar: [
-        "New Arrivals",
-        "Active Shop",
-        "Contemporary",
-        "Cozy Shop",
-        "The Culture Shop",
-        "Denim Shop",
-        "Designer",
-        "Fan Gear",
-        "Gifts for Her",
-        "Pajamas & Robes",
-        "Women`s Clearance",
-        "Gift Cards",
-      ],
-      alldata: [
-        {
-          heading: "Women`s Clothing",
-          child: [
-            "Bras, Panties & Lingerie",
-            "Coats & Outerwear",
-            "Dresses",
-            "Pants & Leggings",
-            "Sweaters",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Plus Size Clothing",
-          child: [
-            "Bras, Panties & Lingerie",
-            "Dresses",
-            "Jeans",
-            "Pants",
-            "Tops",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Petite Clothing",
-          child: [
-            "Dresses",
-            "Jeans",
-            "Pants & Leggings",
-            "Suits & Suit Separates",
-            "Tops",
-            "Show All...",
-          ],
-        },
-        {
-          heading: "Women`s Tops",
-          child: [
-            "Blouses",
-            "Button Down Tops",
-            "Hoodies & Sweatshirts",
-            "Tunices",
-            "T-Shirts",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Junior`s Clothing",
-          child: [
-            "Activewear",
-            "Dresses",
-            "Jeans",
-            "Junior`s Plus",
-            "Tops",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Women`s Dresses",
-          child: [
-            "Casual",
-            "Cocktail & Party",
-            "Formal",
-            "Maxi",
-            "Work",
-            "Shop All...",
-          ],
-        },
-      ],
+    {
+        text: "Women",
+        lists: {
+            title: "Women",
+            Sidebar: [
+                'New Arrivals',
+                'Active Shop',
+                'Contemporary',
+                'Cozy Shop',
+                'The Culture Shop',
+                'Denim Shop',
+                'Designer',
+                'Fan Gear',
+                'Gifts for Her',
+                'Pajamas & Robes',
+                'Women`s Clearance',
+                'Gift Cards',
+            ],
+            alldata: [
+                {
+                    heading: "Women`s Clothing",
+                    child: [
+                        "Bras, Panties & Lingerie",
+                        "Coats & Outerwear",
+                        "Dresses",
+                        "Pants & Leggings",
+                        "Sweaters",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Plus Size Clothing",
+                    child: [
+                        "Bras, Panties & Lingerie",
+                        "Dresses",
+                        "Jeans",
+                        "Pants",
+                        "Tops",
+                        "Shop All...",
+
+                    ]
+                },
+                {
+                    heading: "Footwear",
+                    child: [
+                        "Ballerinas",
+                        "Casual Shoes",
+                        "Flats",
+                        "Heels",
+                        "Slippers & Flip Flops",
+                        "Sports Sandals",
+                        "Sports Shoes",
+                    ]
+                },
+                {
+                    heading: "Women`s Tops",
+                    child: [
+                        "Blouses",
+                        "Button Down Tops",
+                        "Hoodies & Sweatshirts",
+                        "Tunices",
+                        "T-Shirts",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Junior`s Clothing",
+                    child: [
+                        "Activewear",
+                        "Dresses",
+                        "Jeans",
+                        "Junior`s Plus",
+                        "Tops",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Women`s Dresses",
+                    child: [
+                        "Casual",
+                        "Cocktail & Party",
+                        "Formal",
+                        "Maxi",
+                        "Work",
+                        "Shop All...",
+                    ]
+                },
+            ]
+        }
     },
-  },
-  {
-    text: "Men",
-    lists: {
-      title: "Men",
-      Sidebar: [
-        "New Arrivals",
-        "Active Shop",
-        "The Culture Shop",
-        "Designer",
-        "Fan Gear",
-        "Formal Wear & Wedding",
-        "Gifts for Him",
-        "Golf Shop",
-        "Men`s Clearance",
-        "Gift Cards",
-      ],
-      alldata: [
-        {
-          heading: "Men's Clothing",
-          child: [
-            "Dress Shirts",
-            "Jeans",
-            "Pants",
-            "Shirts",
-            "Suit Separates",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Big & Tall Clothing",
-          child: [
-            "Active & Outdoor",
-            "Pants",
-            "Polos",
-            "Shirts",
-            "Suits & Sport Coats",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Young Men's Clothing",
-          child: [
-            "Active & Outdoor",
-            "Graphic Tees",
-            "Hoodies & Sweatshirts",
-            "Jeans",
-            "Shirts",
-            "Show All...",
-          ],
-        },
-        {
-          heading: "Shoes",
-          child: [
-            "Boots",
-            "Casual Shoes",
-            "Dress Shoes",
-            "Sippers",
-            "Sneakers",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Men's Accessories",
-          child: [
-            "Belts & Suspenders",
-            "Gifts & Gadgets",
-            "Hats",
-            "Ties & Pocket Squares",
-            "Wallets & Money Clips",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Men's Jewelry & Watches",
-          child: [
-            "Bracelets",
-            "Jewelry Sets",
-            "Necklaces",
-            "Rings",
-            "Watches",
-            "Shop All...",
-          ],
-        },
-      ],
+    {
+        text: "Men",
+        lists: {
+            title: "Men",
+            Sidebar: [
+                'New Arrivals',
+                'Active Shop',
+                'The Culture Shop',
+                'Designer',
+                'Fan Gear',
+                'Formal Wear & Wedding',
+                'Gifts for Him',
+                'Golf Shop',
+                'Men`s Clearance',
+                'Gift Cards'
+            ],
+            alldata: [
+                {
+                    heading: "Clothing",
+                    child: [
+                        "Accessories & Combo Sets",
+                        "Cargos, Shorts & 3/4ths",
+                        "Ethnic Wear",
+                        "Fabrics",
+                        "Inner Wear & Sleep Wear",
+                        "Jeans",
+                        "Shirts",
+                        "Sports Wear",
+                        "Suits & Blazers",
+                        "T-Shirts",
+                        "Trousers",
+                        "Winter & Seasonal Wear",
+                    ]
+                },
+                {
+                    heading: "Big & Tall Clothing",
+                    child: [
+                        "Active & Outdoor",
+                        "Pants",
+                        "Polos",
+                        "Shirts",
+                        "Suits & Sport Coats",
+                        "Shop All...",
+
+                    ]
+                },
+                {
+                    heading: "Young Men's Clothing",
+                    child: [
+                        "Active & Outdoor",
+                        "Graphic Tees",
+                        "Hoodies & Sweatshirts",
+                        "Jeans",
+                        "Shirts",
+                        "Show All...",
+                    ]
+                },
+                {
+                    heading: "Footwear",
+                    child: [
+                        "Casual Shoes",
+                        "Formal Shoes",
+                        "Sandals & Floaters",
+                        "Slippers & Flip Flops",
+                        "Sports Shoes",
+                    ]
+                },
+                {
+                    heading: "Beauty and Personal Care",
+                    child: [
+                        "Sivanna Men's Grooming",
+                        "Gifts & Gadgets",
+                        "Hats",
+                        "Ties & Pocket Squares",
+                        "Wallets & Money Clips",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Men's Jewelry & Watches",
+                    child: [
+                        "Bracelets",
+                        "Jewelry Sets",
+                        "Necklaces",
+                        "Rings",
+                        "Watches",
+                        "Shop All...",
+                    ]
+                },
+            ]
+        }
     },
-  },
-  {
-    text: "Kids",
-    lists: {
-      title: "Kids",
-      Sidebar: [
-        "New Arrivals",
-        "Baby Essentials",
-        "Birthday & Holidays",
-        "Character Shop",
-        "Dresswear",
-        "Gifts for Kids",
-        "Kid`s Shoes",
-        "Toys & Games",
-        "Baby & Kids Clearance",
-        "Gift Cards",
-      ],
-      alldata: [
-        {
-          heading: "Boy's Clothing",
-          child: [
-            "Activewear",
-            "Jeans",
-            "Pants",
-            "Shirts",
-            "Suits & Dresswear",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Girl's Clothing",
-          child: [
-            "Activewear",
-            "Dresses & Skirts",
-            "Jeans",
-            "Sets & Outfits",
-            "Tops",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Baby Clothing",
-          child: [
-            "Dresses",
-            "One-pieces",
-            "Oufits & Sets",
-            "Pajamas",
-            "Shirts & Tops",
-            "Show All...",
-          ],
-        },
-        {
-          heading: "Juniors Clothing",
-          child: [
-            "Activewear",
-            "Dresses",
-            "Jeans",
-            "Plus Size",
-            "Tops",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Shops by Size",
-          child: [
-            "Boys' (8-20)",
-            "Girls' (7-16)",
-            "Boys' (4-7)",
-            "Girls' (4-6x)",
-            "Baby",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Kids' Brands",
-          child: [
-            "Adidas",
-            "Carter's",
-            "Levi's",
-            "Nike",
-            "Ralph Lauren",
-            "Childrenswear",
-            "Shop All...",
-          ],
-        },
-      ],
+    {
+        text: "Kids",
+        lists: {
+            title: "Kids",
+            Sidebar: [
+                'New Arrivals',
+                'Baby Essentials',
+                'Birthday & Holidays',
+                'Character Shop',
+                'Dresswear',
+                'Gifts for Kids',
+                'Kid`s Shoes',
+                'Toys & Games',
+                'Baby & Kids Clearance',
+                'Gift Cards'
+            ],
+            alldata: [
+                {
+                    heading: "Clothing",
+                    child: [
+                        "Boys Wear",
+                        "Infants Wear",
+                        "Girls Wear",
+                        "Shirts",
+                        "Suits & Dresswear",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Girl's Clothing",
+                    child: [
+                        "Activewear",
+                        "Dresses & Skirts",
+                        "Jeans",
+                        "Sets & Outfits",
+                        "Tops",
+                        "Shop All...",
+
+                    ]
+                },
+                {
+                    heading: "Baby Care",
+                    child: [
+                        "Decorations",
+                        "Stickers"
+                    ]
+                },
+                {
+                    heading: "Footwear",
+                    child: [
+                        "For Boys",
+                        "For Girls",
+                        "Jeans",
+                        "Plus Size",
+                        "Tops",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Shops by Size",
+                    child: [
+                        "Boys' (8-20)",
+                        "Girls' (7-16)",
+                        "Boys' (4-7)",
+                        "Girls' (4-6x)",
+                        "Baby",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Kids' Brands",
+                    child: [
+                        "Adidas",
+                        "Carter's",
+                        "Levi's",
+                        "Nike",
+                        "Ralph Lauren",
+                        "Childrenswear",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Furniture",
+                    child: [
+                        "Kids Tables & Seating"
+                    ]
+                },
+            ]
+        }
     },
   },
   {
@@ -656,172 +667,169 @@ export const gift = [
         },
       ],
     },
-  },
-  {
-    text: "Home",
-    lists: {
-      title: "Home",
-      Sidebar: [
-        "New Arrivals",
-        "Conns LINT",
-        "Electronics",
-        "Health & Wellness",
-        "Organization & Cleaning",
-        "Rugs",
-        "Toys & Games",
-        "Window Treatments",
-        "Home Clearance",
-        "Gift Cards",
-      ],
-      alldata: [
-        {
-          heading: "Kichen",
-          child: [
-            "Appliances",
-            "Bakeware",
-            "Cookware",
-            "Food Storage",
-            "Utensils & Gadgets",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Home Decor",
-          child: [
-            "Candles & Frangrance",
-            "Decorative Accents",
-            "Lamps & Lighting",
-            "Throws & Throw Pillows",
-            "Wall Art & Decor",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Tabletop & Bar",
-          child: [
-            "Dinnerware",
-            "Drinkware",
-            "Silverware & Flatware",
-            "Serveware",
-            "Table Linens",
-            "Show All...",
-          ],
-        },
-        {
-          heading: "Travel & Luggage",
-          child: [
-            "Carry-On Luggage",
-            "Checked Luggage",
-            "Duffle & Weekender Bags",
-            "Hardside Luggage",
-            "Luggage Sets",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Furniture",
-          child: [
-            "Bedroom",
-            "Home Office",
-            "Kitchen & Dining Room",
-            "Living Room",
-            "Outdoor & Patio",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Holiday",
-          child: [
-            "Valentine's Day",
-            "Easter",
-            "Food & Gourmet Gifts",
-            "Housewarming Gifts",
-            "Tech Gifts",
-            "Shop All...",
-          ],
-        },
-      ],
+    {
+        text: "Home",
+        lists: {
+            title: "Home",
+            Sidebar: [
+                'New Arrivals',
+                'Conns LINT',
+                'Electronics',
+                'Health & Wellness',
+                'Organization & Cleaning',
+                'Rugs',
+                'Toys & Games',
+                'Window Treatments',
+                'Home Clearance',
+                'Gift Cards'
+            ],
+            alldata: [
+                {
+                    heading: "Home & Kitchen",
+                    child: [
+                        "Refrigerators",
+                        "Voltage Stabilizers",
+                        "Cookware",
+                        "Food Storage",
+                        "Utensils & Gadgets",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: " Home Improvement",
+                    child: [
+                        "Laundry",
+                        "Decorative Accents",
+                        "Lamps & Lighting",
+                        "Throws & Throw Pillows",
+                        "Wall Art & Decor",
+                        "Shop All...",
+
+                    ]
+                },
+                {
+                    heading: "Kitchen & Dining",
+                    child: [
+                        "Mosquito Killers",
+                        "Drinkware",
+                        "Silverware & Flatware",
+                        "Serveware",
+                        "Table Linens",
+                        "Show All...",
+                    ]
+                },
+                {
+                    heading: "Travel & Luggage",
+                    child: [
+                        "Carry-On Luggage",
+                        "Checked Luggage",
+                        "Duffle & Weekender Bags",
+                        "Hardside Luggage",
+                        "Luggage Sets",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Household Supplies",
+                    child: [
+                        "Kitchen Surface Cleaners",
+                        "Home Office",
+                        "Kitchen & Dining Room",
+                        "Living Room",
+                        "Outdoor & Patio",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Home Entertainment",
+                    child: [
+                        "Speakers"
+                    ]
+                },
+            ]
+        }
     },
-  },
-  {
-    text: "Bed & Bath",
-    lists: {
-      title: "Bed & Bath",
-      Sidebar: [
-        "New Arrivals",
-        "Furniture",
-        "Window Treatments",
-        "Bed & Bath Clearance",
-        "Gift Cards",
-      ],
-      alldata: [
-        {
-          heading: "Bedding",
-          child: [
-            "Bed in a Bag",
-            "Bedspreads",
-            "Comforters",
-            "Quilts & Coverlets",
-            "Sheets",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Bedding Basics",
-          child: [
-            "Bed Pillows",
-            "Down & Down Alternative",
-            "Mattress Pads & Toppers",
-            "Pillowcases & Protectors",
-            "Sheets",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Bath",
-          child: [
-            "Bathroom Accessories",
-            "Bath Rugs & Mats",
-            "Bath Towels",
-            "Beach Towels",
-            "Shower Curtains",
-            "Show All...",
-          ],
-        },
-        {
-          heading: "Health & Wellness",
-          child: [
-            "Air Purifiers & Sanitizing",
-            "Dental Care",
-            "Digital Scales",
-            "Humdifiers & Diffusers",
-            "Massagers & Foot Spas",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Bed & Bath Brands",
-          child: [
-            "Biltmore",
-            "J Queen New York",
-            "Madison Park",
-            "Modern. Southern Home",
-            "Waverly",
-            "Shop All...",
-          ],
-        },
-        {
-          heading: "Holiday",
-          child: [
-            "Valentine's Day",
-            "Easter",
-            "Mother's Day",
-            "Father's Day",
-            "Fourth of July",
-            "Shop All...",
-          ],
-        },
-      ],
+    {
+        text: "Bed",
+        lists: {
+            title: "Bed & Bath",
+            Sidebar: [
+                'New Arrivals',
+                'Furniture',
+                'Window Treatments',
+                'Bed & Bath Clearance',
+                'Gift Cards'
+            ],
+            alldata: [
+                {
+                    heading: "Home Furnishing",
+                    child: [
+                        "Bedsheets",
+                        "Blankets, Quilts & Dohars",
+                        "Comforters",
+                        "Quilts & Coverlets",
+                        "Sheets",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Baby Care",
+                    child: [
+                        "Baby Bedsheets",
+                        "Baby Blankets",
+                        "Baby Mosquito Nets",
+                        "Pillowcases & Protectors",
+                        "Sheets",
+                        "Shop All...",
+
+                    ]
+                },
+                {
+                    heading: "Bath",
+                    child: [
+                        "Bathroom Accessories",
+                        "Bath Rugs & Mats",
+                        "Bath Towels",
+                        "Beach Towels",
+                        "Shower Curtains",
+                        "Show All...",
+                    ]
+                },
+                {
+                    heading: "Health & Wellness",
+                    child: [
+                        "Air Purifiers & Sanitizing",
+                        "Dental Care",
+                        "Digital Scales",
+                        "Humdifiers & Diffusers",
+                        "Massagers & Foot Spas",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Furniture",
+                    child: [
+                        "Beds",
+                        "Dressing Tables",
+                        "Madison Park",
+                        "Modern. Southern Home",
+                        "Waverly",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Holiday",
+                    child: [
+                        "Valentine's Day",
+                        "Easter",
+                        "Mother's Day",
+                        "Father's Day",
+                        "Fourth of July",
+                        "Shop All...",
+                    ]
+                },
+            ]
+        }
     },
   },
   {
