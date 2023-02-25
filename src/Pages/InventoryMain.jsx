@@ -8,7 +8,7 @@ import {
   TableContainer,
   Flex,
   Button,
-  CircularProgress,
+  Progress,
 } from "@chakra-ui/react";
 
 import { EditIcon } from "@chakra-ui/icons";
@@ -30,7 +30,7 @@ const InventoryMain = () => {
   }, [products.length, dispatch, products, isLoading]);
 
   if (isLoading === true) {
-    return <CircularProgress isIndeterminate color="green.300" />;
+    return <Progress size='xs' isIndeterminate />;
   } else {
     return (
       <Flex p="2" w={{ base: "100%" }} justifyContent={"center"}>
