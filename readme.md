@@ -92,7 +92,7 @@ https://wide-eyed-pinafore-duck.cyclic.app/products/?q=blush&limit=20
   description: { type: String, required: true },
   brand: { type: String, required: true },
   product_specifications: { type: Object },
-  rating: { type: mg.Schema.Types.Mixed, default: "No rating available" },
+  rating: { type: Number, default: 0 },
   stock: { type: Number, required: true },
   discount: { type: Number, default: 0 },
 }
