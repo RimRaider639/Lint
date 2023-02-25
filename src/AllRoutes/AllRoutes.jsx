@@ -11,7 +11,15 @@ const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/products/:path" element={<ProductsPage />} />
+
+      <Route
+        path="/products/:path/:category?/:sub-Category?brand=:brandQuery?"
+        element={<ProductsPage />}
+      />
+      {/* <Route
+        path="/products/:path/:category/:sub-Category"
+        element={<ProductsPage />}
+      /> */}
       <Route path="/single" element={<SingleProductPage />} />
       <Route path="/cart" element={<Cart />} />
       <Route

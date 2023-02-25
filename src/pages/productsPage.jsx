@@ -53,15 +53,17 @@ const price = [
 ];
 
 const ProductsPage = () => {
-  const { path } = useParams();
+  const { path, category } = useParams();
+
   let dispatch = useDispatch();
   let { loading, productsData, allData, params, filters } = useSelector(
     (store) => store.ProductsManager
   );
   const [sortingByPrice, setSortingByPrice] = React.useState({
     sort: "discounted_price",
-    order: "",
+    order: params.order,
   });
+  // console.log("sortingByPrice", sortingByPrice);
 
   const appliedFilters = {
     subCategory_like: params.subCategory_like,
@@ -71,13 +73,18 @@ const ProductsPage = () => {
     price: [params.discounted_price_gt, params.discounted_price_lt],
     order: params.order,
   };
-
-  console.log("appliedFilters productPage_line75", appliedFilters);
+  useEffect(() => {
+    setSortingByPrice({ ...sortingByPrice, order: params.order });
+  }, [params.order]);
+  // console.log("appliedFilters productPage_line75", appliedFilters);
 
   useEffect(() => {
     params.subCategory_like = path;
+    if (category !== undefined) {
+      params.category = category;
+    }
     dispatch(getProducts(params));
-  }, [productsData.length, dispatch, params, path, sortingByPrice]);
+  }, [productsData.length, dispatch, params, path, sortingByPrice, category]);
 
   useEffect(() => {
     let subCategory_like = path;
@@ -85,10 +92,16 @@ const ProductsPage = () => {
     dispatch(getAllData(subCategory_like));
   }, [allData.length, path, dispatch]);
 
-  if (productsData.length === 0) {
+  if (loading) {
     return (
       <Box pt={"23%"} pb="15%">
-        {loading ? <Loader /> : <ProductNotFound />}
+        <Loader />
+      </Box>
+    );
+  } else if (productsData.length === 0) {
+    return (
+      <Box pt={"23%"} pb="15%">
+        <ProductNotFound />
       </Box>
     );
   } else {

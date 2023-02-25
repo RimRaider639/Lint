@@ -16,25 +16,34 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/layout";
-import { Radio, RadioGroup } from "@chakra-ui/react";
+
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../../redux/products/products.action";
+import { clearParams, getProducts } from "../../redux/products/products.action";
 import Loader from "../Loader";
+import PriceRadio from "./priceRadio";
 
 function Filters({ filterHeading, price }) {
   let dispatch = useDispatch();
   let { loading, params } = useSelector((store) => store.ProductsManager);
-  const [categorySelected, setCategorySelected] = React.useState([false, ""]);
+  console.log("params in filters", params);
+
+  const [categorySelected, setCategorySelected] = React.useState(
+    params.category === "" ? [] : [params.category]
+  );
 
   const [sub2CategoryParam, setSub2CategoryParam] = useState(
     params.sub2Category
   );
+
   const [brandParam, setBrandParam] = useState(params.brand);
+  // console.log("categorySelected", categorySelected);
+  // console.log("sub2CategoryParam", sub2CategoryParam);
+  // console.log("brandParam", brandParam);
 
   const HandleFilterHeading = (category) => {
     params.category = category;
-    setCategorySelected([true, category]);
+    setCategorySelected([category]);
     dispatch(getProducts(params));
   };
   const handleChange = (name) => {
@@ -52,6 +61,10 @@ function Filters({ filterHeading, price }) {
     params.brand = { ...brandParam, [name]: !brandParam[name] };
     setBrandParam({ ...brandParam, [name]: !brandParam[name] });
     dispatch(getProducts(params));
+  };
+
+  const HandleCLearParams = () => {
+    dispatch(clearParams());
   };
   if (loading) {
     return (
@@ -71,7 +84,7 @@ function Filters({ filterHeading, price }) {
         </Flex>
         <Divider borderColor={"black"} />
         {/* Category 1 */}
-        {categorySelected[0] === false
+        {categorySelected.length === 0
           ? filterHeading &&
             filterHeading.map((e, i) => (
               <Box maxH="400px" overflowY="scroll" w="full" key={i}>
@@ -98,7 +111,7 @@ function Filters({ filterHeading, price }) {
             ))
           : filterHeading &&
             filterHeading.map((e, i) => {
-              if (e[0] === categorySelected[1]) {
+              if (e[0] === categorySelected[0]) {
                 return (
                   <>
                     <Box maxH="400px" overflowY="scroll" w="full" key={i}>
@@ -359,7 +372,7 @@ function Filters({ filterHeading, price }) {
                 </AccordionButton>
               </h2>
 
-              {price &&
+              {/* {price &&
                 price.map((e, i) => (
                   <Box key={i}>
                     {" "}
@@ -380,9 +393,30 @@ function Filters({ filterHeading, price }) {
                       </HStack>
                     </AccordionPanel>
                   </Box>
-                ))}
+                ))} */}
+              <PriceRadio
+                priceRanges={price}
+                discounted_price_gt={params.discounted_price_gt}
+                discounted_price_lt={params.discounted_price_lt}
+                dispatch={dispatch}
+                params={params}
+                getProducts={getProducts}
+              />
             </AccordionItem>
           </Accordion>
+        </Box>
+        <Box as="span" flex="1" textAlign="left">
+          <Flex>
+            <Text
+              _hover={{ color: "#0076be", fontWeight: "black" }}
+              cursor={"pointer"}
+              fontWeight={"bold"}
+              onClick={() => {
+                HandleCLearParams();
+              }}>
+              Clear All
+            </Text>
+          </Flex>
         </Box>
       </VStack>
     );

@@ -27,8 +27,9 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import React from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+
 import { useNavigate } from "react-router-dom";
+import Loader from "../components/Loader";
 
 function SingleProductPage() {
   const navigate = useNavigate();
@@ -69,7 +70,7 @@ function SingleProductPage() {
   if (product.length === 0) {
     return (
       <Box pt={"23%"} pb="15%">
-        <loading />
+        <Loader />
       </Box>
     );
   } else {

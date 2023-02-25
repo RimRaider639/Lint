@@ -4,11 +4,15 @@ import {
   GET_PRODUCTS_ERROR,
   GET_PRODUCTS_LOADING,
   GET_PRODUCTS_SUCCESS,
+  CLEAR_PARAMS_LOADING,
+  CLEAR_PARAMS_SUCCESS,
+  CLEAR_PARAMS_ERROR,
 } from "./products.actionType";
 
 export const getAllData = (subCategory_like) => async (dispatch) => {
   dispatch({ type: GET_PRODUCTS_LOADING });
   axios
+
     .get(`https://wide-eyed-pinafore-duck.cyclic.app/products`, {
       params: {
         limit: 250,
@@ -137,5 +141,40 @@ export const getProducts = (params) => async (dispatch) => {
   } catch (error) {
     console.log(error);
     dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });
+  }
+};
+
+export const clearParams = () => async (dispatch) => {
+  const clearParamsState = {
+    page: "",
+    limit: 10,
+    subCategory_like: "",
+    category: "",
+    sub2Category: {},
+    brand: {},
+    order: "",
+    sort: null,
+    discounted_price_gt: null,
+    discounted_price_lt: null,
+  };
+
+  dispatch({ type: CLEAR_PARAMS_LOADING });
+
+  try {
+    const response = await axios.get(
+      `https://wide-eyed-pinafore-duck.cyclic.app/products`,
+      {
+        params: clearParamsState,
+      }
+    );
+    let data = response.data;
+
+    dispatch({
+      type: CLEAR_PARAMS_SUCCESS,
+      payload: { data, clearParamsState },
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: CLEAR_PARAMS_ERROR, payload: error.message });
   }
 };

@@ -3,6 +3,9 @@ import {
   GET_PRODUCTS_ERROR,
   GET_PRODUCTS_LOADING,
   GET_PRODUCTS_SUCCESS,
+  CLEAR_PARAMS_LOADING,
+  CLEAR_PARAMS_SUCCESS,
+  CLEAR_PARAMS_ERROR,
 } from "./products.actionType";
 
 // subCategory_like = to get category-wise Data for page, index=1
@@ -36,6 +39,7 @@ let initialData = {
 };
 
 const ProductsReducer = (state = initialData, { type, payload }) => {
+  console.log("ProductsReducer", "type=", type, "payload=", payload);
   switch (type) {
     case GET_PRODUCTS_LOADING: {
       return {
@@ -68,6 +72,30 @@ const ProductsReducer = (state = initialData, { type, payload }) => {
         error: true,
       };
     }
+
+    case CLEAR_PARAMS_LOADING: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case CLEAR_PARAMS_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        productsData: payload.data,
+        params: payload.clearParamsState,
+      };
+    }
+
+    case CLEAR_PARAMS_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    }
+
     default: {
       return {
         ...state,
