@@ -16,6 +16,8 @@ const AllRoutes = () => {
         path="/products/:path/:category?/:sub-Category?brand=:brandQuery?"
         element={<ProductsPage />}
       />
+      <Route  path="/signin"  element={<Signin />} />
+      <Route  path="/register"  element={<RegisterPage />} />
       {/* <Route
         path="/products/:path/:category/:sub-Category"
         element={<ProductsPage />}

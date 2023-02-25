@@ -39,6 +39,7 @@ function Signin() {
     // }
     axios.post("https://wide-eyed-pinafore-duck.cyclic.app/users/login", payload)
       .then((res) =>{
+        console.log(res);
         if(res.data.token){
           toast({
             position: 'top',
