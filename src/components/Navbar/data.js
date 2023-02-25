@@ -120,14 +120,15 @@ export const gift = [
                     ]
                 },
                 {
-                    heading: "Petite Clothing",
+                    heading: "Footwear",
                     child: [
-                        "Dresses",
-                        "Jeans",
-                        "Pants & Leggings",
-                        "Suits & Suit Separates",
-                        "Tops",
-                        "Show All...",
+                        "Ballerinas",
+                        "Casual Shoes",
+                        "Flats",
+                        "Heels",
+                        "Slippers & Flip Flops",
+                        "Sports Sandals",
+                        "Sports Shoes",
                     ]
                 },
                 {
@@ -184,14 +185,20 @@ export const gift = [
             ],
             alldata: [
                 {
-                    heading: "Men's Clothing",
+                    heading: "Clothing",
                     child: [
-                        "Dress Shirts",
+                        "Accessories & Combo Sets",
+                        "Cargos, Shorts & 3/4ths",
+                        "Ethnic Wear",
+                        "Fabrics",
+                        "Inner Wear & Sleep Wear",
                         "Jeans",
-                        "Pants",
                         "Shirts",
-                        "Suit Separates",
-                        "Shop All...",
+                        "Sports Wear",
+                        "Suits & Blazers",
+                        "T-Shirts",
+                        "Trousers",
+                        "Winter & Seasonal Wear",
                     ]
                 },
                 {
@@ -218,20 +225,19 @@ export const gift = [
                     ]
                 },
                 {
-                    heading: "Shoes",
+                    heading: "Footwear",
                     child: [
-                        "Boots",
                         "Casual Shoes",
-                        "Dress Shoes",
-                        "Sippers",
-                        "Sneakers",
-                        "Shop All...",
+                        "Formal Shoes",
+                        "Sandals & Floaters",
+                        "Slippers & Flip Flops",
+                        "Sports Shoes",
                     ]
                 },
                 {
-                    heading: "Men's Accessories",
+                    heading: "Beauty and Personal Care",
                     child: [
-                        "Belts & Suspenders",
+                        "Sivanna Men's Grooming",
                         "Gifts & Gadgets",
                         "Hats",
                         "Ties & Pocket Squares",
@@ -271,11 +277,11 @@ export const gift = [
             ],
             alldata: [
                 {
-                    heading: "Boy's Clothing",
+                    heading: "Clothing",
                     child: [
-                        "Activewear",
-                        "Jeans",
-                        "Pants",
+                        "Boys Wear",
+                        "Infants Wear",
+                        "Girls Wear",
                         "Shirts",
                         "Suits & Dresswear",
                         "Shop All...",
@@ -294,21 +300,17 @@ export const gift = [
                     ]
                 },
                 {
-                    heading: "Baby Clothing",
+                    heading: "Baby Care",
                     child: [
-                        "Dresses",
-                        "One-pieces",
-                        "Oufits & Sets",
-                        "Pajamas",
-                        "Shirts & Tops",
-                        "Show All...",
+                        "Decorations",
+                        "Stickers"
                     ]
                 },
                 {
-                    heading: "Juniors Clothing",
+                    heading: "Footwear",
                     child: [
-                        "Activewear",
-                        "Dresses",
+                        "For Boys",
+                        "For Girls",
                         "Jeans",
                         "Plus Size",
                         "Tops",
@@ -336,6 +338,12 @@ export const gift = [
                         "Ralph Lauren",
                         "Childrenswear",
                         "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Furniture",
+                    child: [
+                        "Kids Tables & Seating"
                     ]
                 },
             ]
@@ -684,10 +692,10 @@ export const gift = [
             ],
             alldata: [
                 {
-                    heading: "Kichen",
+                    heading: "Home & Kitchen",
                     child: [
-                        "Appliances",
-                        "Bakeware",
+                        "Refrigerators",
+                        "Voltage Stabilizers",
                         "Cookware",
                         "Food Storage",
                         "Utensils & Gadgets",
@@ -695,9 +703,9 @@ export const gift = [
                     ]
                 },
                 {
-                    heading: "Home Decor",
+                    heading: " Home Improvement",
                     child: [
-                        "Candles & Frangrance",
+                        "Laundry",
                         "Decorative Accents",
                         "Lamps & Lighting",
                         "Throws & Throw Pillows",
@@ -707,9 +715,9 @@ export const gift = [
                     ]
                 },
                 {
-                    heading: "Tabletop & Bar",
+                    heading: "Kitchen & Dining",
                     child: [
-                        "Dinnerware",
+                        "Mosquito Killers",
                         "Drinkware",
                         "Silverware & Flatware",
                         "Serveware",
@@ -729,9 +737,9 @@ export const gift = [
                     ]
                 },
                 {
-                    heading: "Furniture",
+                    heading: "Household Supplies",
                     child: [
-                        "Bedroom",
+                        "Kitchen Surface Cleaners",
                         "Home Office",
                         "Kitchen & Dining Room",
                         "Living Room",
@@ -740,21 +748,16 @@ export const gift = [
                     ]
                 },
                 {
-                    heading: "Holiday",
+                    heading: "Home Entertainment",
                     child: [
-                        "Valentine's Day",
-                        "Easter",
-                        "Food & Gourmet Gifts",
-                        "Housewarming Gifts",
-                        "Tech Gifts",
-                        "Shop All...",
+                        "Speakers"
                     ]
                 },
             ]
         }
     },
     {
-        text: "Bed & Bath",
+        text: "Bed",
         lists: {
             title: "Bed & Bath",
             Sidebar: [
@@ -766,10 +769,10 @@ export const gift = [
             ],
             alldata: [
                 {
-                    heading: "Bedding",
+                    heading: "Home Furnishing",
                     child: [
-                        "Bed in a Bag",
-                        "Bedspreads",
+                        "Bedsheets",
+                        "Blankets, Quilts & Dohars",
                         "Comforters",
                         "Quilts & Coverlets",
                         "Sheets",
@@ -777,11 +780,11 @@ export const gift = [
                     ]
                 },
                 {
-                    heading: "Bedding Basics",
+                    heading: "Baby Care",
                     child: [
-                        "Bed Pillows",
-                        "Down & Down Alternative",
-                        "Mattress Pads & Toppers",
+                        "Baby Bedsheets",
+                        "Baby Blankets",
+                        "Baby Mosquito Nets",
                         "Pillowcases & Protectors",
                         "Sheets",
                         "Shop All...",
@@ -811,10 +814,10 @@ export const gift = [
                     ]
                 },
                 {
-                    heading: "Bed & Bath Brands",
+                    heading: "Furniture",
                     child: [
-                        "Biltmore",
-                        "J Queen New York",
+                        "Beds",
+                        "Dressing Tables",
                         "Madison Park",
                         "Modern. Southern Home",
                         "Waverly",
