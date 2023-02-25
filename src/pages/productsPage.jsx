@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Divider,
   Flex,
   Grid,
@@ -8,7 +9,6 @@ import {
   Image,
   Select,
   Text,
-  useDisclosure,
   VStack,
 } from "@chakra-ui/react";
 import React, { useEffect } from "react";
@@ -17,12 +17,14 @@ import { useDispatch, useSelector } from "react-redux";
 import Filters from "../components/productsPage/filters";
 import ProductCard from "../components/productsPage/productCard";
 import FilterDrawer from "../components/productsPage/filterDrawer";
+import FilterTag from "../components/productsPage/FilterTag";
 
 import { getAllData, getProducts } from "../redux/products/products.action";
 import { useParams } from "react-router-dom";
-// import Pagination from "../components/pagination";
-import ReactPaginate from "react-paginate";
+import Loader from "../components/Loader";
+
 import Pagination from "../components/pagination";
+import ProductNotFound from "../components/NotFound";
 const price = [
   {
     title: "Under Rs.499",
@@ -51,27 +53,38 @@ const price = [
 ];
 
 const ProductsPage = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { path } = useParams();
+  const { path, category } = useParams();
+
+  let dispatch = useDispatch();
   let { loading, productsData, allData, params, filters } = useSelector(
     (store) => store.ProductsManager
   );
-
   const [sortingByPrice, setSortingByPrice] = React.useState({
     sort: "discounted_price",
-    order: "",
+    order: params.order,
   });
+  // console.log("sortingByPrice", sortingByPrice);
 
-  // Pagination
-
-  // Pagination
-
-  let dispatch = useDispatch();
+  const appliedFilters = {
+    subCategory_like: params.subCategory_like,
+    category: params.category,
+    sub2Category: params.sub2Category,
+    brand: params.brand,
+    price: [params.discounted_price_gt, params.discounted_price_lt],
+    order: params.order,
+  };
+  useEffect(() => {
+    setSortingByPrice({ ...sortingByPrice, order: params.order });
+  }, [params.order]);
+  // console.log("appliedFilters productPage_line75", appliedFilters);
 
   useEffect(() => {
     params.subCategory_like = path;
+    if (category !== undefined) {
+      params.category = category;
+    }
     dispatch(getProducts(params));
-  }, [productsData.length, dispatch, params, path, sortingByPrice]);
+  }, [productsData.length, dispatch, params, path, sortingByPrice, category]);
 
   useEffect(() => {
     let subCategory_like = path;
@@ -79,16 +92,36 @@ const ProductsPage = () => {
     dispatch(getAllData(subCategory_like));
   }, [allData.length, path, dispatch]);
 
-  // { filterHeading: [], filterCategory: [], filterBrands: [] }
-
-  if (productsData.length === 0) {
+  if (loading) {
     return (
-      <Image src="https://media0.giphy.com/media/hWZBZjMMuMl7sWe0x8/giphy.gif?cid=ecf05e47miq5cngzblyhk1rx2cq7qjkem5ilbc3fg1fvkbkc&rid=giphy.gif&ct=g" />
+      <Box pt={"23%"} pb="15%">
+        <Loader />
+      </Box>
+    );
+  } else if (productsData.length === 0) {
+    return (
+      <Box pt={"23%"} pb="15%">
+        <ProductNotFound />
+      </Box>
     );
   } else {
     return (
       <>
-        <Box width={"90%"} margin="auto" pt={"160px"}>
+        <Box width={"90%"} margin="auto" pt={"140px"}>
+          {/* <FilterTag title={appliedFilters.subCategory_like} /> */}
+          <Flex mb="10px">
+            {" "}
+            <Button mr="2%">Go Back</Button>
+            <Box display={{ base: "block", sm: "block", md: "none" }}>
+              <FilterDrawer
+                filterHeading={filters.filterHeading}
+                filterBrands={filters.filterBrands}
+                price={price}
+              />
+            </Box>
+            <HStack
+              display={{ base: "none", sm: "none", md: "block" }}></HStack>
+          </Flex>
           <Grid gridTemplateColumns={{ sm: "100%", md: "25% 75%" }} gap={"5px"}>
             {/* filters section start */}
             {/* for large screen */}
@@ -100,13 +133,6 @@ const ProductsPage = () => {
               />
             </Box>
             {/* for small screen */}
-            <Box display={{ base: "block", sm: "block", md: "none" }}>
-              <FilterDrawer
-                filterHeading={filters.filterHeading}
-                filterBrands={filters.filterBrands}
-                price={price}
-              />
-            </Box>
 
             {/* products section start */}
             <VStack justify={"space-between"} p="10px">
@@ -161,6 +187,8 @@ const ProductsPage = () => {
                       retail_price={e.retail_price}
                       discounted_price={e.discounted_price}
                       rating={e.rating}
+                      path={path}
+                      params={params}
                     />
                   ))}
               </Grid>

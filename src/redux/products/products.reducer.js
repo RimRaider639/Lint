@@ -3,6 +3,9 @@ import {
   GET_PRODUCTS_ERROR,
   GET_PRODUCTS_LOADING,
   GET_PRODUCTS_SUCCESS,
+  CLEAR_PARAMS_LOADING,
+  CLEAR_PARAMS_SUCCESS,
+  CLEAR_PARAMS_ERROR,
 } from "./products.actionType";
 
 // subCategory_like = to get category-wise Data for page, index=1
@@ -14,7 +17,7 @@ import {
 // limit=2&subCategory_like=Women&category=Footwear&sub2Category=Flats
 
 const initParams = {
-  page: 1,
+  page: "",
   limit: 10,
   subCategory_like: "",
   category: "",
@@ -36,6 +39,7 @@ let initialData = {
 };
 
 const ProductsReducer = (state = initialData, { type, payload }) => {
+  console.log("ProductsReducer", "type=", type, "payload=", payload);
   switch (type) {
     case GET_PRODUCTS_LOADING: {
       return {
@@ -45,7 +49,6 @@ const ProductsReducer = (state = initialData, { type, payload }) => {
     }
 
     case GET_ALL_DATA_SUCCESS: {
-      console.log(payload.filters);
       return {
         ...state,
         loading: false,
@@ -69,6 +72,30 @@ const ProductsReducer = (state = initialData, { type, payload }) => {
         error: true,
       };
     }
+
+    case CLEAR_PARAMS_LOADING: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case CLEAR_PARAMS_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        productsData: payload.data,
+        params: payload.clearParamsState,
+      };
+    }
+
+    case CLEAR_PARAMS_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    }
+
     default: {
       return {
         ...state,

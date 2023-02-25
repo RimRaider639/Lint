@@ -31,11 +31,12 @@ const NavBottom = () => {
                       }
                     </div>)
                   }
+
                 </div>
               </div>
             </div>
-          </div>)
-        }
+          </div>
+        ))}
       </ul>
     </div>
   );

@@ -1,81 +1,78 @@
-
 export const gift = [
-    {
-        text: "Gift",
-        lists: {
-            title: "Gifts",
-            Sidebar: [
-                'Beauty Gifts',
-                'Cozy Shop',
-                'Designer Handbags',
-                'Eco Friendly',
-                'Fine Jewelry',
-                'For the Trend Setter',
-                'Gift Cards',
-                'Gifts with a Purpose',
-                'Intimates'
-            ],
-            alldata: [
-                {
-                    heading: "All Gifts",
-                    child: [
-                        "Gifts for Her",
-                        "Gifts for Him",
-                        "Gifts for Kids",
-                        "Gifts for Pets",
-                        "Gifts for the Home",
-                        "Gift Cards",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Gifts by Price",
-                    child: [
-                        "Under $ 10",
-                        "Under $ 25",
-                        "Under $ 50",
-                        "Under $ 100",
-                        "Over $ 100",
-                        "Gift Cards",
-                        "Shop All...",
-
-                    ]
-                },
-                {
-                    heading: "Gifts by Recipient",
-                    child: [
-                        "For the Foodie",
-                        "For the Hostess",
-                        "For the Outdoorsman",
-                        "For the Sports Fan",
-                        "For the Techie",
-                        "Gift Cards",
-                        "Show All...",
-                    ]
-                },
-                {
-                    heading: "Just for Kids",
-                    child: [
-                        "Active Gear",
-                        "Kids Fan Gear",
-                        "Toys & Games",
-                        "Gift Cards",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Favorite Brands",
-                    child: [
-                        "Brahmin",
-                        "Estee Lauder",
-                        "Free People",
-                        "Michael Kors",
-                        "Relph Lauren",
-                        "Shop All...",
-                    ]
-                },
-            ]
-        }
+  {
+    text: "Gift",
+    lists: {
+      title: "Gifts",
+      Sidebar: [
+        "Beauty Gifts",
+        "Cozy Shop",
+        "Designer Handbags",
+        "Eco Friendly",
+        "Fine Jewelry",
+        "For the Trend Setter",
+        "Gift Cards",
+        "Gifts with a Purpose",
+        "Intimates",
+      ],
+      alldata: [
+        {
+          heading: "All Gifts",
+          child: [
+            "Gifts for Her",
+            "Gifts for Him",
+            "Gifts for Kids",
+            "Gifts for Pets",
+            "Gifts for the Home",
+            "Gift Cards",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Gifts by Price",
+          child: [
+            "Under $ 10",
+            "Under $ 25",
+            "Under $ 50",
+            "Under $ 100",
+            "Over $ 100",
+            "Gift Cards",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Gifts by Recipient",
+          child: [
+            "For the Foodie",
+            "For the Hostess",
+            "For the Outdoorsman",
+            "For the Sports Fan",
+            "For the Techie",
+            "Gift Cards",
+            "Show All...",
+          ],
+        },
+        {
+          heading: "Just for Kids",
+          child: [
+            "Active Gear",
+            "Kids Fan Gear",
+            "Toys & Games",
+            "Gift Cards",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Favorite Brands",
+          child: [
+            "Brahmin",
+            "Estee Lauder",
+            "Free People",
+            "Michael Kors",
+            "Relph Lauren",
+            "Shop All...",
+          ],
+        },
+      ],
     },
     {
         text: "Women",
@@ -349,330 +346,326 @@ export const gift = [
             ]
         }
     },
-    {
-        text: "Shoes",
-        lists: {
-            title: "Shoes",
-            Sidebar: [
-                'New Arrivals',
-                'Extra Wide',
-                'Gift Shop',
-                'Narrow',
-                'Shoe Accessories',
-                'Sizes 11+',
-                'Special Occasion',
-                'Wide',
-                'Shoe Clearance',
-                'Gift Cards'
-            ],
-            alldata: [
-                {
-                    heading: "Women's Shoes",
-                    child: [
-                        "Boots",
-                        "Comfort",
-                        "Designer",
-                        "Heels & Pumps",
-                        "Sneakers",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Men's Shoes",
-                    child: [
-                        "Boots",
-                        "Casual Shoes",
-                        "Designer",
-                        "Dress Shoes",
-                        "Sneakers",
-                        "Shop All...",
-
-                    ]
-                },
-                {
-                    heading: "Junior's Shoes",
-                    child: [
-                        "Boots",
-                        "Flats",
-                        "Heels & Pumps",
-                        "Sneakers",
-                        "Wedgets",
-                        "Show All...",
-                    ]
-                },
-                {
-                    heading: "Kid's Shoes",
-                    child: [
-                        "Boys' Shoes",
-                        "Girls' Shoes",
-                        "Baby (Sizes 1-4)",
-                        "Boys' Sneakers",
-                        "Girls' Sneakers",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Shoes Brands",
-                    child: [
-                        "Free People",
-                        "MICHAEL Michael Kors",
-                        "Sam Edelman",
-                        "Skechers",
-                        "Steve Madden",
-                        "Shop All...",
-                    ]
-                },
-            ]
-        }
+  },
+  {
+    text: "Shoes",
+    lists: {
+      title: "Shoes",
+      Sidebar: [
+        "New Arrivals",
+        "Extra Wide",
+        "Gift Shop",
+        "Narrow",
+        "Shoe Accessories",
+        "Sizes 11+",
+        "Special Occasion",
+        "Wide",
+        "Shoe Clearance",
+        "Gift Cards",
+      ],
+      alldata: [
+        {
+          heading: "Women's Shoes",
+          child: [
+            "Boots",
+            "Comfort",
+            "Designer",
+            "Heels & Pumps",
+            "Sneakers",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Men's Shoes",
+          child: [
+            "Boots",
+            "Casual Shoes",
+            "Designer",
+            "Dress Shoes",
+            "Sneakers",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Junior's Shoes",
+          child: [
+            "Boots",
+            "Flats",
+            "Heels & Pumps",
+            "Sneakers",
+            "Wedgets",
+            "Show All...",
+          ],
+        },
+        {
+          heading: "Kid's Shoes",
+          child: [
+            "Boys' Shoes",
+            "Girls' Shoes",
+            "Baby (Sizes 1-4)",
+            "Boys' Sneakers",
+            "Girls' Sneakers",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Shoes Brands",
+          child: [
+            "Free People",
+            "MICHAEL Michael Kors",
+            "Sam Edelman",
+            "Skechers",
+            "Steve Madden",
+            "Shop All...",
+          ],
+        },
+      ],
     },
-    {
-        text: "Handbags",
-        lists: {
-            title: "Handbags",
-            Sidebar: [
-                'New Arrivals',
-                'The Culture Shop',
-                'Designer',
-                'Gift Shop',
-                'Small Accessories',
-                'Stationary & Gifts',
-                'Sunnies Sunglasses Shop',
-                'Winter Accessories',
-                'Handbag Clearance',
-                'Gift Cards',
-            ],
-            alldata: [
-                {
-                    heading: "Purses & Handbags",
-                    child: [
-                        "Crossbody Bags",
-                        "Designer",
-                        "Satchels",
-                        "Shoulder Bags",
-                        "Totes",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Women's Accessories",
-                    child: [
-                        "Belts",
-                        "Hats",
-                        "Scarves & Wraps",
-                        "Sunglasses",
-                        "Wallets",
-                        "Shop All...",
-
-                    ]
-                },
-                {
-                    heading: "Vintage Handbags",
-                    child: [
-                        "Chanel",
-                        "Chloe",
-                        "Gucci",
-                        "Louis Vuitton",
-                        "Prada",
-                        "Show All...",
-                    ]
-                },
-                {
-                    heading: "Travel & Luggage",
-                    child: [
-                        "Carry-On-Luggage",
-                        "Checked Luggage",
-                        "Luggage Sets",
-                        "Spinners",
-                        "Hardside",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Handbag Brands",
-                    child: [
-                        "Brahmin",
-                        "COACH",
-                        "Dooney & Bourke",
-                        "Lauren Ralph Lauren",
-                        "MICHAEL Michael Kors",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Sunnies Sunglasses Shop",
-                    child: [
-                        "Burbarry",
-                        "Gucci",
-                        "Oakley",
-                        "Ray-Ban",
-                        "Versace",
-                        "Shop All...",
-                    ]
-                },
-            ]
-        }
+  },
+  {
+    text: "Handbags",
+    lists: {
+      title: "Handbags",
+      Sidebar: [
+        "New Arrivals",
+        "The Culture Shop",
+        "Designer",
+        "Gift Shop",
+        "Small Accessories",
+        "Stationary & Gifts",
+        "Sunnies Sunglasses Shop",
+        "Winter Accessories",
+        "Handbag Clearance",
+        "Gift Cards",
+      ],
+      alldata: [
+        {
+          heading: "Purses & Handbags",
+          child: [
+            "Crossbody Bags",
+            "Designer",
+            "Satchels",
+            "Shoulder Bags",
+            "Totes",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Women's Accessories",
+          child: [
+            "Belts",
+            "Hats",
+            "Scarves & Wraps",
+            "Sunglasses",
+            "Wallets",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Vintage Handbags",
+          child: [
+            "Chanel",
+            "Chloe",
+            "Gucci",
+            "Louis Vuitton",
+            "Prada",
+            "Show All...",
+          ],
+        },
+        {
+          heading: "Travel & Luggage",
+          child: [
+            "Carry-On-Luggage",
+            "Checked Luggage",
+            "Luggage Sets",
+            "Spinners",
+            "Hardside",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Handbag Brands",
+          child: [
+            "Brahmin",
+            "COACH",
+            "Dooney & Bourke",
+            "Lauren Ralph Lauren",
+            "MICHAEL Michael Kors",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Sunnies Sunglasses Shop",
+          child: [
+            "Burbarry",
+            "Gucci",
+            "Oakley",
+            "Ray-Ban",
+            "Versace",
+            "Shop All...",
+          ],
+        },
+      ],
     },
-    {
-        text: "Jewelry",
-        lists: {
-            title: "Jewelry",
-            Sidebar: [
-                'New Arrivals',
-                'The Culture Shop',
-                'Diamond Guide',
-                'Gift Shop',
-                'Personalized Jewelry',
-                'Sterling Silver',
-                'Jewelry Clearance',
-                'Gift Cards'
-            ],
-            alldata: [
-                {
-                    heading: "Fine Jewelry",
-                    child: [
-                        "Birthstones",
-                        "Bracelets",
-                        "Earrings",
-                        "Necklaces",
-                        "Rings",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Fashion Jewelry",
-                    child: [
-                        "Anniversary",
-                        "Bridal Sets",
-                        "Diamond Guide",
-                        "Engagement",
-                        "Wedding Bands",
-                        "Shop All...",
-
-                    ]
-                },
-                {
-                    heading: "Watches",
-                    child: [
-                        "Designer Watches",
-                        "Fitness Trackers",
-                        "Luxury Watches",
-                        "Men's Watches",
-                        "Women's Watches",
-                        "Show All...",
-                    ]
-                },
-                {
-                    heading: "Men's Jewelry",
-                    child: [
-                        "Bracelets",
-                        "Cufflinks & Tie Bars",
-                        "Jewelry Sets",
-                        "Neckleces",
-                        "Rings",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Jewelry Brands",
-                    child: [
-                        "LINT & Co",
-                        " LINT Silverworks",
-                        " Effy",
-                        "Lauren Ralph Lauren",
-                        "Le Vian",
-                        "Shop All...",
-                    ]
-                },
-            ]
-        }
+  },
+  {
+    text: "Jewelry",
+    lists: {
+      title: "Jewelry",
+      Sidebar: [
+        "New Arrivals",
+        "The Culture Shop",
+        "Diamond Guide",
+        "Gift Shop",
+        "Personalized Jewelry",
+        "Sterling Silver",
+        "Jewelry Clearance",
+        "Gift Cards",
+      ],
+      alldata: [
+        {
+          heading: "Fine Jewelry",
+          child: [
+            "Birthstones",
+            "Bracelets",
+            "Earrings",
+            "Necklaces",
+            "Rings",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Fashion Jewelry",
+          child: [
+            "Anniversary",
+            "Bridal Sets",
+            "Diamond Guide",
+            "Engagement",
+            "Wedding Bands",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Watches",
+          child: [
+            "Designer Watches",
+            "Fitness Trackers",
+            "Luxury Watches",
+            "Men's Watches",
+            "Women's Watches",
+            "Show All...",
+          ],
+        },
+        {
+          heading: "Men's Jewelry",
+          child: [
+            "Bracelets",
+            "Cufflinks & Tie Bars",
+            "Jewelry Sets",
+            "Neckleces",
+            "Rings",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Jewelry Brands",
+          child: [
+            "LINT & Co",
+            " LINT Silverworks",
+            " Effy",
+            "Lauren Ralph Lauren",
+            "Le Vian",
+            "Shop All...",
+          ],
+        },
+      ],
     },
-    {
-        text: "Beauty",
-        lists: {
-            title: "Beauty",
-            Sidebar: [
-                'New Arrivals',
-                'Bath & Body',
-                'Beauty Gifts & Sets',
-                'Clean Beauty',
-                'The Culture Shop',
-                ' Free Gift with Purchase',
-                'Gift Shop',
-                'Inclusive Beauty',
-                'Subscription Eligible',
-                'Beauty Clearance',
-                'Gift Cards',
-            ],
-            alldata: [
-                {
-                    heading: "Makeup",
-                    child: [
-                        "Eye Makeup",
-                        "Face Makeup",
-                        "Lip Makeup",
-                        "Masvara",
-                        "Palettes & Sets",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Fragrances",
-                    child: [
-                        "Candles & Diffusers",
-                        "Deodorants",
-                        "Fragrance Gifts & Sets",
-                        "Men's Cologne",
-                        "Women's Perfumes",
-                        "Shop All...",
-
-                    ]
-                },
-                {
-                    heading: "Skin Care",
-                    child: [
-                        "Cleansers",
-                        "Gift & Value Sets",
-                        "Masks",
-                        "Moisturizers",
-                        "Treatments & Serums",
-                        "Show All...",
-                    ]
-                },
-                {
-                    heading: "Men's Grooming & Cologue",
-                    child: [
-                        "Gift & Value Sets",
-                        "Hair & Body Care",
-                        "Men's Cologne",
-                        "Shaving",
-                        "Skin Care",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Hair Care & Tools",
-                    child: [
-                        "Curling Irons & Hair Rollers",
-                        "Hair Dryers",
-                        "Hair Straighteners",
-                        "Shampoos & Conditioners",
-                        "Styling Products",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Beauty Brands",
-                    child: [
-                        "Benefit Cosmetics",
-                        "Bobbi Brown",
-                        "Clinique",
-                        "Estee Lauder",
-                        "MAC",
-                        "Shop All...",
-                    ]
-                }
-            ]
-        }
+  },
+  {
+    text: "Beauty",
+    lists: {
+      title: "Beauty",
+      Sidebar: [
+        "New Arrivals",
+        "Bath & Body",
+        "Beauty Gifts & Sets",
+        "Clean Beauty",
+        "The Culture Shop",
+        " Free Gift with Purchase",
+        "Gift Shop",
+        "Inclusive Beauty",
+        "Subscription Eligible",
+        "Beauty Clearance",
+        "Gift Cards",
+      ],
+      alldata: [
+        {
+          heading: "Makeup",
+          child: [
+            "Eye Makeup",
+            "Face Makeup",
+            "Lip Makeup",
+            "Masvara",
+            "Palettes & Sets",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Fragrances",
+          child: [
+            "Candles & Diffusers",
+            "Deodorants",
+            "Fragrance Gifts & Sets",
+            "Men's Cologne",
+            "Women's Perfumes",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Skin Care",
+          child: [
+            "Cleansers",
+            "Gift & Value Sets",
+            "Masks",
+            "Moisturizers",
+            "Treatments & Serums",
+            "Show All...",
+          ],
+        },
+        {
+          heading: "Men's Grooming & Cologue",
+          child: [
+            "Gift & Value Sets",
+            "Hair & Body Care",
+            "Men's Cologne",
+            "Shaving",
+            "Skin Care",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Hair Care & Tools",
+          child: [
+            "Curling Irons & Hair Rollers",
+            "Hair Dryers",
+            "Hair Straighteners",
+            "Shampoos & Conditioners",
+            "Styling Products",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Beauty Brands",
+          child: [
+            "Benefit Cosmetics",
+            "Bobbi Brown",
+            "Clinique",
+            "Estee Lauder",
+            "MAC",
+            "Shop All...",
+          ],
+        },
+      ],
     },
     {
         text: "Home",
@@ -838,225 +831,219 @@ export const gift = [
             ]
         }
     },
-    {
-        text: "Conn's x LINT",
-        lists: {
-            title: "Conn's x LINT",
-            Sidebar: [
-                'Appliances',
-                'Decor',
-                'Electronic',
-                'Furniture',
-                'Mattresses & Bedding'
-            ],
-            alldata: [
-                {
-                    heading: "Appliances",
-                    child: [
-                        "Major Appliances",
-                        "Small Appliances",
-                        "Vacuums",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Decor",
-                    child: [
-                        "Lamps & Lighting",
-                        "Rugs",
-                        "Wall Art & Decor",
-                        "Shop All...",
-
-                    ]
-                },
-                {
-                    heading: "Electronics",
-                    child: [
-                        "Computers & Accessories",
-                        "Gaming & Toys",
-                        "Home Electronics",
-                        "Smart Home",
-                        "Show All...",
-                    ]
-                },
-                {
-                    heading: "Furniture",
-                    child: [
-                        "Bathroom",
-                        "Bedroom",
-                        "Home Office",
-                        "Kitchen & Dining Room",
-                        "Living Room",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Mattresses Bedding",
-                    child: [
-                        "Bedding",
-                        "Mattresses Box Springs & Frames",
-                        "Shop All...",
-                    ]
-                },
-            ]
-        }
+  },
+  {
+    text: "Conn's x LINT",
+    lists: {
+      title: "Conn's x LINT",
+      Sidebar: [
+        "Appliances",
+        "Decor",
+        "Electronic",
+        "Furniture",
+        "Mattresses & Bedding",
+      ],
+      alldata: [
+        {
+          heading: "Appliances",
+          child: [
+            "Major Appliances",
+            "Small Appliances",
+            "Vacuums",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Decor",
+          child: [
+            "Lamps & Lighting",
+            "Rugs",
+            "Wall Art & Decor",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Electronics",
+          child: [
+            "Computers & Accessories",
+            "Gaming & Toys",
+            "Home Electronics",
+            "Smart Home",
+            "Show All...",
+          ],
+        },
+        {
+          heading: "Furniture",
+          child: [
+            "Bathroom",
+            "Bedroom",
+            "Home Office",
+            "Kitchen & Dining Room",
+            "Living Room",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Mattresses Bedding",
+          child: ["Bedding", "Mattresses Box Springs & Frames", "Shop All..."],
+        },
+      ],
     },
-    {
-        text: "Brands",
-        lists: {
-            title: "Brands",
-            Sidebar: [
-                'Active Brands',
-                'LINT Exclusives',
-                'Jewelry Brands',
-                'Kids Brands',
-                'Shoe Brands'
-            ],
-            alldata: [
-                {
-                    heading: "Designer Brands",
-                    child: [
-                        "Brahmin",
-                        "COACH",
-                        "Free People",
-                        "MICHAEL Michael Kors",
-                        "Ralph Lauren",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "LINT Exclusives",
-                    child: [
-                        "LINT & Co",
-                        "Biltmore",
-                        "Crown & Ivy",
-                        "THE LIMITED",
-                        "Wonderly",
-                        "Shop All...",
-
-                    ]
-                },
-                {
-                    heading: "Women's Brands",
-                    child: [
-                        "Crown & Ivy",
-                        "Lauren Ralph Lauren",
-                        "MICHAEL Michael Kors",
-                        "THE LIMITED",
-                        "Wonderly",
-                        "Show All...",
-                    ]
-                },
-                {
-                    heading: "Men's Brands",
-                    child: [
-                        "Columbia",
-                        "Crown & Ivy",
-                        "IZOD",
-                        "Levi's",
-                        "Polo Raph Lauren",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Beauty Brands",
-                    child: [
-                        "Bobbi Brown",
-                        "Clinique",
-                        "Elizabeth Arden",
-                        "Estee Lauder",
-                        "MAC",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Home Brands",
-                    child: [
-                        "Biltmore",
-                        "Lauren Ralph Lauren",
-                        "Modern Southern Home",
-                        "SOLITE",
-                        "Shop All...",
-                    ]
-                },
-            ]
-        }
+  },
+  {
+    text: "Brands",
+    lists: {
+      title: "Brands",
+      Sidebar: [
+        "Active Brands",
+        "LINT Exclusives",
+        "Jewelry Brands",
+        "Kids Brands",
+        "Shoe Brands",
+      ],
+      alldata: [
+        {
+          heading: "Designer Brands",
+          child: [
+            "Brahmin",
+            "COACH",
+            "Free People",
+            "MICHAEL Michael Kors",
+            "Ralph Lauren",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "LINT Exclusives",
+          child: [
+            "LINT & Co",
+            "Biltmore",
+            "Crown & Ivy",
+            "THE LIMITED",
+            "Wonderly",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Women's Brands",
+          child: [
+            "Crown & Ivy",
+            "Lauren Ralph Lauren",
+            "MICHAEL Michael Kors",
+            "THE LIMITED",
+            "Wonderly",
+            "Show All...",
+          ],
+        },
+        {
+          heading: "Men's Brands",
+          child: [
+            "Columbia",
+            "Crown & Ivy",
+            "IZOD",
+            "Levi's",
+            "Polo Raph Lauren",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Beauty Brands",
+          child: [
+            "Bobbi Brown",
+            "Clinique",
+            "Elizabeth Arden",
+            "Estee Lauder",
+            "MAC",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Home Brands",
+          child: [
+            "Biltmore",
+            "Lauren Ralph Lauren",
+            "Modern Southern Home",
+            "SOLITE",
+            "Shop All...",
+          ],
+        },
+      ],
     },
-    {
-        text: "Clearance",
-        lists: {
-            title: "Clearance",
-            Sidebar: [
-                'Beauty Gifts',
-                'Cozy Shop',
-                'Designer Handbags',
-                'Eco Friendly',
-                'Fine Jewelry',
-                'For the Trend Setter',
-                'Gift Cards',
-                'Gifts with a Purpose',
-                'Intimates'
-            ],
-            alldata: [
-                {
-                    heading: "All Gifts",
-                    child: [
-                        "Gifts for Her",
-                        "Gifts for Him",
-                        "Gifts for Kids",
-                        "Gifts for Pets",
-                        "Gifts for the Home",
-                        "Gift Cards",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Gifts by Price",
-                    child: [
-                        "Under $ 10",
-                        "Under $ 25",
-                        "Under $ 50",
-                        "Under $ 100",
-                        "Over $ 100",
-                        "Gift Cards",
-                        "Shop All...",
-
-                    ]
-                },
-                {
-                    heading: "Gifts by Recipient",
-                    child: [
-                        "For the Foodie",
-                        "For the Hostess",
-                        "For the Outdoorsman",
-                        "For the Sports Fan",
-                        "For the Techie",
-                        "Gift Cards",
-                        "Show All...",
-                    ]
-                },
-                {
-                    heading: "Just for Kids",
-                    child: [
-                        "Active Gear",
-                        "Kids Fan Gear",
-                        "Toys & Games",
-                        "Gift Cards",
-                        "Shop All...",
-                    ]
-                },
-                {
-                    heading: "Favorite Brands",
-                    child: [
-                        "Brahmin",
-                        "Estee Lauder",
-                        "Free People",
-                        "Michael Kors",
-                        "Relph Lauren",
-                        "Shop All...",
-                    ]
-                },
-            ]
-        }
+  },
+  {
+    text: "Clearance",
+    lists: {
+      title: "Clearance",
+      Sidebar: [
+        "Beauty Gifts",
+        "Cozy Shop",
+        "Designer Handbags",
+        "Eco Friendly",
+        "Fine Jewelry",
+        "For the Trend Setter",
+        "Gift Cards",
+        "Gifts with a Purpose",
+        "Intimates",
+      ],
+      alldata: [
+        {
+          heading: "All Gifts",
+          child: [
+            "Gifts for Her",
+            "Gifts for Him",
+            "Gifts for Kids",
+            "Gifts for Pets",
+            "Gifts for the Home",
+            "Gift Cards",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Gifts by Price",
+          child: [
+            "Under $ 10",
+            "Under $ 25",
+            "Under $ 50",
+            "Under $ 100",
+            "Over $ 100",
+            "Gift Cards",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Gifts by Recipient",
+          child: [
+            "For the Foodie",
+            "For the Hostess",
+            "For the Outdoorsman",
+            "For the Sports Fan",
+            "For the Techie",
+            "Gift Cards",
+            "Show All...",
+          ],
+        },
+        {
+          heading: "Just for Kids",
+          child: [
+            "Active Gear",
+            "Kids Fan Gear",
+            "Toys & Games",
+            "Gift Cards",
+            "Shop All...",
+          ],
+        },
+        {
+          heading: "Favorite Brands",
+          child: [
+            "Brahmin",
+            "Estee Lauder",
+            "Free People",
+            "Michael Kors",
+            "Relph Lauren",
+            "Shop All...",
+          ],
+        },
+      ],
     },
-]
+  },
+];
