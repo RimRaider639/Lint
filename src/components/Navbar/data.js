@@ -82,72 +82,84 @@ export const gift = [
         lists: {
             title: "Women",
             Sidebar: [
-                'Beauty Gifts',
+                'New Arrivals',
+                'Active Shop',
+                'Contemporary',
                 'Cozy Shop',
-                'Designer Handbags',
-                'Eco Friendly',
-                'Fine Jewelry',
-                'For the Trend Setter',
+                'The Culture Shop',
+                'Denim Shop',
+                'Designer',
+                'Fan Gear',
+                'Gifts for Her',
+                'Pajamas & Robes',
+                'Women`s Clearance',
                 'Gift Cards',
-                'Gifts with a Purpose',
-                'Intimates'
             ],
             alldata: [
                 {
-                    heading: "All Gifts",
+                    heading: "Women`s Clothing",
                     child: [
-                        "Gifts for Her",
-                        "Gifts for Him",
-                        "Gifts for Kids",
-                        "Gifts for Pets",
-                        "Gifts for the Home",
-                        "Gift Cards",
+                        "Bras, Panties & Lingerie",
+                        "Coats & Outerwear",
+                        "Dresses",
+                        "Pants & Leggings",
+                        "Sweaters",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Gifts by Price",
+                    heading: "Plus Size Clothing",
                     child: [
-                        "Under $ 10",
-                        "Under $ 25",
-                        "Under $ 50",
-                        "Under $ 100",
-                        "Over $ 100",
-                        "Gift Cards",
+                        "Bras, Panties & Lingerie",
+                        "Dresses",
+                        "Jeans",
+                        "Pants",
+                        "Tops",
                         "Shop All...",
 
                     ]
                 },
                 {
-                    heading: "Gifts by Recipient",
+                    heading: "Petite Clothing",
                     child: [
-                        "For the Foodie",
-                        "For the Hostess",
-                        "For the Outdoorsman",
-                        "For the Sports Fan",
-                        "For the Techie",
-                        "Gift Cards",
+                        "Dresses",
+                        "Jeans",
+                        "Pants & Leggings",
+                        "Suits & Suit Separates",
+                        "Tops",
                         "Show All...",
                     ]
                 },
                 {
-                    heading: "Just for Kids",
+                    heading: "Women`s Tops",
                     child: [
-                        "Active Gear",
-                        "Kids Fan Gear",
-                        "Toys & Games",
-                        "Gift Cards",
+                        "Blouses",
+                        "Button Down Tops",
+                        "Hoodies & Sweatshirts",
+                        "Tunices",
+                        "T-Shirts",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Favorite Brands",
+                    heading: "Junior`s Clothing",
                     child: [
-                        "Brahmin",
-                        "Estee Lauder",
-                        "Free People",
-                        "Michael Kors",
-                        "Relph Lauren",
+                        "Activewear",
+                        "Dresses",
+                        "Jeans",
+                        "Junior`s Plus",
+                        "Tops",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Women`s Dresses",
+                    child: [
+                        "Casual",
+                        "Cocktail & Party",
+                        "Formal",
+                        "Maxi",
+                        "Work",
                         "Shop All...",
                     ]
                 },
@@ -159,72 +171,82 @@ export const gift = [
         lists: {
             title: "Men",
             Sidebar: [
-                'Beauty Gifts',
-                'Cozy Shop',
-                'Designer Handbags',
-                'Eco Friendly',
-                'Fine Jewelry',
-                'For the Trend Setter',
-                'Gift Cards',
-                'Gifts with a Purpose',
-                'Intimates'
+                'New Arrivals',
+                'Active Shop',
+                'The Culture Shop',
+                'Designer',
+                'Fan Gear',
+                'Formal Wear & Wedding',
+                'Gifts for Him',
+                'Golf Shop',
+                'Men`s Clearance',
+                'Gift Cards'
             ],
             alldata: [
                 {
-                    heading: "All Gifts",
+                    heading: "Men's Clothing",
                     child: [
-                        "Gifts for Her",
-                        "Gifts for Him",
-                        "Gifts for Kids",
-                        "Gifts for Pets",
-                        "Gifts for the Home",
-                        "Gift Cards",
+                        "Dress Shirts",
+                        "Jeans",
+                        "Pants",
+                        "Shirts",
+                        "Suit Separates",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Gifts by Price",
+                    heading: "Big & Tall Clothing",
                     child: [
-                        "Under $ 10",
-                        "Under $ 25",
-                        "Under $ 50",
-                        "Under $ 100",
-                        "Over $ 100",
-                        "Gift Cards",
+                        "Active & Outdoor",
+                        "Pants",
+                        "Polos",
+                        "Shirts",
+                        "Suits & Sport Coats",
                         "Shop All...",
 
                     ]
                 },
                 {
-                    heading: "Gifts by Recipient",
+                    heading: "Young Men's Clothing",
                     child: [
-                        "For the Foodie",
-                        "For the Hostess",
-                        "For the Outdoorsman",
-                        "For the Sports Fan",
-                        "For the Techie",
-                        "Gift Cards",
+                        "Active & Outdoor",
+                        "Graphic Tees",
+                        "Hoodies & Sweatshirts",
+                        "Jeans",
+                        "Shirts",
                         "Show All...",
                     ]
                 },
                 {
-                    heading: "Just for Kids",
+                    heading: "Shoes",
                     child: [
-                        "Active Gear",
-                        "Kids Fan Gear",
-                        "Toys & Games",
-                        "Gift Cards",
+                        "Boots",
+                        "Casual Shoes",
+                        "Dress Shoes",
+                        "Sippers",
+                        "Sneakers",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Favorite Brands",
+                    heading: "Men's Accessories",
                     child: [
-                        "Brahmin",
-                        "Estee Lauder",
-                        "Free People",
-                        "Michael Kors",
-                        "Relph Lauren",
+                        "Belts & Suspenders",
+                        "Gifts & Gadgets",
+                        "Hats",
+                        "Ties & Pocket Squares",
+                        "Wallets & Money Clips",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Men's Jewelry & Watches",
+                    child: [
+                        "Bracelets",
+                        "Jewelry Sets",
+                        "Necklaces",
+                        "Rings",
+                        "Watches",
                         "Shop All...",
                     ]
                 },
@@ -236,72 +258,83 @@ export const gift = [
         lists: {
             title: "Kids",
             Sidebar: [
-                'Beauty Gifts',
-                'Cozy Shop',
-                'Designer Handbags',
-                'Eco Friendly',
-                'Fine Jewelry',
-                'For the Trend Setter',
-                'Gift Cards',
-                'Gifts with a Purpose',
-                'Intimates'
+                'New Arrivals',
+                'Baby Essentials',
+                'Birthday & Holidays',
+                'Character Shop',
+                'Dresswear',
+                'Gifts for Kids',
+                'Kid`s Shoes',
+                'Toys & Games',
+                'Baby & Kids Clearance',
+                'Gift Cards'
             ],
             alldata: [
                 {
-                    heading: "All Gifts",
+                    heading: "Boy's Clothing",
                     child: [
-                        "Gifts for Her",
-                        "Gifts for Him",
-                        "Gifts for Kids",
-                        "Gifts for Pets",
-                        "Gifts for the Home",
-                        "Gift Cards",
+                        "Activewear",
+                        "Jeans",
+                        "Pants",
+                        "Shirts",
+                        "Suits & Dresswear",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Gifts by Price",
+                    heading: "Girl's Clothing",
                     child: [
-                        "Under $ 10",
-                        "Under $ 25",
-                        "Under $ 50",
-                        "Under $ 100",
-                        "Over $ 100",
-                        "Gift Cards",
+                        "Activewear",
+                        "Dresses & Skirts",
+                        "Jeans",
+                        "Sets & Outfits",
+                        "Tops",
                         "Shop All...",
 
                     ]
                 },
                 {
-                    heading: "Gifts by Recipient",
+                    heading: "Baby Clothing",
                     child: [
-                        "For the Foodie",
-                        "For the Hostess",
-                        "For the Outdoorsman",
-                        "For the Sports Fan",
-                        "For the Techie",
-                        "Gift Cards",
+                        "Dresses",
+                        "One-pieces",
+                        "Oufits & Sets",
+                        "Pajamas",
+                        "Shirts & Tops",
                         "Show All...",
                     ]
                 },
                 {
-                    heading: "Just for Kids",
+                    heading: "Juniors Clothing",
                     child: [
-                        "Active Gear",
-                        "Kids Fan Gear",
-                        "Toys & Games",
-                        "Gift Cards",
+                        "Activewear",
+                        "Dresses",
+                        "Jeans",
+                        "Plus Size",
+                        "Tops",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Favorite Brands",
+                    heading: "Shops by Size",
                     child: [
-                        "Brahmin",
-                        "Estee Lauder",
-                        "Free People",
-                        "Michael Kors",
-                        "Relph Lauren",
+                        "Boys' (8-20)",
+                        "Girls' (7-16)",
+                        "Boys' (4-7)",
+                        "Girls' (4-6x)",
+                        "Baby",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Kids' Brands",
+                    child: [
+                        "Adidas",
+                        "Carter's",
+                        "Levi's",
+                        "Nike",
+                        "Ralph Lauren",
+                        "Childrenswear",
                         "Shop All...",
                     ]
                 },
@@ -313,72 +346,71 @@ export const gift = [
         lists: {
             title: "Shoes",
             Sidebar: [
-                'Beauty Gifts',
-                'Cozy Shop',
-                'Designer Handbags',
-                'Eco Friendly',
-                'Fine Jewelry',
-                'For the Trend Setter',
-                'Gift Cards',
-                'Gifts with a Purpose',
-                'Intimates'
+                'New Arrivals',
+                'Extra Wide',
+                'Gift Shop',
+                'Narrow',
+                'Shoe Accessories',
+                'Sizes 11+',
+                'Special Occasion',
+                'Wide',
+                'Shoe Clearance',
+                'Gift Cards'
             ],
             alldata: [
                 {
-                    heading: "All Gifts",
+                    heading: "Women's Shoes",
                     child: [
-                        "Gifts for Her",
-                        "Gifts for Him",
-                        "Gifts for Kids",
-                        "Gifts for Pets",
-                        "Gifts for the Home",
-                        "Gift Cards",
+                        "Boots",
+                        "Comfort",
+                        "Designer",
+                        "Heels & Pumps",
+                        "Sneakers",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Gifts by Price",
+                    heading: "Men's Shoes",
                     child: [
-                        "Under $ 10",
-                        "Under $ 25",
-                        "Under $ 50",
-                        "Under $ 100",
-                        "Over $ 100",
-                        "Gift Cards",
+                        "Boots",
+                        "Casual Shoes",
+                        "Designer",
+                        "Dress Shoes",
+                        "Sneakers",
                         "Shop All...",
 
                     ]
                 },
                 {
-                    heading: "Gifts by Recipient",
+                    heading: "Junior's Shoes",
                     child: [
-                        "For the Foodie",
-                        "For the Hostess",
-                        "For the Outdoorsman",
-                        "For the Sports Fan",
-                        "For the Techie",
-                        "Gift Cards",
+                        "Boots",
+                        "Flats",
+                        "Heels & Pumps",
+                        "Sneakers",
+                        "Wedgets",
                         "Show All...",
                     ]
                 },
                 {
-                    heading: "Just for Kids",
+                    heading: "Kid's Shoes",
                     child: [
-                        "Active Gear",
-                        "Kids Fan Gear",
-                        "Toys & Games",
-                        "Gift Cards",
+                        "Boys' Shoes",
+                        "Girls' Shoes",
+                        "Baby (Sizes 1-4)",
+                        "Boys' Sneakers",
+                        "Girls' Sneakers",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Favorite Brands",
+                    heading: "Shoes Brands",
                     child: [
-                        "Brahmin",
-                        "Estee Lauder",
                         "Free People",
-                        "Michael Kors",
-                        "Relph Lauren",
+                        "MICHAEL Michael Kors",
+                        "Sam Edelman",
+                        "Skechers",
+                        "Steve Madden",
                         "Shop All...",
                     ]
                 },
@@ -390,72 +422,82 @@ export const gift = [
         lists: {
             title: "Handbags",
             Sidebar: [
-                'Beauty Gifts',
-                'Cozy Shop',
-                'Designer Handbags',
-                'Eco Friendly',
-                'Fine Jewelry',
-                'For the Trend Setter',
+                'New Arrivals',
+                'The Culture Shop',
+                'Designer',
+                'Gift Shop',
+                'Small Accessories',
+                'Stationary & Gifts',
+                'Sunnies Sunglasses Shop',
+                'Winter Accessories',
+                'Handbag Clearance',
                 'Gift Cards',
-                'Gifts with a Purpose',
-                'Intimates'
             ],
             alldata: [
                 {
-                    heading: "All Gifts",
+                    heading: "Purses & Handbags",
                     child: [
-                        "Gifts for Her",
-                        "Gifts for Him",
-                        "Gifts for Kids",
-                        "Gifts for Pets",
-                        "Gifts for the Home",
-                        "Gift Cards",
+                        "Crossbody Bags",
+                        "Designer",
+                        "Satchels",
+                        "Shoulder Bags",
+                        "Totes",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Gifts by Price",
+                    heading: "Women's Accessories",
                     child: [
-                        "Under $ 10",
-                        "Under $ 25",
-                        "Under $ 50",
-                        "Under $ 100",
-                        "Over $ 100",
-                        "Gift Cards",
+                        "Belts",
+                        "Hats",
+                        "Scarves & Wraps",
+                        "Sunglasses",
+                        "Wallets",
                         "Shop All...",
 
                     ]
                 },
                 {
-                    heading: "Gifts by Recipient",
+                    heading: "Vintage Handbags",
                     child: [
-                        "For the Foodie",
-                        "For the Hostess",
-                        "For the Outdoorsman",
-                        "For the Sports Fan",
-                        "For the Techie",
-                        "Gift Cards",
+                        "Chanel",
+                        "Chloe",
+                        "Gucci",
+                        "Louis Vuitton",
+                        "Prada",
                         "Show All...",
                     ]
                 },
                 {
-                    heading: "Just for Kids",
+                    heading: "Travel & Luggage",
                     child: [
-                        "Active Gear",
-                        "Kids Fan Gear",
-                        "Toys & Games",
-                        "Gift Cards",
+                        "Carry-On-Luggage",
+                        "Checked Luggage",
+                        "Luggage Sets",
+                        "Spinners",
+                        "Hardside",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Favorite Brands",
+                    heading: "Handbag Brands",
                     child: [
                         "Brahmin",
-                        "Estee Lauder",
-                        "Free People",
-                        "Michael Kors",
-                        "Relph Lauren",
+                        "COACH",
+                        "Dooney & Bourke",
+                        "Lauren Ralph Lauren",
+                        "MICHAEL Michael Kors",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Sunnies Sunglasses Shop",
+                    child: [
+                        "Burbarry",
+                        "Gucci",
+                        "Oakley",
+                        "Ray-Ban",
+                        "Versace",
                         "Shop All...",
                     ]
                 },
@@ -467,72 +509,69 @@ export const gift = [
         lists: {
             title: "Jewelry",
             Sidebar: [
-                'Beauty Gifts',
-                'Cozy Shop',
-                'Designer Handbags',
-                'Eco Friendly',
-                'Fine Jewelry',
-                'For the Trend Setter',
-                'Gift Cards',
-                'Gifts with a Purpose',
-                'Intimates'
+                'New Arrivals',
+                'The Culture Shop',
+                'Diamond Guide',
+                'Gift Shop',
+                'Personalized Jewelry',
+                'Sterling Silver',
+                'Jewelry Clearance',
+                'Gift Cards'
             ],
             alldata: [
                 {
-                    heading: "All Gifts",
+                    heading: "Fine Jewelry",
                     child: [
-                        "Gifts for Her",
-                        "Gifts for Him",
-                        "Gifts for Kids",
-                        "Gifts for Pets",
-                        "Gifts for the Home",
-                        "Gift Cards",
+                        "Birthstones",
+                        "Bracelets",
+                        "Earrings",
+                        "Necklaces",
+                        "Rings",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Gifts by Price",
+                    heading: "Fashion Jewelry",
                     child: [
-                        "Under $ 10",
-                        "Under $ 25",
-                        "Under $ 50",
-                        "Under $ 100",
-                        "Over $ 100",
-                        "Gift Cards",
+                        "Anniversary",
+                        "Bridal Sets",
+                        "Diamond Guide",
+                        "Engagement",
+                        "Wedding Bands",
                         "Shop All...",
 
                     ]
                 },
                 {
-                    heading: "Gifts by Recipient",
+                    heading: "Watches",
                     child: [
-                        "For the Foodie",
-                        "For the Hostess",
-                        "For the Outdoorsman",
-                        "For the Sports Fan",
-                        "For the Techie",
-                        "Gift Cards",
+                        "Designer Watches",
+                        "Fitness Trackers",
+                        "Luxury Watches",
+                        "Men's Watches",
+                        "Women's Watches",
                         "Show All...",
                     ]
                 },
                 {
-                    heading: "Just for Kids",
+                    heading: "Men's Jewelry",
                     child: [
-                        "Active Gear",
-                        "Kids Fan Gear",
-                        "Toys & Games",
-                        "Gift Cards",
+                        "Bracelets",
+                        "Cufflinks & Tie Bars",
+                        "Jewelry Sets",
+                        "Neckleces",
+                        "Rings",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Favorite Brands",
+                    heading: "Jewelry Brands",
                     child: [
-                        "Brahmin",
-                        "Estee Lauder",
-                        "Free People",
-                        "Michael Kors",
-                        "Relph Lauren",
+                        "LINT & Co",
+                        " LINT Silverworks",
+                        " Effy",
+                        "Lauren Ralph Lauren",
+                        "Le Vian",
                         "Shop All...",
                     ]
                 },
@@ -544,75 +583,86 @@ export const gift = [
         lists: {
             title: "Beauty",
             Sidebar: [
-                'Beauty Gifts',
-                'Cozy Shop',
-                'Designer Handbags',
-                'Eco Friendly',
-                'Fine Jewelry',
-                'For the Trend Setter',
+                'New Arrivals',
+                'Bath & Body',
+                'Beauty Gifts & Sets',
+                'Clean Beauty',
+                'The Culture Shop',
+                ' Free Gift with Purchase',
+                'Gift Shop',
+                'Inclusive Beauty',
+                'Subscription Eligible',
+                'Beauty Clearance',
                 'Gift Cards',
-                'Gifts with a Purpose',
-                'Intimates'
             ],
             alldata: [
                 {
-                    heading: "All Gifts",
+                    heading: "Makeup",
                     child: [
-                        "Gifts for Her",
-                        "Gifts for Him",
-                        "Gifts for Kids",
-                        "Gifts for Pets",
-                        "Gifts for the Home",
-                        "Gift Cards",
+                        "Eye Makeup",
+                        "Face Makeup",
+                        "Lip Makeup",
+                        "Masvara",
+                        "Palettes & Sets",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Gifts by Price",
+                    heading: "Fragrances",
                     child: [
-                        "Under $ 10",
-                        "Under $ 25",
-                        "Under $ 50",
-                        "Under $ 100",
-                        "Over $ 100",
-                        "Gift Cards",
+                        "Candles & Diffusers",
+                        "Deodorants",
+                        "Fragrance Gifts & Sets",
+                        "Men's Cologne",
+                        "Women's Perfumes",
                         "Shop All...",
 
                     ]
                 },
                 {
-                    heading: "Gifts by Recipient",
+                    heading: "Skin Care",
                     child: [
-                        "For the Foodie",
-                        "For the Hostess",
-                        "For the Outdoorsman",
-                        "For the Sports Fan",
-                        "For the Techie",
-                        "Gift Cards",
+                        "Cleansers",
+                        "Gift & Value Sets",
+                        "Masks",
+                        "Moisturizers",
+                        "Treatments & Serums",
                         "Show All...",
                     ]
                 },
                 {
-                    heading: "Just for Kids",
+                    heading: "Men's Grooming & Cologue",
                     child: [
-                        "Active Gear",
-                        "Kids Fan Gear",
-                        "Toys & Games",
-                        "Gift Cards",
+                        "Gift & Value Sets",
+                        "Hair & Body Care",
+                        "Men's Cologne",
+                        "Shaving",
+                        "Skin Care",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Favorite Brands",
+                    heading: "Hair Care & Tools",
                     child: [
-                        "Brahmin",
-                        "Estee Lauder",
-                        "Free People",
-                        "Michael Kors",
-                        "Relph Lauren",
+                        "Curling Irons & Hair Rollers",
+                        "Hair Dryers",
+                        "Hair Straighteners",
+                        "Shampoos & Conditioners",
+                        "Styling Products",
                         "Shop All...",
                     ]
                 },
+                {
+                    heading: "Beauty Brands",
+                    child: [
+                        "Benefit Cosmetics",
+                        "Bobbi Brown",
+                        "Clinique",
+                        "Estee Lauder",
+                        "MAC",
+                        "Shop All...",
+                    ]
+                }
             ]
         }
     },
@@ -621,72 +671,82 @@ export const gift = [
         lists: {
             title: "Home",
             Sidebar: [
-                'Beauty Gifts',
-                'Cozy Shop',
-                'Designer Handbags',
-                'Eco Friendly',
-                'Fine Jewelry',
-                'For the Trend Setter',
-                'Gift Cards',
-                'Gifts with a Purpose',
-                'Intimates'
+                'New Arrivals',
+                'Conns LINT',
+                'Electronics',
+                'Health & Wellness',
+                'Organization & Cleaning',
+                'Rugs',
+                'Toys & Games',
+                'Window Treatments',
+                'Home Clearance',
+                'Gift Cards'
             ],
             alldata: [
                 {
-                    heading: "All Gifts",
+                    heading: "Kichen",
                     child: [
-                        "Gifts for Her",
-                        "Gifts for Him",
-                        "Gifts for Kids",
-                        "Gifts for Pets",
-                        "Gifts for the Home",
-                        "Gift Cards",
+                        "Appliances",
+                        "Bakeware",
+                        "Cookware",
+                        "Food Storage",
+                        "Utensils & Gadgets",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Gifts by Price",
+                    heading: "Home Decor",
                     child: [
-                        "Under $ 10",
-                        "Under $ 25",
-                        "Under $ 50",
-                        "Under $ 100",
-                        "Over $ 100",
-                        "Gift Cards",
+                        "Candles & Frangrance",
+                        "Decorative Accents",
+                        "Lamps & Lighting",
+                        "Throws & Throw Pillows",
+                        "Wall Art & Decor",
                         "Shop All...",
 
                     ]
                 },
                 {
-                    heading: "Gifts by Recipient",
+                    heading: "Tabletop & Bar",
                     child: [
-                        "For the Foodie",
-                        "For the Hostess",
-                        "For the Outdoorsman",
-                        "For the Sports Fan",
-                        "For the Techie",
-                        "Gift Cards",
+                        "Dinnerware",
+                        "Drinkware",
+                        "Silverware & Flatware",
+                        "Serveware",
+                        "Table Linens",
                         "Show All...",
                     ]
                 },
                 {
-                    heading: "Just for Kids",
+                    heading: "Travel & Luggage",
                     child: [
-                        "Active Gear",
-                        "Kids Fan Gear",
-                        "Toys & Games",
-                        "Gift Cards",
+                        "Carry-On Luggage",
+                        "Checked Luggage",
+                        "Duffle & Weekender Bags",
+                        "Hardside Luggage",
+                        "Luggage Sets",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Favorite Brands",
+                    heading: "Furniture",
                     child: [
-                        "Brahmin",
-                        "Estee Lauder",
-                        "Free People",
-                        "Michael Kors",
-                        "Relph Lauren",
+                        "Bedroom",
+                        "Home Office",
+                        "Kitchen & Dining Room",
+                        "Living Room",
+                        "Outdoor & Patio",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Holiday",
+                    child: [
+                        "Valentine's Day",
+                        "Easter",
+                        "Food & Gourmet Gifts",
+                        "Housewarming Gifts",
+                        "Tech Gifts",
                         "Shop All...",
                     ]
                 },
@@ -698,72 +758,77 @@ export const gift = [
         lists: {
             title: "Bed & Bath",
             Sidebar: [
-                'Beauty Gifts',
-                'Cozy Shop',
-                'Designer Handbags',
-                'Eco Friendly',
-                'Fine Jewelry',
-                'For the Trend Setter',
-                'Gift Cards',
-                'Gifts with a Purpose',
-                'Intimates'
+                'New Arrivals',
+                'Furniture',
+                'Window Treatments',
+                'Bed & Bath Clearance',
+                'Gift Cards'
             ],
             alldata: [
                 {
-                    heading: "All Gifts",
+                    heading: "Bedding",
                     child: [
-                        "Gifts for Her",
-                        "Gifts for Him",
-                        "Gifts for Kids",
-                        "Gifts for Pets",
-                        "Gifts for the Home",
-                        "Gift Cards",
+                        "Bed in a Bag",
+                        "Bedspreads",
+                        "Comforters",
+                        "Quilts & Coverlets",
+                        "Sheets",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Gifts by Price",
+                    heading: "Bedding Basics",
                     child: [
-                        "Under $ 10",
-                        "Under $ 25",
-                        "Under $ 50",
-                        "Under $ 100",
-                        "Over $ 100",
-                        "Gift Cards",
+                        "Bed Pillows",
+                        "Down & Down Alternative",
+                        "Mattress Pads & Toppers",
+                        "Pillowcases & Protectors",
+                        "Sheets",
                         "Shop All...",
 
                     ]
                 },
                 {
-                    heading: "Gifts by Recipient",
+                    heading: "Bath",
                     child: [
-                        "For the Foodie",
-                        "For the Hostess",
-                        "For the Outdoorsman",
-                        "For the Sports Fan",
-                        "For the Techie",
-                        "Gift Cards",
+                        "Bathroom Accessories",
+                        "Bath Rugs & Mats",
+                        "Bath Towels",
+                        "Beach Towels",
+                        "Shower Curtains",
                         "Show All...",
                     ]
                 },
                 {
-                    heading: "Just for Kids",
+                    heading: "Health & Wellness",
                     child: [
-                        "Active Gear",
-                        "Kids Fan Gear",
-                        "Toys & Games",
-                        "Gift Cards",
+                        "Air Purifiers & Sanitizing",
+                        "Dental Care",
+                        "Digital Scales",
+                        "Humdifiers & Diffusers",
+                        "Massagers & Foot Spas",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Favorite Brands",
+                    heading: "Bed & Bath Brands",
                     child: [
-                        "Brahmin",
-                        "Estee Lauder",
-                        "Free People",
-                        "Michael Kors",
-                        "Relph Lauren",
+                        "Biltmore",
+                        "J Queen New York",
+                        "Madison Park",
+                        "Modern. Southern Home",
+                        "Waverly",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Holiday",
+                    child: [
+                        "Valentine's Day",
+                        "Easter",
+                        "Mother's Day",
+                        "Father's Day",
+                        "Fourth of July",
                         "Shop All...",
                     ]
                 },
@@ -775,72 +840,58 @@ export const gift = [
         lists: {
             title: "Conn's x LINT",
             Sidebar: [
-                'Beauty Gifts',
-                'Cozy Shop',
-                'Designer Handbags',
-                'Eco Friendly',
-                'Fine Jewelry',
-                'For the Trend Setter',
-                'Gift Cards',
-                'Gifts with a Purpose',
-                'Intimates'
+                'Appliances',
+                'Decor',
+                'Electronic',
+                'Furniture',
+                'Mattresses & Bedding'
             ],
             alldata: [
                 {
-                    heading: "All Gifts",
+                    heading: "Appliances",
                     child: [
-                        "Gifts for Her",
-                        "Gifts for Him",
-                        "Gifts for Kids",
-                        "Gifts for Pets",
-                        "Gifts for the Home",
-                        "Gift Cards",
+                        "Major Appliances",
+                        "Small Appliances",
+                        "Vacuums",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Gifts by Price",
+                    heading: "Decor",
                     child: [
-                        "Under $ 10",
-                        "Under $ 25",
-                        "Under $ 50",
-                        "Under $ 100",
-                        "Over $ 100",
-                        "Gift Cards",
+                        "Lamps & Lighting",
+                        "Rugs",
+                        "Wall Art & Decor",
                         "Shop All...",
 
                     ]
                 },
                 {
-                    heading: "Gifts by Recipient",
+                    heading: "Electronics",
                     child: [
-                        "For the Foodie",
-                        "For the Hostess",
-                        "For the Outdoorsman",
-                        "For the Sports Fan",
-                        "For the Techie",
-                        "Gift Cards",
+                        "Computers & Accessories",
+                        "Gaming & Toys",
+                        "Home Electronics",
+                        "Smart Home",
                         "Show All...",
                     ]
                 },
                 {
-                    heading: "Just for Kids",
+                    heading: "Furniture",
                     child: [
-                        "Active Gear",
-                        "Kids Fan Gear",
-                        "Toys & Games",
-                        "Gift Cards",
+                        "Bathroom",
+                        "Bedroom",
+                        "Home Office",
+                        "Kitchen & Dining Room",
+                        "Living Room",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Favorite Brands",
+                    heading: "Mattresses Bedding",
                     child: [
-                        "Brahmin",
-                        "Estee Lauder",
-                        "Free People",
-                        "Michael Kors",
-                        "Relph Lauren",
+                        "Bedding",
+                        "Mattresses Box Springs & Frames",
                         "Shop All...",
                     ]
                 },
@@ -852,72 +903,76 @@ export const gift = [
         lists: {
             title: "Brands",
             Sidebar: [
-                'Beauty Gifts',
-                'Cozy Shop',
-                'Designer Handbags',
-                'Eco Friendly',
-                'Fine Jewelry',
-                'For the Trend Setter',
-                'Gift Cards',
-                'Gifts with a Purpose',
-                'Intimates'
+                'Active Brands',
+                'LINT Exclusives',
+                'Jewelry Brands',
+                'Kids Brands',
+                'Shoe Brands'
             ],
             alldata: [
                 {
-                    heading: "All Gifts",
+                    heading: "Designer Brands",
                     child: [
-                        "Gifts for Her",
-                        "Gifts for Him",
-                        "Gifts for Kids",
-                        "Gifts for Pets",
-                        "Gifts for the Home",
-                        "Gift Cards",
+                        "Brahmin",
+                        "COACH",
+                        "Free People",
+                        "MICHAEL Michael Kors",
+                        "Ralph Lauren",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Gifts by Price",
+                    heading: "LINT Exclusives",
                     child: [
-                        "Under $ 10",
-                        "Under $ 25",
-                        "Under $ 50",
-                        "Under $ 100",
-                        "Over $ 100",
-                        "Gift Cards",
+                        "LINT & Co",
+                        "Biltmore",
+                        "Crown & Ivy",
+                        "THE LIMITED",
+                        "Wonderly",
                         "Shop All...",
 
                     ]
                 },
                 {
-                    heading: "Gifts by Recipient",
+                    heading: "Women's Brands",
                     child: [
-                        "For the Foodie",
-                        "For the Hostess",
-                        "For the Outdoorsman",
-                        "For the Sports Fan",
-                        "For the Techie",
-                        "Gift Cards",
+                        "Crown & Ivy",
+                        "Lauren Ralph Lauren",
+                        "MICHAEL Michael Kors",
+                        "THE LIMITED",
+                        "Wonderly",
                         "Show All...",
                     ]
                 },
                 {
-                    heading: "Just for Kids",
+                    heading: "Men's Brands",
                     child: [
-                        "Active Gear",
-                        "Kids Fan Gear",
-                        "Toys & Games",
-                        "Gift Cards",
+                        "Columbia",
+                        "Crown & Ivy",
+                        "IZOD",
+                        "Levi's",
+                        "Polo Raph Lauren",
                         "Shop All...",
                     ]
                 },
                 {
-                    heading: "Favorite Brands",
+                    heading: "Beauty Brands",
                     child: [
-                        "Brahmin",
+                        "Bobbi Brown",
+                        "Clinique",
+                        "Elizabeth Arden",
                         "Estee Lauder",
-                        "Free People",
-                        "Michael Kors",
-                        "Relph Lauren",
+                        "MAC",
+                        "Shop All...",
+                    ]
+                },
+                {
+                    heading: "Home Brands",
+                    child: [
+                        "Biltmore",
+                        "Lauren Ralph Lauren",
+                        "Modern Southern Home",
+                        "SOLITE",
                         "Shop All...",
                     ]
                 },
