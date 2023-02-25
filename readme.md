@@ -131,13 +131,15 @@ https://wide-eyed-pinafore-duck.cyclic.app/users/all?name_like=ad
 
 - Attempting to register with the same email returns `{ message: "Email already has an account" }`
 
-- Successful registration returns `{ message: "User successfully registered" }`
+- Successfull registration returns `{ message: "User successfully registered" }`
 
 #### `POST /login`
 
 - Sending an unregistered email returns `{ message: "Email is not registered" }`
 
 - Sending the wrong password returns `{ message: "Password does not match the given email" }`
+
+* Successfull login returns `{ message: "User successfully logged in", token }` where token is a randomly genererated string that can be used for authentication.
 
 ### User Schema:
 
