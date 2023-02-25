@@ -127,6 +127,18 @@ https://wide-eyed-pinafore-duck.cyclic.app/users/all?name_like=ad
 
 - **_Comparitive Search_** : `_gt` and `_lt` suffix for **greater than or equal to** or **less than or equal to**
 
+#### `POST /register`
+
+- Attempting to register with the same email returns `{ message: "Email already has an account" }`
+
+- Successful registration returns `{ message: "User successfully registered" }`
+
+#### `POST /login`
+
+- Sending an unregistered email returns `{ message: "Email is not registered" }`
+
+- Sending the wrong password returns `{ message: "Password does not match the given email" }`
+
 ### User Schema:
 
 ```
