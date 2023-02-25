@@ -16,11 +16,22 @@ import {} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 function ProductCard(props) {
-  const { id, image, product_name, retail_price, discounted_price, rating } =
-    props;
-
+  const {
+    id,
+    image,
+    product_name,
+    retail_price,
+    discounted_price,
+    rating,
+    path,
+    params,
+  } = props;
+  // console.log("ProductCard", params);
   return (
-    <Link to={`/product/${id}`}>
+    <Link
+      to={`/products/${path}/${
+        params.category === "" ? params.subCategory_like : params.category
+      }/${id}`}>
       <Card maxW="sm">
         <CardBody p={"5px"}>
           <VStack p="10px">

@@ -19,6 +19,7 @@ import {
   AccordionPanel,
   List,
   ListItem,
+  Flex,
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { Link, useParams } from "react-router-dom";
@@ -27,7 +28,14 @@ import { AiOutlineQuestionCircle } from "react-icons/ai";
 import React from "react";
 import axios from "axios";
 
+import { useNavigate } from "react-router-dom";
+import Loader from "../components/Loader";
+
 function SingleProductPage() {
+  const navigate = useNavigate();
+  const handleGoBack = () => {
+    navigate(-1);
+  };
   const toast = useToast();
   const { id } = useParams();
 
@@ -60,12 +68,23 @@ function SingleProductPage() {
   };
 
   if (product.length === 0) {
-    return <h1>please wait......</h1>;
+    return (
+      <Box pt={"23%"} pb="15%">
+        <Loader />
+      </Box>
+    );
   } else {
     return (
-      <Box bg="gray.100" py={10} pt={"160px"}>
+      <Box
+        display={{ base: "grid", md: "flex" }}
+        bg="gray.100"
+        py={10}
+        pt={"140px"}>
+        <Flex ml="20px">
+          <Button onClick={handleGoBack}>Go Back</Button>
+        </Flex>
         {/* Top section for image and prices */}
-        <Container maxW="container.xl" mt="40px">
+        <Container maxW="container.xl">
           <Grid
             gridTemplateColumns={{ base: "100%", md: "60% 40%" }}
             direction={{ base: "column", md: "row" }}
