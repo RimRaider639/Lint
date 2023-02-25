@@ -6,14 +6,12 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 let BTN_COUNT = 5;
 
 const getStartingIdx = (current, total) => {
-  console.log("index");
   if (total - current < 2)
     return Math.max(current - (BTN_COUNT - 1 - total + current), 1);
   return Math.max(current - 2, 1);
 };
 
 const Pagination = ({ current, total, handlePageChange }) => {
-  console.log("pagination");
   let btns = [];
   let start = getStartingIdx(current, total);
   for (let i = start; i < Math.min(start + BTN_COUNT, total + 1); i++) {

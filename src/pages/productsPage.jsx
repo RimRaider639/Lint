@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Divider,
   Flex,
   Grid,
@@ -8,7 +9,6 @@ import {
   Image,
   Select,
   Text,
-  useDisclosure,
   VStack,
 } from "@chakra-ui/react";
 import React, { useEffect } from "react";
@@ -20,9 +20,10 @@ import FilterDrawer from "../components/productsPage/filterDrawer";
 
 import { getAllData, getProducts } from "../redux/products/products.action";
 import { useParams } from "react-router-dom";
-// import Pagination from "../components/pagination";
-import ReactPaginate from "react-paginate";
+import Loader from "../components/Loader";
+
 import Pagination from "../components/pagination";
+import ProductNotFound from "../components/NotFound";
 const price = [
   {
     title: "Under Rs.499",
@@ -51,7 +52,6 @@ const price = [
 ];
 
 const ProductsPage = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const { path } = useParams();
   let { loading, productsData, allData, params, filters } = useSelector(
     (store) => store.ProductsManager
@@ -61,10 +61,6 @@ const ProductsPage = () => {
     sort: "discounted_price",
     order: "",
   });
-
-  // Pagination
-
-  // Pagination
 
   let dispatch = useDispatch();
 
@@ -79,16 +75,29 @@ const ProductsPage = () => {
     dispatch(getAllData(subCategory_like));
   }, [allData.length, path, dispatch]);
 
-  // { filterHeading: [], filterCategory: [], filterBrands: [] }
-
   if (productsData.length === 0) {
     return (
-      <Image src="https://media0.giphy.com/media/hWZBZjMMuMl7sWe0x8/giphy.gif?cid=ecf05e47miq5cngzblyhk1rx2cq7qjkem5ilbc3fg1fvkbkc&rid=giphy.gif&ct=g" />
+      <Box pt={"23%"} pb="15%">
+        {loading ? <Loader /> : <ProductNotFound />}
+      </Box>
     );
   } else {
     return (
       <>
-        <Box width={"90%"} margin="auto" pt={"160px"}>
+        <Box width={"90%"} margin="auto" pt={"140px"}>
+          <Flex mb="10px">
+            {" "}
+            <Button mr="2%">Go Back</Button>
+            <Box display={{ base: "block", sm: "block", md: "none" }}>
+              <FilterDrawer
+                filterHeading={filters.filterHeading}
+                filterBrands={filters.filterBrands}
+                price={price}
+              />
+            </Box>
+            <HStack
+              display={{ base: "none", sm: "none", md: "block" }}></HStack>
+          </Flex>
           <Grid gridTemplateColumns={{ sm: "100%", md: "25% 75%" }} gap={"5px"}>
             {/* filters section start */}
             {/* for large screen */}
@@ -100,13 +109,6 @@ const ProductsPage = () => {
               />
             </Box>
             {/* for small screen */}
-            <Box display={{ base: "block", sm: "block", md: "none" }}>
-              <FilterDrawer
-                filterHeading={filters.filterHeading}
-                filterBrands={filters.filterBrands}
-                price={price}
-              />
-            </Box>
 
             {/* products section start */}
             <VStack justify={"space-between"} p="10px">

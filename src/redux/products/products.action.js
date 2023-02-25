@@ -8,6 +8,7 @@ import {
 } from "./products.actionType";
 
 export const getAllData = (subCategory_like) => async (dispatch) => {
+  dispatch({ type: GET_PRODUCTS_LOADING });
   axios
     .get(`https://wide-eyed-pinafore-duck.cyclic.app/products`, {
       params: {
@@ -70,9 +71,21 @@ export const getAllData = (subCategory_like) => async (dispatch) => {
             [data[i].product_category_tree[0]][0]
           ) {
             if (filters.filterHeading[j][1][1][[data[i].brand]] === undefined) {
-              filters.filterHeading[j][1][1][[data[i].brand]] = 1;
+              filters.filterHeading[j][1][1][[data[i].brand]] = [
+                1,
+                data[i].discounted_price,
+                data[i].discounted_price,
+              ];
             } else {
-              filters.filterHeading[j][1][1][[data[i].brand]]++;
+              filters.filterHeading[j][1][1][[data[i].brand]][0]++;
+              filters.filterHeading[j][1][1][[data[i].brand]][1] = Math.min(
+                filters.filterHeading[j][1][1][[data[i].brand]][1],
+                data[i].discounted_price
+              );
+              filters.filterHeading[j][1][1][[data[i].brand]][1] = Math.max(
+                filters.filterHeading[j][1][1][[data[i].brand]][1],
+                data[i].discounted_price
+              );
             }
           }
         }
@@ -89,6 +102,7 @@ export const getAllData = (subCategory_like) => async (dispatch) => {
 };
 
 export const getProducts = (params) => async (dispatch) => {
+  dispatch({ type: GET_PRODUCTS_LOADING });
   const brandArray = [];
   const sub2CategoryArray = [];
 
@@ -103,8 +117,6 @@ export const getProducts = (params) => async (dispatch) => {
       state ? sub2CategoryArray.push(name) : null
     );
   }
-
-  dispatch({ type: GET_PRODUCTS_LOADING });
 
   try {
     const response = await axios.get(
