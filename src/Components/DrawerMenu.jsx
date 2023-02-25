@@ -12,11 +12,13 @@ import {
     Flex,
   } from '@chakra-ui/react'
 import { useRef } from 'react'
+import { useNavigate } from 'react-router-dom';
 import DarkModeButton from "./DarkModeButton";
 
   const DrawerMenu = ()=>{
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = useRef()
+    const navigate = useNavigate()
   
     return (
       <>
@@ -37,11 +39,26 @@ import DarkModeButton from "./DarkModeButton";
   
             <DrawerBody>
                 <Flex direction={'column'} gap={10}>
-                    <Button onClick={onClose}>Home</Button>
-                    <Button onClick={onClose}>Inventory</Button>
-                    <Button onClick={onClose}>Sales</Button>
-                    <Button onClick={onClose}>Settings</Button>
-                    <Button onClick={onClose}>Profile</Button>
+                    <Button onClick={()=>{
+                      navigate('/')
+                      onClose()
+                    }}>Home</Button>
+                    <Button onClick={()=>{
+                      navigate('/inventory')
+                      onClose()
+                    }}>Inventory</Button>
+                    <Button onClick={()=>{
+                      navigate('/add')
+                      onClose()
+                    }}>Add Products</Button>
+                    <Button onClick={()=>{
+                      navigate('/')
+                      onClose()
+                    }}>Settings</Button>
+                    <Button onClick={()=>{
+                      navigate('/')
+                      onClose()
+                    }}>Profile</Button>
                 </Flex>
             </DrawerBody>
   

@@ -10,7 +10,15 @@ const reducer = (state=inititalState, action)=>{
     const { type, payload } = action;
 
     switch(type){
-        // For GET =>
+        // For Create [Adding products]=>
+        case actionType.ADD_PRODUCTS_REQUEST:
+            return{...state, isLoading:true}
+        case actionType.ADD_PRODUCTS_SUCCESS:
+            return{...state, isLoading:false, products:[...state.products, payload]}
+        case actionType.ADD_PRODUCTS_FAILURE:
+            return{...state, isError:true, isLoading:false}
+            
+        // For Read =>
         case actionType.GET_PRODUCTS_REQUEST:
             return{...state, isLoading:true}
         case actionType.GET_PRODUCTS_SUCCESS:
@@ -18,7 +26,7 @@ const reducer = (state=inititalState, action)=>{
         case actionType.GET_PRODUCTS_FAILURE:
             return{...state, isError:true, isLoading:false}
 
-        // For Updating=>
+        // For Update =>
         case actionType.UPDATE_PRODUCTS_REQUEST:
             return{...state, isLoading:true}
         case actionType.UPDATE_PRODUCTS_SUCCESS:
@@ -27,7 +35,7 @@ const reducer = (state=inititalState, action)=>{
         case actionType.UPDATE_PRODUCTS_FAILURE:
             return{...state, isError:true, isLoading:false}
             
-        // Fpr Deleting=>
+        // Fpr Delete =>
         case actionType.DELETE_PRODUCTS_REQUEST:
             return{...state, isLoading:true}
         case actionType.DELETE_PRODUCTS_SUCCESS:

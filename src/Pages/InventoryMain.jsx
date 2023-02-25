@@ -9,13 +9,6 @@ import {
   Flex,
   Button,
   useToast 
-  // AlertDialog,
-  // AlertDialogBody,
-  // AlertDialogFooter,
-  // AlertDialogHeader,
-  // AlertDialogContent,
-  // AlertDialogOverlay,
-  // useDisclosure,
 } from "@chakra-ui/react";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { useEffect } from "react";
@@ -47,9 +40,9 @@ const InventoryMain = () => {
 
   useEffect(() => {
     if (allProducts.length === 0) dispatch(getProducts());
-
-    console.log(allProducts);
+    // console.log(allProducts);
   }, [allProducts.length, dispatch, allProducts]);
+  
   return (
     <Flex p="4" w={{ base: "100%" }} justifyContent={"center"}>
       <TableContainer w={"100%"} p="2">
@@ -60,7 +53,7 @@ const InventoryMain = () => {
               <Th>Product Name</Th>
               <Th>PID</Th>
               <Th isNumeric>MRP</Th>
-              <Th>Selling Price</Th>
+              <Th>Price</Th>
               <Th>Discount</Th>
               <Th>Category</Th>
               <Th>Stock</Th>

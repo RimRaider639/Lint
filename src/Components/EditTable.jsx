@@ -8,6 +8,7 @@ import {
   Td,
   TableCaption,
   TableContainer,
+  useToast,
   Button,
   Input,
   Select,
@@ -22,6 +23,7 @@ const EditTable = () => {
   const allProducts = useSelector((store) => store.products);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const toast = useToast()
   const [currentProduct, setCurrentProduct] = useState({
     brand: "",
     product_name: "",
@@ -30,12 +32,22 @@ const EditTable = () => {
     discounted_price: 0,
     discount: 0,
     product_category_tree: ["xyz", "xcv"],
-    stock: 10,
+    stock: 0,
   });
 
   const handleSubmit = () => {
     dispatch(updateProduct(id, currentProduct)).then((res)=>{
-      console.log(res)
+      toast({
+        title: 'Product Updated',
+        description: "The product is updated successfully",
+        status: 'success',
+        duration: 1500,
+        isClosable: true,
+        position:'top'
+      })
+
+      dispatch(getProducts())
+      navigate('/inventory')
     }
     )
   };
@@ -46,7 +58,6 @@ const EditTable = () => {
     if (id) {
       const product = allProducts.find((el) => el._id === id);
       product && setCurrentProduct(product);
-      // console.log(currentProduct);
     }
   }, [allProducts.length, dispatch, id, allProducts]);
 
@@ -154,18 +165,17 @@ const EditTable = () => {
               <Td>
                 <Select
                   variant="filled"
-                  value={currentProduct.product_category_tree[0]}
+                  value={currentProduct.product_category_tree||currentProduct.product_category_tree[0]}
                   onChange={(e) =>
                     setCurrentProduct({
                       ...currentProduct,
                       product_category_tree: e.target.value,
                     })
                   }
-                  placeholder="Select option"
                 >
-                  <option value="clothing">Clothing</option>
-                  <option value="footwear">Footwear</option>
-                  <option value="other">Other</option>
+                  <option value="Clothing">Clothing</option>
+                  <option value="Footwear">Footwear</option>
+                  <option value="Other">Other</option>
                 </Select>
               </Td>
             </Tr>
@@ -177,7 +187,7 @@ const EditTable = () => {
                   onChange={(e) =>
                     setCurrentProduct({
                       ...currentProduct,
-                      tock: e.target.value,
+                      stock: e.target.value,
                     })
                   }
                 />
