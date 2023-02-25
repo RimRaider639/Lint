@@ -8,6 +8,12 @@ Deployed link: https://wide-eyed-pinafore-duck.cyclic.app
 - /users
 - /cart
 
+```
+NOTE:
+* All user routes require token in the response header.
+* All admin routes require token in the response header generated after loging in with an user account with the role of admin.
+```
+
 ## /products
 
 ### Routes:
