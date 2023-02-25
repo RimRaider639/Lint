@@ -26,11 +26,11 @@ import {
     const [img4, setImg4] = useState('');
     const [cat1, setCat1] = useState('');
     const [cat2, setCat2] = useState('');
-    // const [cat3, setCat3] = useState('');
+    const [cat3, setCat3] = useState('');
     const [currentProduct, setCurrentProduct] = useState({
         product_name: '',
         product_category_tree: [''],
-        pid: 'xyz123',
+        pid: 'ERTYUI4356789',
         retail_price:0,
         discounted_price: 0,
         image: [],
@@ -43,7 +43,7 @@ import {
   
     const handleSubmit = () => {
         const imgArr = [img1,img2,img3,img4];
-        const catArr = [cat1,cat2];
+        const catArr = [cat1,cat2,cat3];
         currentProduct.image = imgArr;
         currentProduct.product_category_tree = catArr;
         console.log(currentProduct)
@@ -220,6 +220,11 @@ import {
                     onChange={(e) => setCat1(e.target.value)}>
                     <option value="Clothing">Clothing</option>
                     <option value="Footwear">Footwear</option>
+                    <option value="Beauty and Personal Care">Beauty and Personal Care</option>
+                    <option value="Baby Care">Baby Care</option>
+                    <option value="Home Furnishing">Home Furnishing</option>
+                    <option value="Jewellery">Jewellery</option>
+                    <option value="Kitchen & Dining">Kitchen & Dining</option>
                     <option value="Other">Other</option>
                   </Select>
                 </Td>
@@ -233,6 +238,29 @@ import {
                     onChange={(e) => setCat2(e.target.value)}>
                     <option value="Clothing">Clothing</option>
                     <option value="Footwear">Footwear</option>
+                    <option value="Beauty and Personal Care">Beauty and Personal Care</option>
+                    <option value="Baby Care">Baby Care</option>
+                    <option value="Home Furnishing">Home Furnishing</option>
+                    <option value="Jewellery">Jewellery</option>
+                    <option value="Kitchen & Dining">Kitchen & Dining</option>
+                    <option value="Other">Other</option>
+                  </Select>
+                </Td>
+              </Tr>
+              <Tr>
+                <Td>Category 3</Td>
+                <Td>
+                  <Select
+                    variant="filled"
+                    value={cat3}
+                    onChange={(e) => setCat3(e.target.value)}>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Footwear">Footwear</option>
+                    <option value="Beauty and Personal Care">Beauty and Personal Care</option>
+                    <option value="Baby Care">Baby Care</option>
+                    <option value="Home Furnishing">Home Furnishing</option>
+                    <option value="Jewellery">Jewellery</option>
+                    <option value="Kitchen & Dining">Kitchen & Dining</option>
                     <option value="Other">Other</option>
                   </Select>
                 </Td>

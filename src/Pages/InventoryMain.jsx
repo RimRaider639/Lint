@@ -8,43 +8,27 @@ import {
   TableContainer,
   Flex,
   Button,
-  useToast 
 } from "@chakra-ui/react";
-import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
+
+import { EditIcon } from "@chakra-ui/icons";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProduct, getProducts } from "../Redux/actions";
-// import DeleteButton from "../Components/DeleteButton";
+import { getProducts } from "../Redux/actions";
 import { useNavigate } from "react-router-dom";
+import DeleteButton from "../Components/DeleteButton";
 
 const InventoryMain = () => {
   const allProducts = useSelector((store) => store.products);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const toast = useToast()
-
-  const handleDelete = (id) => {
-    console.log(id);
-    dispatch(deleteProduct(id)).then((res)=>{
-      console.log("deleted")
-      toast({
-        title: 'Product Deleted',
-        description: "The product is deleted successfully",
-        status: 'success',
-        duration: 1500,
-        isClosable: true,
-        position:'top'
-      })
-    })
-  };
-
+  
   useEffect(() => {
     if (allProducts.length === 0) dispatch(getProducts());
     // console.log(allProducts);
   }, [allProducts.length, dispatch, allProducts]);
-  
+
   return (
-    <Flex p="4" w={{ base: "100%" }} justifyContent={"center"}>
+    <Flex p="2" w={{ base: "100%" }} justifyContent={"center"}>
       <TableContainer w={"100%"} p="2">
         <Table size="sm">
           <Thead>
@@ -79,9 +63,8 @@ const InventoryMain = () => {
                         {<EditIcon />}
                       </Button>
 
-                      <Button>
-                        {<DeleteIcon onClick={() => handleDelete(el._id)}/>}
-                      </Button>
+                      <DeleteButton id={el._id}/>
+
                     </Td>
                   </Tr>
                 );
