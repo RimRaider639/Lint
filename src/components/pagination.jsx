@@ -12,6 +12,9 @@ const getStartingIdx = (current, total) => {
 };
 
 const Pagination = ({ current, total, handlePageChange }) => {
+  if (current === "") {
+    current = 1;
+  }
   let btns = [];
   let start = getStartingIdx(current, total);
   for (let i = start; i < Math.min(start + BTN_COUNT, total + 1); i++) {

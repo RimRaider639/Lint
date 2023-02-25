@@ -74,13 +74,16 @@ function SingleProductPage() {
     );
   } else {
     return (
-      <Box bg="gray.100" py={10} pt={"140px"}>
+      <Box
+        display={{ base: "grid", md: "flex" }}
+        bg="gray.100"
+        py={10}
+        pt={"140px"}>
+        <Flex ml="20px">
+          <Button onClick={handleGoBack}>Go Back</Button>
+        </Flex>
         {/* Top section for image and prices */}
         <Container maxW="container.xl">
-          <Flex mt={"10px"} mb="20px">
-            {" "}
-            <Button onClick={handleGoBack}>Go Back</Button>
-          </Flex>
           <Grid
             gridTemplateColumns={{ base: "100%", md: "60% 40%" }}
             direction={{ base: "column", md: "row" }}

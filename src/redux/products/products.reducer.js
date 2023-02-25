@@ -14,7 +14,7 @@ import {
 // limit=2&subCategory_like=Women&category=Footwear&sub2Category=Flats
 
 const initParams = {
-  page: 1,
+  page: "",
   limit: 10,
   subCategory_like: "",
   category: "",
@@ -45,7 +45,6 @@ const ProductsReducer = (state = initialData, { type, payload }) => {
     }
 
     case GET_ALL_DATA_SUCCESS: {
-      console.log(payload.filters);
       return {
         ...state,
         loading: false,

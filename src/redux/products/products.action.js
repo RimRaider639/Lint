@@ -1,4 +1,3 @@
-import { useComponentStyles__unstable } from "@chakra-ui/react";
 import axios from "axios";
 import {
   GET_ALL_DATA_SUCCESS,
@@ -12,7 +11,7 @@ export const getAllData = (subCategory_like) => async (dispatch) => {
   axios
     .get(`https://wide-eyed-pinafore-duck.cyclic.app/products`, {
       params: {
-        limit: 200,
+        limit: 250,
         subCategory_like,
       },
     })

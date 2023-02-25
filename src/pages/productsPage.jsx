@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Filters from "../components/productsPage/filters";
 import ProductCard from "../components/productsPage/productCard";
 import FilterDrawer from "../components/productsPage/filterDrawer";
+import FilterTag from "../components/productsPage/FilterTag";
 
 import { getAllData, getProducts } from "../redux/products/products.action";
 import { useParams } from "react-router-dom";
@@ -53,16 +54,25 @@ const price = [
 
 const ProductsPage = () => {
   const { path } = useParams();
+  let dispatch = useDispatch();
   let { loading, productsData, allData, params, filters } = useSelector(
     (store) => store.ProductsManager
   );
-
   const [sortingByPrice, setSortingByPrice] = React.useState({
     sort: "discounted_price",
     order: "",
   });
 
-  let dispatch = useDispatch();
+  const appliedFilters = {
+    subCategory_like: params.subCategory_like,
+    category: params.category,
+    sub2Category: params.sub2Category,
+    brand: params.brand,
+    price: [params.discounted_price_gt, params.discounted_price_lt],
+    order: params.order,
+  };
+
+  console.log("appliedFilters productPage_line75", appliedFilters);
 
   useEffect(() => {
     params.subCategory_like = path;
@@ -85,6 +95,7 @@ const ProductsPage = () => {
     return (
       <>
         <Box width={"90%"} margin="auto" pt={"140px"}>
+          {/* <FilterTag title={appliedFilters.subCategory_like} /> */}
           <Flex mb="10px">
             {" "}
             <Button mr="2%">Go Back</Button>
@@ -163,6 +174,8 @@ const ProductsPage = () => {
                       retail_price={e.retail_price}
                       discounted_price={e.discounted_price}
                       rating={e.rating}
+                      path={path}
+                      params={params}
                     />
                   ))}
               </Grid>
