@@ -1,5 +1,8 @@
 import {
   Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
   Button,
   Divider,
   Flex,
@@ -13,18 +16,17 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { RxDoubleArrowRight } from "react-icons/rx";
 
 import Filters from "../components/productsPage/filters";
 import ProductCard from "../components/productsPage/productCard";
 import FilterDrawer from "../components/productsPage/filterDrawer";
-import FilterTag from "../components/productsPage/FilterTag";
 
 import { getAllData, getProducts } from "../redux/products/products.action";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 
 import Pagination from "../components/pagination";
-import ProductNotFound from "../components/NotFound";
 import NotAvailable from "../components/NotAvailable";
 const price = [
   {
@@ -54,13 +56,15 @@ const price = [
 ];
 
 const ProductsPage = () => {
+  const { path, category, sub_category } = useParams();
+
   const navigate = useNavigate();
   const location = useLocation();
-  const urlPath = `${location.pathname}`;
+  const urlPath = location.pathname.split("/");
+
   const handleGoBack = () => {
     navigate(-1);
   };
-  const { path, category, sub_category } = useParams();
 
   let dispatch = useDispatch();
   let { loading, productsData, allData, params, filters } = useSelector(
@@ -70,7 +74,6 @@ const ProductsPage = () => {
     sort: "discounted_price",
     order: params.order,
   });
-  // console.log("sortingByPrice", sortingByPrice);
 
   // const appliedFilters = {
   //   subCategory_like: params.subCategory_like,
@@ -86,6 +89,7 @@ const ProductsPage = () => {
   // console.log("appliedFilters productPage_line75", appliedFilters);
 
   useEffect(() => {
+    params.sub2Category = {};
     params.subCategory_like = path;
     if (category !== undefined) {
       params.category = category;
@@ -103,7 +107,7 @@ const ProductsPage = () => {
     let subCategory_like = path;
 
     dispatch(getAllData(subCategory_like));
-  }, [allData.length, path, dispatch]);
+  }, [allData.length]);
 
   if (loading) {
     return (
@@ -120,11 +124,37 @@ const ProductsPage = () => {
   } else {
     return (
       <>
-        <Box width={"90%"} margin="auto" pt={"140px"}>
+        <Box
+          width={"90%"}
+          margin="auto"
+          pt={{ base: "140px", sm: "90px", md: "80px", lg: "150px" }}>
           {/* <FilterTag title={appliedFilters.subCategory_like} /> */}
-          <Flex mb="10px">
+          <Flex
+            alignItems={"center"}
+            fontSize={{ base: "16px", sm: "20px", md: "22px", lg: "24px" }}
+            mt={{ base: "10px", sm: "10px", md: "10px", lg: "0px" }}
+            pb={{ base: "20px", sm: "5px" }}>
+            <Breadcrumb separator="/">
+              {urlPath &&
+                urlPath.map((path, i) =>
+                  i > 0 ? (
+                    <BreadcrumbItem key={i}>
+                      <BreadcrumbLink href="#">{path}</BreadcrumbLink>
+                    </BreadcrumbItem>
+                  ) : (
+                    <BreadcrumbItem key={i}>
+                      <BreadcrumbLink href="#">{path}</BreadcrumbLink>
+                    </BreadcrumbItem>
+                  )
+                )}
+            </Breadcrumb>
+          </Flex>
+          <Flex mb="10px" mt={{}}>
             {" "}
-            <Button mr="2%" onClick={handleGoBack}>
+            <Button
+              mr="2%"
+              onClick={handleGoBack}
+              display={{ base: "block", sm: "block", md: "none" }}>
               Go Back
             </Button>
             <Box display={{ base: "block", sm: "block", md: "none" }}>
@@ -145,6 +175,7 @@ const ProductsPage = () => {
                 filterHeading={filters.filterHeading}
                 filterBrands={filters.filterBrands}
                 price={price}
+                handleGoBack={handleGoBack}
               />
             </Box>
             {/* for small screen */}

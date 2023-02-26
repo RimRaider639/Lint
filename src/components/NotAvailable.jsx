@@ -1,11 +1,29 @@
 import React from "react";
 import { Box, Button, Image, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { getProducts } from "../redux/products/products.action";
+import { useDispatch, useSelector } from "react-redux";
+const initParams = {
+  page: "",
+  limit: 10,
+  subCategory_like: "",
+  category: "",
+  sub2Category: {},
+  brand: {},
+  order: "",
+  sort: null,
+  discounted_price_gt: null,
+  discounted_price_lt: null,
+  priceValue: undefined,
+};
 
 const NotAvailable = () => {
   const navigate = useNavigate();
+  let dispatch = useDispatch();
+  let { params } = useSelector((store) => store.ProductsManager);
   const handleGoBack = () => {
     navigate(-1);
+    dispatch(getProducts(params));
   };
   return (
     <Box textAlign="center">
@@ -19,11 +37,11 @@ const NotAvailable = () => {
         mx="auto"
       />
       <Text fontSize="xl" mb="20px" fontWeight="bold">
-        Sorry, this product is currently not available
+        Sorry, this Category is currently not available
       </Text>
       <Box>
         <Text fontSize="lg" mb="20px">
-          The product you are looking for is currently not available.
+          The Category you are looking for is currently not available.
         </Text>
         <Button onClick={handleGoBack} mt="20px" size="lg">
           Go Back

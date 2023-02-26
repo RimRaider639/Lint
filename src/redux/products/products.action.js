@@ -21,7 +21,6 @@ export const getAllData = (subCategory_like) => async (dispatch) => {
     })
     .then(function (response) {
       let data = response.data;
-      console.log(data);
 
       // storing in object locally
       let HeadingObj = {};

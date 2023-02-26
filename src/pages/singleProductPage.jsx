@@ -80,11 +80,6 @@ function SingleProductPage() {
     });
   };
 
-  // React.useEffect(() => {
-  //   console.log("product.image.length=", product.image.length);
-
-  // }, [product.image.length]);
-
   if (product.length === 0) {
     return (
       <Box pt={"23%"} pb="15%">
@@ -94,27 +89,34 @@ function SingleProductPage() {
   } else {
     return (
       <Box
-        display={{ base: "grid", md: "flex" }}
+        display={"grid"}
         bg="gray.100"
         py={10}
-        pt={"140px"}>
-        <Flex ml="20px">
-          <Button onClick={handleGoBack}>Go Back</Button>
+        pt={{ base: "33%", sm: "140px", md: "11%", lg: "9%" }}>
+        <Flex ml={{ base: "2%", sm: "2%", md: "2%", lg: "2%" }}>
+          <Button
+            onClick={handleGoBack}
+            fontSize={{ base: "small", sm: "large", md: "larger" }}>
+            Go Back
+          </Button>
         </Flex>
         {/* Top section for image and prices */}
-        <Container maxW="container.xl">
+        <Container maxW={{ base: "80%", md: "95%", lg: "90%" }}>
           <Grid
-            gridTemplateColumns={{ base: "100%", md: "60% 40%" }}
+            gridTemplateColumns={{ base: "100%", md: "50% 50%", lg: "60%,40%" }}
             direction={{ base: "column", md: "row" }}
             justifyContent="space-between">
             {/* images left section */}
             <Box p="10px">
               {/* for larger screen */}
-              <Box display={{ base: "none", md: "block" }}>
+              <Box display={{ base: "none", md: "none", lg: "block" }}>
                 <HStack justify={"space-between"}>
                   {/* left multiple images */}
 
-                  <VStack align="flex-start" w={{ base: "20%", md: "30%" }}>
+                  <VStack
+                    align="flex-start"
+                    gap={0}
+                    w={{ base: "20%", md: "30%" }}>
                     {product &&
                       product.image
                         .slice(1, 7) // only map the first 6 elements, starting from index 1
@@ -137,7 +139,6 @@ function SingleProductPage() {
 
                   {/* Right main Image */}
                   <Box
-                    w={{ base: "100%", md: "80%" }}
                     overflow="hidden"
                     h={{
                       md: `${
@@ -162,7 +163,7 @@ function SingleProductPage() {
                 </HStack>
               </Box>
               {/* for small screen */}
-              <Box display={{ base: "block", md: "none" }}>
+              <Box display={{ base: "block", md: "block", lg: "none" }}>
                 <VStack>
                   <Box
                     overflow="hidden"
@@ -204,7 +205,7 @@ function SingleProductPage() {
 
             {/* Right sections */}
             <Box py={{ base: 6, md: 0 }} pl={{ md: 6 }}>
-              <Heading size="lg" mb={3}>
+              <Heading size={{ base: "md", md: "md", lg: "lg" }} mb={3}>
                 {product.product_name}
               </Heading>
               <Box d="flex" alignItems="center" mb={3}>
