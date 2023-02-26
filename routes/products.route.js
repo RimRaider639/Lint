@@ -11,7 +11,8 @@ const productsRouter = express.Router();
 
 productsRouter.get("/", processQueries, (req, res, next) => {
   let { page, limit, sort, order, q, ...filters } = req.query;
-  Product.find({ ...filters, $text: { $search: q } })
+  if (q) Object.assign(filters, { $text: { $search: q } });
+  Product.find(filters)
     .limit(limit)
     .skip(page * limit)
     .sort({ [sort]: order == "desc" ? -1 : 1 })
@@ -22,7 +23,6 @@ productsRouter.get("/", processQueries, (req, res, next) => {
 });
 
 productsRouter.get("/:id", (req, res, next) => {
-  console.log(req.params);
   const { id } = req.params;
   Product.findById(id)
     .then((data) => res.send(data))
