@@ -144,11 +144,11 @@ export const getProducts = (params) => async (dispatch) => {
   }
 };
 
-export const clearParams = () => async (dispatch) => {
+export const clearParams = (path) => async (dispatch) => {
   const clearParamsState = {
     page: "",
     limit: 10,
-    subCategory_like: "",
+    subCategory_like: path,
     category: "",
     sub2Category: {},
     brand: {},

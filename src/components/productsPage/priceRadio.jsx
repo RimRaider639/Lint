@@ -5,40 +5,31 @@ import { useDispatch, useSelector } from "react-redux";
 const PriceRadio = ({ priceRanges, getProducts }) => {
   let dispatch = useDispatch();
   let { params } = useSelector((store) => store.ProductsManager);
-  const [selectedPrice, setSelectedPrice] = useState({
-    title: "",
-    discounted_price_gt: "",
-    discounted_price_lt: "",
-  });
+  const [selectedPrice, setSelectedPrice] = useState(params.priceValue);
 
-  const handlePriceChange = (range) => {
-    setSelectedPrice({
-      title: range.title,
-      discounted_price_gt: range.discounted_price_gt,
-      discounted_price_lt: range.discounted_price_lt,
-    });
-    params.discounted_price_gt = range.discounted_price_gt;
-    params.discounted_price_lt = range.discounted_price_lt;
-    dispatch(getProducts(params));
+  const handlePriceChange = (value) => {
+    setSelectedPrice(value);
+    params.priceValue = value;
+    for (let i = 0; i < priceRanges.length; i++) {
+      if (value === priceRanges[i].title) {
+        params.discounted_price_gt = priceRanges[i].discounted_price_gt;
+        params.discounted_price_lt = priceRanges[i].discounted_price_lt;
+        dispatch(getProducts(params));
+      }
+    }
   };
-  console.log(selectedPrice);
+
   return (
     <AccordionPanel>
-      <RadioGroup
-        value={selectedPrice}
-        onChange={(value) => setSelectedPrice(value)}>
+      <RadioGroup value={selectedPrice} onChange={handlePriceChange}>
         {priceRanges.map((range) => (
           <Stack
             key={range.title}
             _hover={{ color: "#0076be", fontWeight: "bold" }}>
             <Radio
               _hover={{ color: "#0076be", fontWeight: "bold" }}
-              value={{
-                title: range.title,
-                discounted_price_gt: range.discounted_price_gt,
-                discounted_price_lt: range.discounted_price_lt,
-              }}
-              isChecked={selectedPrice.title === range.title}>
+              value={range.title}
+              isChecked={selectedPrice === range.title}>
               {range.title}
             </Radio>
           </Stack>
