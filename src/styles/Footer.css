@@ -8,3 +8,28 @@
     border-top: 2px solid gray;
     z-index: 1000;
 }
+#stay_mail{
+    width: 80%;
+    position: fixed;
+}
+
+@media screen and (max-width:1024px) {
+    #bottom_pop{
+        width: 100%;
+        margin: auto;
+        position: sticky;
+    }
+
+}
+
+@media screen and (max-width:650px) {
+    #bottom_pop{
+        width: 100%;
+        margin: auto;
+        position: sticky;
+    }
+    /* #stay_mail{
+        width: 80%;
+        position: sticky;
+    } */
+}

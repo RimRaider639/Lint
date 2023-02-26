@@ -1,4 +1,4 @@
-import { Grid } from '@chakra-ui/layout'
+import { Grid, Stack } from '@chakra-ui/layout'
 import React from 'react'
 import { Box, Divider, Flex, InputRightElement, Input, HStack, InputGroup, Text, Button, GridItem } from "@chakra-ui/react"
 import { ImFacebook2 } from "react-icons/im"
@@ -86,24 +86,24 @@ const Footer = () => {
 
                 }
             </Grid>
-            <Flex w="80%" margin={'auto'} mt='30px'>
+            <Stack id='stay_mail' w="80%" margin={'auto'} mt='30px'>
                 <HStack margin='auto'>
                     <Text textAlign={'center'} fontWeight='400' fontSize={{ sm: "18px", lg: "25px" }}>Stay Connnect</Text>
                     <IconButton icon={<ImFacebook2 />}
                         isRound={true}
-                        fontSize='50px'
+                        fontSize={{sm:"5px",md:"30px",lg:"'57px'"}}
                         hover={{ cursor: "pointer", color: "blackAlpha.700" }} />
                     <IconButton icon={<FaTwitterSquare />}
                         isRound={true}
-                        fontSize='57px'
+                        fontSize={{sm:"5px",md:"30px",lg:"'57px'"}}
                         hover={{ cursor: "pointer", color: "blackAlpha.700" }} />
                     <IconButton icon={<FaPinterestSquare />}
                         isRound={true}
-                        fontSize='57px'
+                        fontSize={{sm:"5px",md:"30px",lg:"'57px'"}}
                         hover={{ cursor: "pointer", color: "blackAlpha.700" }} />
                     <IconButton icon={<FaInstagram />}
                         isRound={true}
-                        fontSize='57px'
+                        fontSize={{sm:"5px",md:"30px",lg:"'57px'"}}
                         hover={{ cursor: "pointer", color: "blackAlpha.700" }} />
                 </HStack>
                 <HStack>
@@ -119,7 +119,7 @@ const Footer = () => {
                         </InputRightElement>
                     </InputGroup>
                 </HStack>
-            </Flex>
+            </Stack>
             <LowerFooter />
         </>
     )

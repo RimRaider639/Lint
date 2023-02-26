@@ -125,6 +125,11 @@
 }
 
 @media screen and (max-width:650px) {
+  #maindiv {
+    width: 100%;
+    position: sticky;
+    z-index: 1000;
+  }
   .logo {
       width: 15%;
       margin-right: 20px;
