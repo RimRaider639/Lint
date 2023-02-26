@@ -28,7 +28,6 @@ cartRouter.post("/", (req, res, next) => {
       })
         .then((_) =>
           res.send({
-            data: found[0],
             message: "Item successfully added to cart",
           })
         )
@@ -37,7 +36,6 @@ cartRouter.post("/", (req, res, next) => {
       CartItem.insertMany([req.body])
         .then((_) =>
           res.send({
-            data: found[0],
             message: "Item successfully added to cart",
           })
         )
