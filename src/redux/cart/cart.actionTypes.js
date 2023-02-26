@@ -8,4 +8,7 @@ export const cart = {
   DELETE_ITEM_LOADING: "cart/delete/loading",
   DELETE_ITEM_SUCCESS: "cart/delete/success",
   DELETE_ITEM_ERROR: "cart/delete/error",
+  ADD_ITEM_LOADING: "cart/add/loading",
+  ADD_ITEM_SUCCESS: "cart/add/success",
+  ADD_ITEM_ERROR: "cart/add/error",
 };

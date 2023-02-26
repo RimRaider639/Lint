@@ -4,6 +4,7 @@ import fallbackSrc from '../../assets/default-image.jpg'
 import {Flex, Text, Image, Select, Switch, Divider, RadioGroup, Radio} from "@chakra-ui/react"
 import { updateCartItem, removeCartItem } from '../../redux/cart/cart.actions'
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 //colors
 const blue = `rgb(0,118,190)`
@@ -14,6 +15,7 @@ const Item = ({cartItem}) => {
     const dispatch = useDispatch()
     const [qtd, setQtd] = React.useState(count)
     const [days, setDays] = React.useState("60 Days (Recommended)")
+    const [ship, setShip] = React.useState(1)
     const handleRemove = () => {
         dispatch(removeCartItem(_id))
     }
@@ -30,7 +32,7 @@ const Item = ({cartItem}) => {
                 <Flex flexGrow={1} justify={'space-between'} fontSize={'14px'} h="65%">
                     <Flex w="40%" direction={'column'} justify={'space-between'}>
                         <Flex direction={'column'}>
-                            <Text  fontWeight={'700'}>{item.product_name}</Text>
+                            <Link to={`/product/${item._id}`}><Text _hover={{textDecoration:"underline"}} fontWeight={'700'}>{item.product_name}</Text></Link>
                             <Text>PID: {item.pid}</Text>
                             <Text>₹{item.discounted_price.toFixed(2)}</Text>
                         </Flex>
@@ -81,17 +83,22 @@ const Item = ({cartItem}) => {
                     </Flex>
                     <Divider  m="10px 0"/>
                     <Text fontWeight={'700'}>How to get it</Text>
-                        <RadioGroup defaultValue='1'>
+                    <RadioGroup>
                             <Flex gap={2} direction='column'>
-                                <Radio colorScheme='black' value='1'>
+                                <Radio colorScheme='black' name="shipment" value={1} defaultChecked>
                                 <Text fontSize={'14px'}><b>Ship It</b> - Arrives in 3 to 10 days </Text>
                                 In stock.
                                 </Radio>
-                                <Radio colorScheme='black' value='2'>
+                                <Radio colorScheme='black' name="shipment" value={2}>
                                 <Text fontSize={'14px'} fontWeight="700">FREE Store Pickup Today </Text>
                                 </Radio>
                             </Flex>
-                        </RadioGroup>
+                    </RadioGroup>
+                    <Divider  m="10px 0"/>
+                    <Flex align={'center'} gap="10px">
+                        <Switch id='email-alerts' size={"sm"}/>
+                        <Text>Add Gift Message</Text>
+                    </Flex>
                 </Flex>
             </Flex>
             

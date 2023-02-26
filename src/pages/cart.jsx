@@ -12,7 +12,7 @@ const red = `#cc0000`
 
 const Cart = () => {
     const dispatch = useDispatch()
-    const {items, total, loading, error} = useSelector(store=>store.cartManager)
+    const {items, total, loading, error, message} = useSelector(store=>store.cartManager)
     React.useEffect(()=>{
         dispatch(getCartItems())
     }, [])

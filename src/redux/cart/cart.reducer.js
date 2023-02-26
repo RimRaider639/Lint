@@ -51,9 +51,25 @@ export default function cartReducer(state = initState, action) {
     case cart.DELETE_ITEM_LOADING:
       return { ...state, loading: true, error: false };
     case cart.DELETE_ITEM_SUCCESS:
-      return { ...state, loading: false, message: payload.data.message };
+      return { ...state, loading: false, message: payload.message };
     case cart.DELETE_ITEM_ERROR:
-      return { ...state, loading: false, error: true };
+      return {
+        ...state,
+        loading: false,
+        error: true,
+        message: payload.message,
+      };
+    // case cart.ADD_ITEM_LOADING:
+    //   return { ...state, loading: true, error: false };
+    // case cart.ADD_ITEM_SUCCESS:
+    //   return { ...state, loading: false, message: payload.message };
+    // case cart.ADD_ITEM_ERROR:
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //     error: true,
+    //     message: payload.message,
+    //   };
     default:
       return initState;
   }
