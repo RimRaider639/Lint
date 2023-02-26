@@ -42,12 +42,8 @@ function SingleProductPage() {
   const toast = useToast();
   const { id } = useParams();
   const dispatch = useDispatch();
-  // const {loading, error, message, total} = useSelector(store=>store.cartManager) 
-  const [loading, setLoading] = React.useState(false)
-  const [error, setError] = React.useState(false)
-  const [msg, setMsg] = React.useState("")
+  const {loading, error, message, total} = useSelector(store=>store.cartManager) 
   const [product, setProduct] = React.useState([]);
-  const [cartItem, setCartItem] = React.useState({})
   const [currentImage, setCurrentImage] = React.useState("");
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [imageHeight, setImageHeight] = React.useState("100");
@@ -83,30 +79,9 @@ function SingleProductPage() {
     // Add logic to add product to cart
     dispatch(addToCart(id))
     .then(_=>onOpen())
-  //   setLoading(true)
-  //   axios
-  //   .post(
-  //     `https://wide-eyed-pinafore-duck.cyclic.app/cart`,
-  //     {
-  //       productID:id,
-  //     },
-  //     {
-  //       headers: { token },
-  //     }
-  //   )
-  //   .then(res=>{
-  //     setLoading(false)
-  //     setCartItem(res.data.data)
-  //     setMsg(res.data.message)
-  //     onOpen()
-  //   })
-  //   .catch(err=>{
-  //     setLoading(false)
-  //     setError(true)
-  //     setMsg(err.response.data)
-  //   })
+
     
-  // };
+  };
   // React.useEffect(()=>{
   //   toast({
   //     position: "top-right",
@@ -116,7 +91,6 @@ function SingleProductPage() {
   //     isClosable: true,
   //   });
   // }, [setCartItem])
-
   if (product.length === 0) {
     return (
       <Box pt={"23%"} pb="15%">
@@ -477,5 +451,5 @@ function SingleProductPage() {
     );
   }
 }
-}
+
 export default SingleProductPage;

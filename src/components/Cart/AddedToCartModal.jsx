@@ -23,10 +23,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { FaShippingFast } from 'react-icons/fa'
 import { getCartItems } from '../../redux/cart/cart.actions'
 import { useNavigate } from 'react-router-dom'
-//colors
-const blue = `rgb(0,118,190)`
-const darkBlue = `#01558A`
-const red = `#cc0000`
+import { blue, red, darkBlue } from './colors'
 
 const topSellers = [
     { id: 1, title: "Item 1", imageUrl: "https://belk.scene7.com/is/image/Belk?layer=0&src=1804530_13023HOK000012_A_340&$DWP_PRODUCT_REC_DESKTOP$", desc: "Wonderly Women's Long Sleeve Shirred Yoke Top", price: "$49.50", coupon: "$24.75" },
@@ -49,13 +46,11 @@ function AddedToCartModal({isOpen, onClose, prodID}) {
         if (!items.length) dispatch(getCartItems())
         fetch({
             headers: {token}
-        })
+        }, 1000)
     }, [])
-    console.log(data)
+    console.log("cartItem", data)
     return (
       <>
-        
-  
         <Modal isOpen={isOpen} onClose={onClose} size={'3xl'}>
           <ModalOverlay />
           <ModalContent>

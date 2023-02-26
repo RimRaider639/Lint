@@ -31,6 +31,10 @@ export const updateCartItem = (id, count) => async (dispatch) => {
       }
     )
     .then((res) => dispatch({ type: cart.UPDATE_COUNT_SUCCESS, payload: res }))
+    .then((res) => {
+      dispatch({ type: cart.GET_ITEMS_LOADING });
+      setTimeout(() => dispatch(getCartItems()), 1000);
+    })
     .catch((error) =>
       dispatch({ type: cart.UPDATE_COUNT_ERROR, payload: error })
     );

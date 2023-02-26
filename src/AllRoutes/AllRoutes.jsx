@@ -16,11 +16,11 @@ const AllRoutes = () => {
       <Route  path="/register"  element={<RegisterPage />} />
       <Route path="/cart" element={<Cart />} />
       <Route
-        path="/products/:path/:category?/:sub_category?/:brand?"
+        path="/products/:path/:category?/:sub_category?/:brand"
         element={<ProductsPage />}
       />
       <Route
-        path="/products/:path/:category?/:sub_category?/:id/single?"
+        path="/products/:path/:category?/:sub_category?/:id/single"
         element={<SingleProductPage />}
       />
       <Route component={ProductNotFound} />

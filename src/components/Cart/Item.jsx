@@ -5,10 +5,7 @@ import {Flex, Text, Image, Select, Switch, Divider, RadioGroup, Radio} from "@ch
 import { updateCartItem, removeCartItem } from '../../redux/cart/cart.actions'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-
-//colors
-const blue = `rgb(0,118,190)`
-const red = `#cc0000`
+import { blue, red, darkBlue } from './colors'
 
 const Item = ({cartItem}) => {
     const {productID:item, count, _id} = cartItem
@@ -90,7 +87,10 @@ const Item = ({cartItem}) => {
                                 In stock.
                                 </Radio>
                                 <Radio colorScheme='black' name="shipment" value={2}>
-                                <Text fontSize={'14px'} fontWeight="700">FREE Store Pickup Today </Text>
+                                <Flex gap="5px">
+                                    <Text fontSize={'14px'} fontWeight="700">FREE Store Pickup Today </Text>
+                                    <Text fontSize={'14px'} borderBottom={'1px solid #0076be'}  _hover={{borderBottom:'1px solid white'}} color='#0076be' cursor='pointer'>Find a Store</Text>
+                                </Flex>
                                 </Radio>
                             </Flex>
                     </RadioGroup>
