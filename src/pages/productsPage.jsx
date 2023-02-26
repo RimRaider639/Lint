@@ -54,6 +54,19 @@ const price = [
     isChecked: false,
   },
 ];
+const initParams = {
+  page: "",
+  limit: 10,
+  subCategory_like: "",
+  category: "",
+  sub2Category: {},
+  brand: {},
+  order: "",
+  sort: null,
+  discounted_price_gt: null,
+  discounted_price_lt: null,
+  priceValue: undefined,
+};
 
 const ProductsPage = () => {
   const { path, category, sub_category } = useParams();
@@ -75,39 +88,38 @@ const ProductsPage = () => {
     order: params.order,
   });
 
-  // const appliedFilters = {
-  //   subCategory_like: params.subCategory_like,
-  //   category: params.category,
-  //   sub2Category: params.sub2Category,
-  //   brand: params.brand,
-  //   price: [params.discounted_price_gt, params.discounted_price_lt],
-  //   order: params.order,
-  // };
   useEffect(() => {
-    setSortingByPrice({ ...sortingByPrice, order: params.order });
-  }, [params.order]);
-  // console.log("appliedFilters productPage_line75", appliedFilters);
-
-  useEffect(() => {
-    params.sub2Category = {};
-    params.subCategory_like = path;
     if (category !== undefined) {
       params.category = category;
     }
     if (sub_category !== undefined) {
       params.sub2Category = { ...params.sub2Category, [sub_category]: true };
     }
+    if (params.subCategory_like !== path) {
+      params.page = initParams.page;
+      params.limit = initParams.limit;
+      params.subCategory_like = initParams.path;
+      params.category = initParams.category;
+      params.sub2Category = initParams.sub2Category;
+      params.brand = initParams.brand;
+      params.order = initParams.order;
+      params.sort = initParams.sort;
+      params.discounted_price_gt = initParams.discounted_price_gt;
+      params.discounted_price_lt = initParams.discounted_price_lt;
+      params.priceValue = initParams.priceValue;
+    }
+    params.subCategory_like = path;
+    dispatch(getProducts(params));
   }, [navigate]);
 
   useEffect(() => {
     dispatch(getProducts(params));
-  }, [params, navigate]);
+  }, [params, sortingByPrice]);
 
   useEffect(() => {
     let subCategory_like = path;
-
     dispatch(getAllData(subCategory_like));
-  }, [allData.length]);
+  }, []);
 
   if (loading) {
     return (
@@ -204,7 +216,6 @@ const ProductsPage = () => {
                     onChange={(e) => {
                       params.sort = "discounted_price";
                       params.order = e.target.value;
-
                       setSortingByPrice({
                         ...sortingByPrice,
                         order: e.target.value,
@@ -226,7 +237,7 @@ const ProductsPage = () => {
                 {productsData &&
                   productsData.map((e) => (
                     <ProductCard
-                      key={e.id}
+                      key={e._id}
                       id={e._id}
                       image={e.image}
                       product_name={e.product_name}
@@ -249,7 +260,6 @@ const ProductsPage = () => {
                   handlePageChange={(page) => {
                     params.page = page;
                     dispatch(getProducts(params));
-                    console.log(page);
                   }}
                 />
               )}
