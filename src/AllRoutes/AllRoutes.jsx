@@ -13,8 +13,17 @@ const AllRoutes = () => {
     <Routes>
       <Route path="/" element={<HomePage />} />
 
+<<<<<<< HEAD
+      <Route
+        path="/products/:path/:category?/:sub-Category?brand=:brandQuery?"
+        element={<ProductsPage />}
+      />
+      <Route  path="/signin"  element={<Signin />} />
+      <Route  path="/register"  element={<RegisterPage />} />
+=======
       <Route path="/signin" element={<Signin />} />
       <Route path="/register" element={<RegisterPage />} />
+>>>>>>> 9f0daf8a3fdf54acb34038654de8c47b630098da
       {/* <Route
         path="/products/:path/:category/:sub-Category"
         element={<ProductsPage />}

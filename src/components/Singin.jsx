@@ -14,32 +14,31 @@ import {
   Divider,
   useToast
 } from '@chakra-ui/react';
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { useForm } from 'react-hook-form';
 import { RiEyeCloseFill } from "react-icons/ri"
 import { IoMdEye } from "react-icons/io"
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function Signin() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
+  const [loading, setLoading] = useState(false)
   const toast = useToast()
-
+  const [go, setGo] = useState(false)
+  const navigate = useNavigate()
   const Signin = (data) => {
     const payload = {
       email,
       pwd,
     }
-    // const headers = {
-    //   "Access-Control-Allow-Origin": "*",
-    //   "Content-Type": "application/json",
-    //   "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-    //   "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization, Accept,charset,boundary,Content-Length"
-    // }
+    setLoading(true)
     axios.post("https://wide-eyed-pinafore-duck.cyclic.app/users/login", payload)
-      .then((res) =>{
-        if(res.data.token){
+      .then((res) => {
+        console.log(res);
+        if (res.data.token) {
           toast({
             position: 'top',
             title: 'Successful',
@@ -48,11 +47,15 @@ function Signin() {
             duration: 3000,
             isClosable: true,
           })
+          setGo(true)
+          localStorage.setItem("token", res.data.token)
         }
-        localStorage.setItem("token",res.data.token)
+        setLoading(false)
       })
-      .catch((err) =>{ console.log(err)
-        if(err){
+      .then(res => { GetSign() })
+      .catch((err) => {
+        console.log(err)
+        if (err) {
           toast({
             position: 'top',
             title: 'Unsuccessfull',
@@ -62,21 +65,51 @@ function Signin() {
             isClosable: true,
           })
         }
-       })
-    // console.log(data);
+        setLoading(false)
+      })
   };
+
+  const GetSign = () => {
+    // const delay = 1000;
+
+    // const fetchData = async () => {
+    const config = {
+      headers: {
+        token: localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      },
+    }
+    axios.get("https://wide-eyed-pinafore-duck.cyclic.app/users/", config)
+      .then(res => {
+        console.log(res)
+        if (res.data.role === "customer") {
+          console.log("customer", res.data.role);
+          // setGo(true)
+          navigate("/")
+
+
+        }
+        else if (res.data.role === "admin") {
+          navigate("/admin")
+          // console.log(res.data.role)
+        } else {
+          navigate("/signin")
+        }
+      })
+      .catch(err => console.log(err))
+  }
 
   const handleShowPassword = () => setShowPassword(!showPassword);
 
   return (
-    <Box bg="gray.50" minH="100vh" py={10}>
+    <Box bg="gray.50" minH="100vh" py={10} >
       <Box maxW="xl" mx="auto" px={4}>
         <Heading as="h1" size="2xl" textAlign="center" mb={8}>
           Sign In
         </Heading>
 
-        <Box bg="white" p={8} borderRadius="md" boxShadow="lg">
-          <form onSubmit={handleSubmit(Signin)}>
+        <Box bg="white" p={8} borderRadius="md" boxShadow="lg" mt={'100px'}>
+          <form onSubmit={handleSubmit(Signin)}  >
             <Stack spacing={4}>
               <FormControl id="email" isRequired isInvalid={errors.email}>
                 <FormLabel>Email</FormLabel>
@@ -96,8 +129,15 @@ function Signin() {
                 </InputGroup>
                 <FormErrorMessage>Please enter a password</FormErrorMessage>
               </FormControl>
-
-              <Button type="submit" colorScheme="blue">Sign In</Button>
+              {/* {
+               go===true?<NavLink to="/" > <Button type="submit" colorScheme="blue">Sign In</Button> </NavLink>: 
+               <NavLink to="/signin" > <Button type="submit" colorScheme="blue">Sign In</Button> </NavLink>
+               
+             } */}
+              <Button type="submit" backgroundColor={'gray.200'} isLoading={loading}
+                loadingText='Signing In'
+                colorScheme='teal'
+                variant='outline' onClick={GetSign}>Sign In</Button>
             </Stack>
           </form>
         </Box>

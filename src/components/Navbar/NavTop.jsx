@@ -7,13 +7,16 @@ import "../../styles/NavTop.css";
 import Hamburger from "./Hamburger";
 import NavBottom from "./NavBottom";
 import AccountDropdown from "../Model";
+import { Link } from "react-router-dom";
 const NavTop = () => {
   return (
+    // maindiv
     <div id="maindiv">
+       
       <div className="container">
         <Hamburger />
-        <div className="logo">
-          <img src="https://i.ibb.co/d27npvV/Lint-trimmy-1.png" alt="logo" />
+      <div className="logo">
+      <Link to='/' >  <img src="https://i.ibb.co/d27npvV/Lint-trimmy-1.png" alt="logo" /></Link>
         </div>
         <div className="search">
           <input id="inp" type="text" placeholder="Search" />
