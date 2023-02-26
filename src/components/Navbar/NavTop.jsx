@@ -2,13 +2,21 @@ import React from "react";
 import { FiSearch } from "react-icons/fi";
 import { RxCardStackPlus } from "react-icons/rx";
 import { AiFillDollarCircle } from "react-icons/ai";
-import { BsBagPlus } from "react-icons/bs";
+import { BsBagFill } from "react-icons/bs";
 import "../../styles/NavTop.css";
 import Hamburger from "./Hamburger";
 import NavBottom from "./NavBottom";
 import AccountDropdown from "../Model";
+import { useDispatch, useSelector } from "react-redux";
+import {Flex} from "@chakra-ui/react"
+import { getCartItems } from "../../redux/cart/cart.actions";
 import { Link } from "react-router-dom";
 const NavTop = () => {
+  const dispatch = useDispatch()
+  const {total, items} = useSelector(store=>store.cartManager)
+  React.useEffect(()=>{
+    if (!items.length) dispatch(getCartItems())
+  }, [])
   return (
     // maindiv
     <div id="maindiv">
@@ -39,8 +47,9 @@ const NavTop = () => {
             </p>
           </span>
           <span>
-            <BsBagPlus />
-            <p>Bag</p>
+            <Flex position="absolute" color="white" mt="8px" ml="12px">{total.items}</Flex>
+            <BsBagFill />
+            <p>₹{total.price}</p>
           </span>
         </div>
       </div>

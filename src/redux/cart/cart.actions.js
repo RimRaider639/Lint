@@ -1,7 +1,7 @@
 import axios from "axios";
 import { cart } from "./cart.actionTypes";
 
-const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg2M2E2MGQ3ZmZkMDAwMGQ1MzJhMiIsImlhdCI6MTY3NzIyMjg5M30.aVfhv18iNOldFPldQOblQPRa_ruI27adYlRpJcIyESw`;
+export const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg2M2E2MGQ3ZmZkMDAwMGQ1MzJhMiIsImlhdCI6MTY3NzIyMjg5M30.aVfhv18iNOldFPldQOblQPRa_ruI27adYlRpJcIyESw`;
 
 export const getCartItems = () => async (dispatch) => {
   dispatch({ type: cart.GET_ITEMS_LOADING });
@@ -11,9 +11,10 @@ export const getCartItems = () => async (dispatch) => {
         token,
       },
     })
-    .then((res) =>
-      dispatch({ type: cart.GET_ITEMS_SUCCESS, payload: res.data })
-    )
+    .then((res) => {
+      console.log(res);
+      dispatch({ type: cart.GET_ITEMS_SUCCESS, payload: res.data });
+    })
     .catch((err) => dispatch({ type: cart.GET_ITEMS_ERROR, payload: err }));
 };
 
@@ -36,9 +37,37 @@ export const updateCartItem = (id, count) => async (dispatch) => {
 };
 
 export const removeCartItem = (id) => async (dispatch) => {
-  axios.patch(`https://wide-eyed-pinafore-duck.cyclic.app/cart/${id}`, {
-    headers: {
-      token,
-    },
-  });
+  dispatch({ type: cart.DELETE_ITEM_LOADING });
+  axios
+    .delete(`https://wide-eyed-pinafore-duck.cyclic.app/cart/${id}`, {
+      headers: {
+        token,
+      },
+    })
+    .then((res) =>
+      dispatch({ type: cart.DELETE_ITEM_SUCCESS, payload: res.data })
+    )
+    .then((res) => setTimeout(() => dispatch(getCartItems()), 1000))
+    .catch((res) =>
+      dispatch({ type: cart.DELETE_ITEM_ERROR, payload: res.response.data })
+    );
+};
+
+export const addToCart = (productID) => async (dispatch) => {
+  dispatch({ type: cart.ADD_ITEM_LOADING });
+  axios
+    .post(
+      `https://wide-eyed-pinafore-duck.cyclic.app/cart`,
+      {
+        productID,
+      },
+      {
+        headers: { token },
+      }
+    )
+    .then((res) => dispatch({ type: cart.ADD_ITEM_SUCCESS, payload: res.data }))
+    .then((res) => setTimeout(() => dispatch(getCartItems()), 1000))
+    .catch((res) =>
+      dispatch({ type: cart.DELETE_ITEM_ERROR, payload: res.response.data })
+    );
 };

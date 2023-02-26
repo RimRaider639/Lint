@@ -19,6 +19,7 @@ import {
   AccordionPanel,
   List,
   ListItem,
+  useDisclosure,
   Flex,
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
@@ -27,6 +28,10 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import React from "react";
 import axios from "axios";
+import { token } from "../redux/cart/cart.actions";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../redux/cart/cart.actions";
+import AddedToCartModal from "../components/Cart/AddedToCartModal";
 
 import Loader from "../components/Loader";
 
@@ -37,11 +42,17 @@ function SingleProductPage() {
   };
   const toast = useToast();
   const { id } = useParams();
-
+  const dispatch = useDispatch();
+  // const {loading, error, message, total} = useSelector(store=>store.cartManager) 
+  const [loading, setLoading] = React.useState(false)
+  const [error, setError] = React.useState(false)
+  const [msg, setMsg] = React.useState("")
   const [product, setProduct] = React.useState([]);
+  const [cartItem, setCartItem] = React.useState({})
   const [currentImage, setCurrentImage] = React.useState("");
-  const [imageHeight, setImageHeight] = React.useState("100");
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
+  const [imageHeight, setImageHeight] = React.useState("100");
   React.useEffect(() => {
     axios
       .get(`https://wide-eyed-pinafore-duck.cyclic.app/products/${id}`)
@@ -71,14 +82,40 @@ function SingleProductPage() {
   // Handle add to cart button click
   const handleAddToCart = () => {
     // Add logic to add product to cart
-    toast({
-      position: "top-right",
-      title: "Product added to cart",
-      status: "success",
-      duration: 3000,
-      isClosable: true,
-    });
+    // dispatch(addToCart(id))
+    setLoading(true)
+    axios
+    .post(
+      `https://wide-eyed-pinafore-duck.cyclic.app/cart`,
+      {
+        productID:id,
+      },
+      {
+        headers: { token },
+      }
+    )
+    .then(res=>{
+      setLoading(false)
+      setCartItem(res.data.data)
+      setMsg(res.data.message)
+      onOpen()
+    })
+    .catch(err=>{
+      setLoading(false)
+      setError(true)
+      setMsg(err.response.data)
+    })
+    
   };
+  // React.useEffect(()=>{
+  //   toast({
+  //     position: "top-right",
+  //     title: msg,
+  //     status: "success",
+  //     duration: 3000,
+  //     isClosable: true,
+  //   });
+  // }, [setCartItem])
 
   if (product.length === 0) {
     return (
@@ -309,12 +346,14 @@ function SingleProductPage() {
 
               <VStack spacing={3}>
                 <Button
+                isLoading={loading}
                   w="full"
                   colorScheme="blue"
                   size="lg"
                   onClick={handleAddToCart}>
                   Add to cart
                 </Button>
+                <AddedToCartModal onClose={onClose} isOpen={isOpen} prodID={id}/>
                 <HStack>
                   <Text
                     color={"#0076be"}
