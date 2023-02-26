@@ -3,9 +3,23 @@ import "../styles/Model.css"
 import { BsBoxSeam,BsPlusLg,BsGift } from "react-icons/bs"
 import { HiClipboardList } from "react-icons/hi"
 import {BsPerson} from "react-icons/bs"
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function AccountDropdown() {
     const [isOpen, setIsOpen] = useState(false);
-
+    const istoken=localStorage.getItem("token")
+    const navigate=useNavigate()
+    const handleClick=()=>{
+        if(istoken){
+            localStorage.removeItem("token")
+            navigate("/")
+        }else{
+            navigate("/signin")
+        }
+    }
+    const handlecreate=()=>{
+        navigate("/register")
+    }
     return (
         <div className="account-dropdown">
             <div className="fle">
@@ -16,12 +30,16 @@ function AccountDropdown() {
             
             {isOpen && (
                 <div className="dropdown-menu">
-                    <button className="btn_acc">Sign In</button>
-                    <button className="btn_accc">Create Account</button>
-                    <span id="dot"><BsBoxSeam /><p>Find My Orders</p></span>
+                    <button className="btn_acc" onClick={handleClick} >{istoken?"Sign Out" : "Sign In"}</button>
+                   {
+                    istoken?null:<button className="btn_accc" onClick={handlecreate} >Create Account</button>
+                   }
+                   {
+                    istoken? <div> <span id="dot"><BsBoxSeam /><p>Find My Orders</p></span>
                     <span><BsPlusLg /><p>LINT Rewards+</p></span>
                     <span><HiClipboardList /><p>LINT Rewards+</p></span>
-                    <span><BsGift /><p>Find a Registry</p></span>
+                    <span><BsGift /><p>Find a Registry</p></span> </div>:null
+                   }
                 </div>
             )}
         </div>

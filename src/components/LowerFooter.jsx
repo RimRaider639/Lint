@@ -37,7 +37,7 @@ function StatsCard(props: StatsCardProps) {
 
 const LowerFooter = () => {
 
-    const { isOpen, onToggle, onClose } = useDisclosure()
+    const { isOpen, onToggle } = useDisclosure()
 
 
     return (
@@ -126,8 +126,8 @@ const LowerFooter = () => {
                         bg='teal.500'
                         rounded='md'
                         shadow='md'
-                        z-zIndex={'10'}
-
+                        // z-Index={'1000'}
+        border='1px solid red'
                     >
                         <IconButton icon={<BiDownArrow />}
                             isRound={true}

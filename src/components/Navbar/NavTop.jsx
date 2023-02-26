@@ -10,6 +10,7 @@ import AccountDropdown from "../Model";
 import { useDispatch, useSelector } from "react-redux";
 import {Flex} from "@chakra-ui/react"
 import { getCartItems } from "../../redux/cart/cart.actions";
+import { Link } from "react-router-dom";
 const NavTop = () => {
   const dispatch = useDispatch()
   const {total, items} = useSelector(store=>store.cartManager)
@@ -17,11 +18,13 @@ const NavTop = () => {
     if (!items.length) dispatch(getCartItems())
   }, [])
   return (
+    // maindiv
     <div id="maindiv">
+       
       <div className="container">
         <Hamburger />
-        <div className="logo">
-          <img src="https://i.ibb.co/d27npvV/Lint-trimmy-1.png" alt="logo" />
+      <div className="logo">
+      <Link to='/' >  <img src="https://i.ibb.co/d27npvV/Lint-trimmy-1.png" alt="logo" /></Link>
         </div>
         <div className="search">
           <input id="inp" type="text" placeholder="Search" />

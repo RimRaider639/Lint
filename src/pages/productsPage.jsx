@@ -1,5 +1,9 @@
 import {
   Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Button,
   Divider,
   Flex,
   Grid,
@@ -8,21 +12,22 @@ import {
   Image,
   Select,
   Text,
-  useDisclosure,
   VStack,
 } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { RxDoubleArrowRight } from "react-icons/rx";
 
 import Filters from "../components/productsPage/filters";
 import ProductCard from "../components/productsPage/productCard";
 import FilterDrawer from "../components/productsPage/filterDrawer";
 
 import { getAllData, getProducts } from "../redux/products/products.action";
-import { useParams } from "react-router-dom";
-// import Pagination from "../components/pagination";
-import ReactPaginate from "react-paginate";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import Loader from "../components/Loader";
+
 import Pagination from "../components/pagination";
+import NotAvailable from "../components/NotAvailable";
 const price = [
   {
     title: "Under Rs.499",
@@ -51,44 +56,117 @@ const price = [
 ];
 
 const ProductsPage = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { path } = useParams();
+  const { path, category, sub_category } = useParams();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const urlPath = location.pathname.split("/");
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
+  let dispatch = useDispatch();
   let { loading, productsData, allData, params, filters } = useSelector(
     (store) => store.ProductsManager
   );
-
   const [sortingByPrice, setSortingByPrice] = React.useState({
     sort: "discounted_price",
-    order: "",
+    order: params.order,
   });
 
-  // Pagination
-
-  // Pagination
-
-  let dispatch = useDispatch();
+  // const appliedFilters = {
+  //   subCategory_like: params.subCategory_like,
+  //   category: params.category,
+  //   sub2Category: params.sub2Category,
+  //   brand: params.brand,
+  //   price: [params.discounted_price_gt, params.discounted_price_lt],
+  //   order: params.order,
+  // };
+  useEffect(() => {
+    setSortingByPrice({ ...sortingByPrice, order: params.order });
+  }, [params.order]);
+  // console.log("appliedFilters productPage_line75", appliedFilters);
 
   useEffect(() => {
+    params.sub2Category = {};
     params.subCategory_like = path;
+    if (category !== undefined) {
+      params.category = category;
+    }
+    if (sub_category !== undefined) {
+      params.sub2Category = { ...params.sub2Category, [sub_category]: true };
+    }
+  }, [navigate]);
+
+  useEffect(() => {
     dispatch(getProducts(params));
-  }, [productsData.length, dispatch, params, path, sortingByPrice]);
+  }, [params, navigate]);
 
   useEffect(() => {
     let subCategory_like = path;
 
     dispatch(getAllData(subCategory_like));
-  }, [allData.length, path, dispatch]);
+  }, [allData.length]);
 
-  // { filterHeading: [], filterCategory: [], filterBrands: [] }
-
-  if (productsData.length === 0) {
+  if (loading) {
     return (
-      <Image src="https://media0.giphy.com/media/hWZBZjMMuMl7sWe0x8/giphy.gif?cid=ecf05e47miq5cngzblyhk1rx2cq7qjkem5ilbc3fg1fvkbkc&rid=giphy.gif&ct=g" />
+      <Box pt={"23%"} pb="15%">
+        <Loader />
+      </Box>
+    );
+  } else if (productsData.length === 0) {
+    return (
+      <Box pt={"10%"}>
+        <NotAvailable />
+      </Box>
     );
   } else {
     return (
       <>
-        <Box width={"90%"} margin="auto" pt={"160px"}>
+        <Box
+          width={"90%"}
+          margin="auto"
+          pt={{ base: "140px", sm: "90px", md: "80px", lg: "150px" }}>
+          {/* <FilterTag title={appliedFilters.subCategory_like} /> */}
+          <Flex
+            alignItems={"center"}
+            fontSize={{ base: "16px", sm: "20px", md: "22px", lg: "24px" }}
+            mt={{ base: "10px", sm: "10px", md: "10px", lg: "0px" }}
+            pb={{ base: "20px", sm: "5px" }}>
+            <Breadcrumb separator="/">
+              {urlPath &&
+                urlPath.map((path, i) =>
+                  i > 0 ? (
+                    <BreadcrumbItem key={i}>
+                      <BreadcrumbLink href="#">{path}</BreadcrumbLink>
+                    </BreadcrumbItem>
+                  ) : (
+                    <BreadcrumbItem key={i}>
+                      <BreadcrumbLink href="#">{path}</BreadcrumbLink>
+                    </BreadcrumbItem>
+                  )
+                )}
+            </Breadcrumb>
+          </Flex>
+          <Flex mb="10px" mt={{}}>
+            {" "}
+            <Button
+              mr="2%"
+              onClick={handleGoBack}
+              display={{ base: "block", sm: "block", md: "none" }}>
+              Go Back
+            </Button>
+            <Box display={{ base: "block", sm: "block", md: "none" }}>
+              <FilterDrawer
+                filterHeading={filters.filterHeading}
+                filterBrands={filters.filterBrands}
+                price={price}
+              />
+            </Box>
+            <HStack
+              display={{ base: "none", sm: "none", md: "block" }}></HStack>
+          </Flex>
           <Grid gridTemplateColumns={{ sm: "100%", md: "25% 75%" }} gap={"5px"}>
             {/* filters section start */}
             {/* for large screen */}
@@ -97,16 +175,10 @@ const ProductsPage = () => {
                 filterHeading={filters.filterHeading}
                 filterBrands={filters.filterBrands}
                 price={price}
+                handleGoBack={handleGoBack}
               />
             </Box>
             {/* for small screen */}
-            <Box display={{ base: "block", sm: "block", md: "none" }}>
-              <FilterDrawer
-                filterHeading={filters.filterHeading}
-                filterBrands={filters.filterBrands}
-                price={price}
-              />
-            </Box>
 
             {/* products section start */}
             <VStack justify={"space-between"} p="10px">
@@ -161,6 +233,8 @@ const ProductsPage = () => {
                       retail_price={e.retail_price}
                       discounted_price={e.discounted_price}
                       rating={e.rating}
+                      path={path}
+                      params={params}
                     />
                   ))}
               </Grid>
