@@ -11,8 +11,8 @@ import {
 import React from "react";
 import RatingSystem from "./ratingSystem";
 import ImageHover from "./imageCarousel";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import {} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 function ProductCard(props) {
@@ -26,12 +26,17 @@ function ProductCard(props) {
     path,
     params,
   } = props;
+  const navigate = useNavigate();
+  const location = useLocation();
+  function HandleSingleProductPath() {}
   // console.log("ProductCard", params);
+  // const path = `${location.pathname}/${category}`;
+  // navigate(path);
   return (
     <Link
       to={`/products/${path}/${
         params.category === "" ? params.subCategory_like : params.category
-      }/${id}`}>
+      }/${id}/single`}>
       <Card maxW="sm">
         <CardBody p={"5px"}>
           <VStack p="10px">

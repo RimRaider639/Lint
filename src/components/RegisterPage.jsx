@@ -11,13 +11,15 @@ import {
     InputGroup,
     InputRightElement,
     Text,
-    Divider
+    Divider,
+    useToast
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { RiEyeCloseFill } from "react-icons/ri"
 import { IoMdEye } from "react-icons/io"
 import { Link } from "react-router-dom"
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function RegisterPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
@@ -27,15 +29,13 @@ function RegisterPage() {
     const [mobile, setMobile] = useState("");
     const [country, setCountry] = useState("");
     const [city, setCity] = useState("");
+    const [loading, setLoading] = useState(false)
+    const toast = useToast()
+    const navigate=useNavigate()
     // const [role, setRole] = useState("");////
+    // const { control, formState: { errors } } = useForm();
 
     const onSubmit = () => {
-        // const headers = {
-        //     "Access-Control-Allow-Origin": "*",
-        //     "Content-Type": "application/json",
-        //     "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-        //     "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization, Accept,charset,boundary,Content-Length"
-        // }
         const payload = {
             name,
             email,
@@ -45,9 +45,36 @@ function RegisterPage() {
             city,
             // role
         }
+        setLoading(true)
         axios.post("https://wide-eyed-pinafore-duck.cyclic.app/users/register", payload)
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err))
+            .then((res) => {
+                console.log(res)
+                toast({
+                    position: 'top',
+                    title: 'Successful',
+                    description: res.data.message,
+                    status: 'success',
+                    duration: 3000,
+                    isClosable: true,
+                  })
+                setLoading(false)
+                navigate("/signin")
+            })
+            .catch((err) => {
+                console.log(err)
+                if (err) {
+                    toast({
+                      position: 'top',
+                      title: 'Something Went Wrong !',
+                      description: err.response.data.message,
+                      status: 'error',
+                      duration: 3000,
+                      isClosable: true,
+                    })
+                    setLoading(false)
+                  }
+            })
+            
     };
 
     const handleShowPassword = () => setShowPassword(!showPassword);
@@ -77,6 +104,7 @@ function RegisterPage() {
                             <FormControl id="password" isRequired isInvalid={errors.password}>
                                 <FormLabel>Password</FormLabel>
                                 <InputGroup>
+                                
                                     <Input type={showPassword ? 'text' : 'password'} name="password" {...register('password', { required: true })} value={pwd} onChange={(e) => setPwd(e.target.value)} />
                                     <InputRightElement>
                                         <Button size="sm" onClick={handleShowPassword}>
@@ -86,6 +114,30 @@ function RegisterPage() {
                                 </InputGroup>
                                 <FormErrorMessage>Please enter a password</FormErrorMessage>
                             </FormControl>
+
+{/* <FormControl isInvalid={errors.password}>
+  <FormLabel>Password</FormLabel>
+  <InputGroup>
+    <Controller
+      name="password"
+      control={control}
+      rules={{ required: true, minLength: 8 }}
+      render={({ field }) => (
+        <Input {...field} type={showPassword ? "text" : "password"} />
+      )}
+    />
+    <InputRightElement>
+      <Button h="1.75rem" size="sm" onClick={handleShowPassword}>
+        {showPassword ? <IoMdEye /> :  <RiEyeCloseFill />}
+      </Button>
+    </InputRightElement>
+  </InputGroup>
+  <FormErrorMessage>
+    {errors.password && errors.password.type === "required" && "Password is required"}
+    {errors.password && errors.password.type === "minLength" && "Password must be at least 8 characters"}
+  </FormErrorMessage>
+</FormControl> */}
+
 
                             <FormControl id="mobile" isRequired isInvalid={errors.mobile}>
                                 <FormLabel>Mobile</FormLabel>
@@ -104,7 +156,11 @@ function RegisterPage() {
                                 <Input type="text" name="city" {...register('city', { required: true })} value={city} onChange={(e) => setCity(e.target.value)} />
                                 <FormErrorMessage>Please enter your city</FormErrorMessage>
                             </FormControl>
-                            <Button type="submit" mt={8} colorScheme="blue" size="lg" isFullWidth>
+                            <Button type="submit" mt={8} size="lg" isFullWidth 
+                            backgroundColor={'gray.200'} isLoading={loading}
+                            loadingText='Signing In'
+                            colorScheme='teal'
+                            variant='outline'>
                                 Create Account
                             </Button>
                         </Stack>

@@ -16,6 +16,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/layout";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,6 +26,9 @@ import PriceRadio from "./priceRadio";
 
 function Filters({ filterHeading, price }) {
   let dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { path } = useParams();
   let { loading, params } = useSelector((store) => store.ProductsManager);
   console.log("params in filters", params);
 
@@ -43,6 +47,8 @@ function Filters({ filterHeading, price }) {
 
   const HandleFilterHeading = (category) => {
     params.category = category;
+    const path = `${location.pathname}/${category}`;
+    navigate(path);
     setCategorySelected([category]);
     dispatch(getProducts(params));
   };
@@ -64,7 +70,9 @@ function Filters({ filterHeading, price }) {
   };
 
   const HandleCLearParams = () => {
-    dispatch(clearParams());
+    navigate(`/products/${path}`);
+
+    dispatch(clearParams(path));
   };
   if (loading) {
     return (
@@ -115,7 +123,23 @@ function Filters({ filterHeading, price }) {
                 return (
                   <>
                     <Box maxH="400px" overflowY="scroll" w="full" key={i}>
-                      <Accordion flex="1" allowToggle>
+                      <Accordion
+                        flex="1"
+                        allowToggle
+                        defaultIndex={
+                          params.sub2Category &&
+                          Object.keys(params.sub2Category).length > 0 &&
+                          params.brand &&
+                          Object.keys(params.brand).length > 0
+                            ? [0, 1] // both sub2Category and brand objects are present
+                            : params.sub2Category &&
+                              Object.keys(params.sub2Category).length > 0
+                            ? [0] // only sub2Category object is present
+                            : params.brand &&
+                              Object.keys(params.brand).length > 0
+                            ? [1] // only brand object is present
+                            : [] // both sub2Category and brand objects are not present
+                        }>
                         <AccordionItem>
                           <h2>
                             <AccordionButton>
@@ -359,7 +383,10 @@ function Filters({ filterHeading, price }) {
 
         {/* Category 3 by Price Range */}
         <Box maxH="400px" overflowY="scroll" w="full">
-          <Accordion flex="1" allowToggle>
+          <Accordion
+            flex="1"
+            allowToggle
+            defaultIndex={params.priceValue ? [0] : []}>
             <AccordionItem>
               <h2>
                 <AccordionButton>
@@ -372,28 +399,6 @@ function Filters({ filterHeading, price }) {
                 </AccordionButton>
               </h2>
 
-              {/* {price &&
-                price.map((e, i) => (
-                  <Box key={i}>
-                    {" "}
-                    <AccordionPanel mb={-3}>
-                      <HStack borderBottom={"1px solid black"}>
-                        <Text
-                          _hover={{ color: "#0076be", fontWeight: "bold" }}
-                          cursor={"pointer"}
-                          onClick={() => {
-                            params.discounted_price_gt = e.discounted_price_gt;
-                            params.discounted_price_lt = e.discounted_price_lt;
-
-                            dispatch(getProducts(params));
-                          }}
-                          fontWeight={"medium"}>
-                          {e.title}
-                        </Text>
-                      </HStack>
-                    </AccordionPanel>
-                  </Box>
-                ))} */}
               <PriceRadio
                 priceRanges={price}
                 discounted_price_gt={params.discounted_price_gt}

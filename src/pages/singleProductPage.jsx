@@ -22,13 +22,12 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { TbTruckDelivery } from "react-icons/tb";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import React from "react";
 import axios from "axios";
 
-import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 
 function SingleProductPage() {
@@ -41,6 +40,7 @@ function SingleProductPage() {
 
   const [product, setProduct] = React.useState([]);
   const [currentImage, setCurrentImage] = React.useState("");
+  const [imageHeight, setImageHeight] = React.useState("100");
 
   React.useEffect(() => {
     axios
@@ -49,9 +49,22 @@ function SingleProductPage() {
         let data = response.data;
         setProduct(data);
         setCurrentImage(data.image[0]);
+        if (data.image.length === 1) {
+          setImageHeight("600");
+        } else if (data.image.length === 2) {
+          setImageHeight("600");
+        } else if (data.image.length === 3) {
+          setImageHeight("266");
+        } else if (data.image.length === 4) {
+          setImageHeight("200");
+        } else if (data.image.length === 5) {
+          setImageHeight("160");
+        } else {
+          setImageHeight("100");
+        }
       })
       .catch(function (error) {
-        console.log("error in geting single product data" + error);
+        console.log("error in getting single product data" + error);
       });
   }, [id]);
 
@@ -66,6 +79,11 @@ function SingleProductPage() {
       isClosable: true,
     });
   };
+
+  // React.useEffect(() => {
+  //   console.log("product.image.length=", product.image.length);
+
+  // }, [product.image.length]);
 
   if (product.length === 0) {
     return (
@@ -98,39 +116,44 @@ function SingleProductPage() {
 
                   <VStack align="flex-start" w={{ base: "20%", md: "30%" }}>
                     {product &&
-                      product.image.map(
-                        (e, i) =>
-                          i > 0 && (
-                            <>
-                              {" "}
-                              <Box key={e + i} h="100px" overflow="hidden">
-                                <Image
-                                  src={e}
-                                  alt={`Image${i}`}
-                                  objectFit="cover"
-                                  onClick={() => {
-                                    setCurrentImage(e);
-                                  }}
-                                />
-                              </Box>
-                            </>
-                          )
-                      )}
+                      product.image
+                        .slice(1, 7) // only map the first 6 elements, starting from index 1
+                        .map((e, i) => (
+                          <Box
+                            key={e + i}
+                            h={`${imageHeight}`}
+                            overflow="hidden">
+                            <Image
+                              src={e}
+                              alt={`Image${i}`}
+                              objectFit="contain"
+                              onClick={() => {
+                                setCurrentImage(e);
+                              }}
+                            />
+                          </Box>
+                        ))}
                   </VStack>
 
                   {/* Right main Image */}
                   <Box
                     w={{ base: "100%", md: "80%" }}
                     overflow="hidden"
-                    maxH={`${
-                      (product.image.length - 1) * 100 +
-                      (product.image.length - 1) * 7
-                    }px`}>
+                    h={{
+                      md: `${
+                        (product.image.length - 1) * imageHeight +
+                        (product.image.length - 1) * 7
+                      }`,
+                      lg: `${
+                        (product.image.length - 1) * imageHeight +
+                        (product.image.length - 1) * 7
+                      }`,
+                    }}>
                     {currentImage ? (
                       <Image
                         src={currentImage}
                         alt={product.name}
-                        objectFit="cover"
+                        objectFit="contain"
                       />
                     ) : (
                       ""
