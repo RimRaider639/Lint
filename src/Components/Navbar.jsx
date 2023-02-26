@@ -19,7 +19,9 @@ const Navbar = () => {
           w={{ md: "55%", xl: "500px" }}
           display={{ base: "none", md: "flex" }}
         >
-          <Button>Main Website</Button>
+          <Button>
+            <a href="https://lint-lovat.vercel.app/">Main Website</a>
+          </Button>
           <DarkModeButton />
           <Button>Logout</Button>
 

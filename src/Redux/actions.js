@@ -1,5 +1,10 @@
 import axios from "axios";
 import * as actionType from './actionTypes';
+const tkn = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjczM2Y2YWIwMDhkMzdjMDQyNzJiZiIsImlhdCI6MTY3NzE0NTIxMn0.U_Yr-cKZ4lWa1M02zgPdwXzZc1wZGbz4-nODV6x-WQQ'
+
+localStorage.setItem('token', JSON.stringify(tkn))
+const myToken = JSON.parse(localStorage.getItem("token"));
+
 
 // Create [Add Product]=>
 const addProduct=(payload)=>(dispatch)=>{
@@ -7,7 +12,7 @@ const addProduct=(payload)=>(dispatch)=>{
 
     return axios.post("https://wide-eyed-pinafore-duck.cyclic.app/products",payload,{
         headers:{
-            "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjczM2Y2YWIwMDhkMzdjMDQyNzJiZiIsImlhdCI6MTY3NzE0NTIxMn0.U_Yr-cKZ4lWa1M02zgPdwXzZc1wZGbz4-nODV6x-WQQ"
+            "token":myToken
         }
     }).then((res)=>{
         dispatch({type:actionType.ADD_PRODUCTS_SUCCESS, payload:res.data})
@@ -33,7 +38,7 @@ const updateProduct = (id, payload)=>(dispatch)=>{
     
     return axios.patch(`https://wide-eyed-pinafore-duck.cyclic.app/products/${id}`,payload,{
         headers:{
-            "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjczM2Y2YWIwMDhkMzdjMDQyNzJiZiIsImlhdCI6MTY3NzE0NTIxMn0.U_Yr-cKZ4lWa1M02zgPdwXzZc1wZGbz4-nODV6x-WQQ"
+            "token":myToken
         }
     }).then(res=>{
         dispatch({type:actionType.UPDATE_PRODUCTS_SUCCESS, payload:res})
@@ -46,7 +51,7 @@ const deleteProduct=(id)=>(dispatch)=>{
 
     return axios.delete(`https://wide-eyed-pinafore-duck.cyclic.app/products/${id}`,{
         headers:{
-            "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjczM2Y2YWIwMDhkMzdjMDQyNzJiZiIsImlhdCI6MTY3NzE0NTIxMn0.U_Yr-cKZ4lWa1M02zgPdwXzZc1wZGbz4-nODV6x-WQQ"
+            "token":myToken
         }
     }).then((res)=>{
         dispatch({type:actionType.DELETE_PRODUCTS_SUCCESS, payload:id})

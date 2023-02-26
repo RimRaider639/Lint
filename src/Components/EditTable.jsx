@@ -182,6 +182,9 @@ const EditTable = () => {
                   >
                     <option value="Clothing">Clothing</option>
                     <option value="Footwear">Footwear</option>
+                    <option value="Beauty">Beauty</option>
+                    <option value="Jewellery">Jewellery</option>
+                    <option value="Baby Care">Baby Care</option>
                     <option value="Other">Other</option>
                   </Select>
                 </Td>

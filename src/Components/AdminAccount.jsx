@@ -8,6 +8,7 @@ import {
 import axios from "axios";
 import { useEffect, useState } from "react";
 import user from "../Images/tejas.png";
+const myToken = JSON.parse(localStorage.getItem("token"));
 
 const AdminAccount = () => {
   const [admin, setAdmin] = useState([]);
@@ -16,18 +17,18 @@ const AdminAccount = () => {
     axios
       .get("https://wide-eyed-pinafore-duck.cyclic.app/users", {
         headers: {
-          token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjczM2Y2YWIwMDhkMzdjMDQyNzJiZiIsImlhdCI6MTY3NzE0NTIxMn0.U_Yr-cKZ4lWa1M02zgPdwXzZc1wZGbz4-nODV6x-WQQ",
+          token:myToken,
         },
       })
       .then((res) => {
         // console.log(res)
+        localStorage.setItem("admin", JSON.stringify(user));
         setAdmin(res.data);
       });
   }, []);
 
   if (admin.length === 0) {
-    return <CircularProgress isIndeterminate color="green.300" />;
+    return <CircularProgress isIndeterminate color="green.300"/>;
   } else {
     return (
       <>

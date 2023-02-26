@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 import UserCard from "../Components/UserCard";
 
+const myToken = JSON.parse(localStorage.getItem("token"));
+
 const Users = () => {
   const [users, setUsers] = useState([]);
 
@@ -13,8 +15,7 @@ const Users = () => {
         "https://wide-eyed-pinafore-duck.cyclic.app/users/all?role=customer",
         {
           headers: {
-            token:
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjczM2Y2YWIwMDhkMzdjMDQyNzJiZiIsImlhdCI6MTY3NzE0NTIxMn0.U_Yr-cKZ4lWa1M02zgPdwXzZc1wZGbz4-nODV6x-WQQ",
+            token: myToken,
           },
         }
       )
