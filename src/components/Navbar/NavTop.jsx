@@ -10,11 +10,14 @@ import AccountDropdown from "../Model";
 import { useDispatch, useSelector } from "react-redux";
 import {Flex} from "@chakra-ui/react"
 import { getCartItems } from "../../redux/cart/cart.actions";
+import {Link, useLocation} from "react-router-dom"
 const NavTop = () => {
+
   const dispatch = useDispatch()
   const {total, items} = useSelector(store=>store.cartManager)
+  const loc = useLocation()
   React.useEffect(()=>{
-    if (!items.length) dispatch(getCartItems())
+    dispatch(getCartItems())
   }, [])
   return (
     // maindiv
@@ -46,8 +49,11 @@ const NavTop = () => {
             </p>
           </span>
           <span>
+            
             <Flex position="absolute" color="white" mt="8px" ml="12px">{total.items}</Flex>
-            <BsBagFill />
+            <Link to="/cart">
+              <BsBagFill />
+            </Link>
             <p>₹{total.price}</p>
           </span>
         </div>
