@@ -25,7 +25,7 @@ const Item = ({cartItem}) => {
   return (
     <Flex border="1px solid #e4e4e4"  p="1em 2em" bgColor={'white'} direction={'column'} minH="300px">
         <Flex w="100%" gap="25px">
-            <Flex w="15%" h="150px" align={'center'}>
+            <Flex w="15%" minH="150px">
                 <Image src={item.image[0]} alt={item.product_name} w="100%" h="fit-content" fallbackSrc={fallbackSrc}/>
             </Flex>
             <Flex direction={'column'} flexGrow={1} gap="20px">

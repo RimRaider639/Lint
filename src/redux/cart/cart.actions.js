@@ -47,7 +47,10 @@ export const removeCartItem = (id) => async (dispatch) => {
     .then((res) =>
       dispatch({ type: cart.DELETE_ITEM_SUCCESS, payload: res.data })
     )
-    .then((res) => setTimeout(() => dispatch(getCartItems()), 1000))
+    .then((res) => {
+      dispatch({ type: cart.GET_ITEMS_LOADING });
+      setTimeout(() => dispatch(getCartItems()), 1000);
+    })
     .catch((res) =>
       dispatch({ type: cart.DELETE_ITEM_ERROR, payload: res.response.data })
     );
@@ -66,7 +69,10 @@ export const addToCart = (productID) => async (dispatch) => {
       }
     )
     .then((res) => dispatch({ type: cart.ADD_ITEM_SUCCESS, payload: res.data }))
-    .then((res) => setTimeout(() => dispatch(getCartItems()), 1000))
+    .then((res) => {
+      dispatch({ type: cart.GET_ITEMS_LOADING });
+      setTimeout(() => dispatch(getCartItems()), 1000);
+    })
     .catch((res) =>
       dispatch({ type: cart.DELETE_ITEM_ERROR, payload: res.response.data })
     );

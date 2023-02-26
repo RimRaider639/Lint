@@ -32,7 +32,6 @@ import { token } from "../redux/cart/cart.actions";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/cart/cart.actions";
 import AddedToCartModal from "../components/Cart/AddedToCartModal";
-
 import Loader from "../components/Loader";
 
 function SingleProductPage() {
@@ -82,31 +81,32 @@ function SingleProductPage() {
   // Handle add to cart button click
   const handleAddToCart = () => {
     // Add logic to add product to cart
-    // dispatch(addToCart(id))
-    setLoading(true)
-    axios
-    .post(
-      `https://wide-eyed-pinafore-duck.cyclic.app/cart`,
-      {
-        productID:id,
-      },
-      {
-        headers: { token },
-      }
-    )
-    .then(res=>{
-      setLoading(false)
-      setCartItem(res.data.data)
-      setMsg(res.data.message)
-      onOpen()
-    })
-    .catch(err=>{
-      setLoading(false)
-      setError(true)
-      setMsg(err.response.data)
-    })
+    dispatch(addToCart(id))
+    .then(_=>onOpen())
+  //   setLoading(true)
+  //   axios
+  //   .post(
+  //     `https://wide-eyed-pinafore-duck.cyclic.app/cart`,
+  //     {
+  //       productID:id,
+  //     },
+  //     {
+  //       headers: { token },
+  //     }
+  //   )
+  //   .then(res=>{
+  //     setLoading(false)
+  //     setCartItem(res.data.data)
+  //     setMsg(res.data.message)
+  //     onOpen()
+  //   })
+  //   .catch(err=>{
+  //     setLoading(false)
+  //     setError(true)
+  //     setMsg(err.response.data)
+  //   })
     
-  };
+  // };
   // React.useEffect(()=>{
   //   toast({
   //     position: "top-right",
@@ -477,5 +477,5 @@ function SingleProductPage() {
     );
   }
 }
-
+}
 export default SingleProductPage;

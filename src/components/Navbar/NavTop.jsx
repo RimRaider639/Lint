@@ -50,8 +50,9 @@ const NavTop = () => {
           </span>
           <span>
             
-            <Flex position="absolute" color="white" mt="8px" ml="12px">{total.items}</Flex>
+            
             <Link to="/cart">
+              <Flex position="absolute" color="white" mt="8px" ml="12px" w="20px" h="20px" justify={'center'} align="center">{total.items}</Flex>
               <BsBagFill />
             </Link>
             <p>₹{total.price}</p>

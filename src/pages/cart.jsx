@@ -2,9 +2,10 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCartItems } from '../redux/cart/cart.actions'
 import Item from '../components/Cart/Item'
-import { Flex, Text, Divider, Image, Button } from '@chakra-ui/react'
+import { Flex, Text, Divider, Image, Button,  ModalOverlay, Modal, ModalContent } from '@chakra-ui/react'
 import {FaShippingFast} from 'react-icons/fa'
 import {AiOutlineLock} from 'react-icons/ai'
+import Loader from '../components/Loader'
 
 //colors
 const blue = `rgb(0,118,190)`
@@ -20,19 +21,27 @@ const Cart = () => {
   return (
     total.count && 
     <Flex pt="140px" w="80%" m="auto" direction={'column'} fontFamily={'Arial'}>
+        <Modal isOpen={loading} isCentered>
+          <ModalOverlay/>  
+          <ModalContent bgColor={'transparent'}>
+            <Loader/>
+          </ModalContent>
+          
+        </Modal>
+        
         <Text fontSize={'18px'} color="#222222" mb="10px">My Bag</Text>
 
         <Flex w="100%"  gap="35px" >
 
-            <Flex direction={'column'} borderRadius={'10px'} p="1em" bgColor={'#f5f5f5'} flexGrow={1} overflowY={'scroll'} maxH="80vh">
+            <Flex direction={'column'} borderRadius={'10px'} p="1em" bgColor={'#f5f5f5'} overflowY={'scroll'} maxH="80vh" maxW="70%">
                 <Text fontSize={'18px'} color="#222222">Shipping by Belk</Text>
                 <Text color='#767676' fontSize={'14px'}>{total.items} items</Text>
                 <Flex direction={'column'}  gap="20px" mt="20px">
                     {items.map(item=><Item key={item._id} cartItem={item}/>)}
                 </Flex>   
-            </Flex>
+            </Flex> 
 
-            <Flex direction={'column'} w="60%">
+            <Flex direction={'column'} w="30%">
                 <Flex borderRadius={'10px'} w="100%" border="1px solid #e4e4e4" p="1em" direction={'column'} fontSize={'14px'}>
                     <Text fontSize={'18px'} color="#222222" mb="10px">Order Summary</Text>
                     <Flex gap="5px">
