@@ -76,7 +76,7 @@ const InventoryMain = () => {
                     >
                       <ArrowBackIcon />
                     </Button>
-                    <Button onClick={() => PaginateFor()}>
+                    <Button isDisabled={page >= 10} onClick={() => PaginateFor()}>
                       {page}
                       <ArrowForwardIcon color={"teal"} />
                     </Button>
