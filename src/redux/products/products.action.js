@@ -1,23 +1,26 @@
-import { useComponentStyles__unstable } from "@chakra-ui/react";
 import axios from "axios";
 import {
   GET_ALL_DATA_SUCCESS,
   GET_PRODUCTS_ERROR,
   GET_PRODUCTS_LOADING,
   GET_PRODUCTS_SUCCESS,
+  CLEAR_PARAMS_LOADING,
+  CLEAR_PARAMS_SUCCESS,
+  CLEAR_PARAMS_ERROR,
 } from "./products.actionType";
 
 export const getAllData = (subCategory_like) => async (dispatch) => {
+  dispatch({ type: GET_PRODUCTS_LOADING });
   axios
+
     .get(`https://wide-eyed-pinafore-duck.cyclic.app/products`, {
       params: {
-        limit: 200,
+        limit: 250,
         subCategory_like,
       },
     })
     .then(function (response) {
       let data = response.data;
-      console.log(data);
 
       // storing in object locally
       let HeadingObj = {};
@@ -70,9 +73,21 @@ export const getAllData = (subCategory_like) => async (dispatch) => {
             [data[i].product_category_tree[0]][0]
           ) {
             if (filters.filterHeading[j][1][1][[data[i].brand]] === undefined) {
-              filters.filterHeading[j][1][1][[data[i].brand]] = 1;
+              filters.filterHeading[j][1][1][[data[i].brand]] = [
+                1,
+                data[i].discounted_price,
+                data[i].discounted_price,
+              ];
             } else {
-              filters.filterHeading[j][1][1][[data[i].brand]]++;
+              filters.filterHeading[j][1][1][[data[i].brand]][0]++;
+              filters.filterHeading[j][1][1][[data[i].brand]][1] = Math.min(
+                filters.filterHeading[j][1][1][[data[i].brand]][1],
+                data[i].discounted_price
+              );
+              filters.filterHeading[j][1][1][[data[i].brand]][1] = Math.max(
+                filters.filterHeading[j][1][1][[data[i].brand]][1],
+                data[i].discounted_price
+              );
             }
           }
         }
@@ -89,6 +104,7 @@ export const getAllData = (subCategory_like) => async (dispatch) => {
 };
 
 export const getProducts = (params) => async (dispatch) => {
+  dispatch({ type: GET_PRODUCTS_LOADING });
   const brandArray = [];
   const sub2CategoryArray = [];
 
@@ -103,8 +119,6 @@ export const getProducts = (params) => async (dispatch) => {
       state ? sub2CategoryArray.push(name) : null
     );
   }
-
-  dispatch({ type: GET_PRODUCTS_LOADING });
 
   try {
     const response = await axios.get(
@@ -126,5 +140,40 @@ export const getProducts = (params) => async (dispatch) => {
   } catch (error) {
     console.log(error);
     dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });
+  }
+};
+
+export const clearParams = (path) => async (dispatch) => {
+  const clearParamsState = {
+    page: "",
+    limit: 10,
+    subCategory_like: path,
+    category: "",
+    sub2Category: {},
+    brand: {},
+    order: "",
+    sort: null,
+    discounted_price_gt: null,
+    discounted_price_lt: null,
+  };
+
+  dispatch({ type: CLEAR_PARAMS_LOADING });
+
+  try {
+    const response = await axios.get(
+      `https://wide-eyed-pinafore-duck.cyclic.app/products`,
+      {
+        params: clearParamsState,
+      }
+    );
+    let data = response.data;
+
+    dispatch({
+      type: CLEAR_PARAMS_SUCCESS,
+      payload: { data, clearParamsState },
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: CLEAR_PARAMS_ERROR, payload: error.message });
   }
 };
