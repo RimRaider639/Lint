@@ -7,6 +7,7 @@ import {
   CLEAR_PARAMS_SUCCESS,
   CLEAR_PARAMS_ERROR,
 } from "./products.actionType";
+import data from "../database";
 
 // subCategory_like = to get category-wise Data for page, index=1
 
@@ -27,6 +28,7 @@ const initParams = {
   sort: null,
   discounted_price_gt: null,
   discounted_price_lt: null,
+  priceValue: undefined,
 };
 
 let initialData = {

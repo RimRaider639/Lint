@@ -9,7 +9,7 @@ const NavBottom = () => {
         {gift?.map((el) => (
           <div id="dropdown" key={el}>
             <li key={el} id="dropbtn">
-              {el.text}
+              <Link to={`/products/${el.text}`}>{el.text}</Link>
             </li>
             <div id="dropcont">
               <div className="big_parent">

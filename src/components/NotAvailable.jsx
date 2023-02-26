@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Button, Image, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-const ProductNotFound = () => {
+const NotAvailable = () => {
   const navigate = useNavigate();
   const handleGoBack = () => {
     navigate(-1);
@@ -10,18 +10,20 @@ const ProductNotFound = () => {
   return (
     <Box textAlign="center">
       <Image
-        src={"https://i.ytimg.com/vi/m7ZZNsa0pOA/maxresdefault.jpg"}
+        src={
+          "https://cdn.dribbble.com/users/721524/screenshots/4117132/media/6dff4135f851cd4af82839d83e00d1d6.png?compress=1&resize=400x300&vertical=top"
+        }
         alt="Product Not Available"
         mb="20px"
         maxWidth="80%"
         mx="auto"
       />
       <Text fontSize="xl" mb="20px" fontWeight="bold">
-        Oops! Page not found
+        Sorry, this product is currently not available
       </Text>
       <Box>
         <Text fontSize="lg" mb="20px">
-          The page you are looking for could not be found.
+          The product you are looking for is currently not available.
         </Text>
         <Button onClick={handleGoBack} mt="20px" size="lg">
           Go Back
@@ -31,4 +33,4 @@ const ProductNotFound = () => {
   );
 };
 
-export default ProductNotFound;
+export default NotAvailable;

@@ -20,11 +20,12 @@ import FilterDrawer from "../components/productsPage/filterDrawer";
 import FilterTag from "../components/productsPage/FilterTag";
 
 import { getAllData, getProducts } from "../redux/products/products.action";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 
 import Pagination from "../components/pagination";
 import ProductNotFound from "../components/NotFound";
+import NotAvailable from "../components/NotAvailable";
 const price = [
   {
     title: "Under Rs.499",
@@ -53,7 +54,13 @@ const price = [
 ];
 
 const ProductsPage = () => {
-  const { path, category } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const urlPath = `${location.pathname}`;
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+  const { path, category, sub_category } = useParams();
 
   let dispatch = useDispatch();
   let { loading, productsData, allData, params, filters } = useSelector(
@@ -65,14 +72,14 @@ const ProductsPage = () => {
   });
   // console.log("sortingByPrice", sortingByPrice);
 
-  const appliedFilters = {
-    subCategory_like: params.subCategory_like,
-    category: params.category,
-    sub2Category: params.sub2Category,
-    brand: params.brand,
-    price: [params.discounted_price_gt, params.discounted_price_lt],
-    order: params.order,
-  };
+  // const appliedFilters = {
+  //   subCategory_like: params.subCategory_like,
+  //   category: params.category,
+  //   sub2Category: params.sub2Category,
+  //   brand: params.brand,
+  //   price: [params.discounted_price_gt, params.discounted_price_lt],
+  //   order: params.order,
+  // };
   useEffect(() => {
     setSortingByPrice({ ...sortingByPrice, order: params.order });
   }, [params.order]);
@@ -83,8 +90,14 @@ const ProductsPage = () => {
     if (category !== undefined) {
       params.category = category;
     }
+    if (sub_category !== undefined) {
+      params.sub2Category = { ...params.sub2Category, [sub_category]: true };
+    }
+  }, [navigate]);
+
+  useEffect(() => {
     dispatch(getProducts(params));
-  }, [productsData.length, dispatch, params, path, sortingByPrice, category]);
+  }, [params, navigate]);
 
   useEffect(() => {
     let subCategory_like = path;
@@ -100,8 +113,8 @@ const ProductsPage = () => {
     );
   } else if (productsData.length === 0) {
     return (
-      <Box pt={"23%"} pb="15%">
-        <ProductNotFound />
+      <Box pt={"10%"}>
+        <NotAvailable />
       </Box>
     );
   } else {
@@ -111,7 +124,9 @@ const ProductsPage = () => {
           {/* <FilterTag title={appliedFilters.subCategory_like} /> */}
           <Flex mb="10px">
             {" "}
-            <Button mr="2%">Go Back</Button>
+            <Button mr="2%" onClick={handleGoBack}>
+              Go Back
+            </Button>
             <Box display={{ base: "block", sm: "block", md: "none" }}>
               <FilterDrawer
                 filterHeading={filters.filterHeading}
