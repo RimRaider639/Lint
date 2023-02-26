@@ -28,7 +28,6 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import React from "react";
 import axios from "axios";
-import { token } from "../redux/cart/cart.actions";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/cart/cart.actions";
 import AddedToCartModal from "../components/Cart/AddedToCartModal";
@@ -77,9 +76,7 @@ function SingleProductPage() {
   // Handle add to cart button click
   const handleAddToCart = () => {
     // Add logic to add product to cart
-    dispatch(addToCart(id))
-    .then(_=>onOpen())
-
+    dispatch(addToCart(id, onOpen))
     
   };
   // React.useEffect(()=>{
@@ -101,9 +98,8 @@ function SingleProductPage() {
     return (
       <Box
         display={"grid"}
-        bg="gray.100"
         py={10}
-        pt={{ base: "33%", sm: "140px", md: "11%", lg: "9%" }}>
+        pt={{ base: "30px", sm: "90px", md: "80px", lg: "150px" }}>
         <Flex ml={{ base: "2%", sm: "2%", md: "2%", lg: "2%" }}>
           <Button
             onClick={handleGoBack}

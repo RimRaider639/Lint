@@ -139,25 +139,22 @@ const ProductsPage = () => {
         <Box
           width={"90%"}
           margin="auto"
-          pt={{ base: "140px", sm: "90px", md: "80px", lg: "150px" }}>
+          pt={{ base: "30px", sm: "90px", md: "80px", lg: "150px" }}>
           {/* <FilterTag title={appliedFilters.subCategory_like} /> */}
           <Flex
             alignItems={"center"}
-            fontSize={{ base: "16px", sm: "20px", md: "22px", lg: "24px" }}
-            mt={{ base: "10px", sm: "10px", md: "10px", lg: "0px" }}
-            pb={{ base: "20px", sm: "5px" }}>
-            <Breadcrumb separator="/">
+            // mt={{ base: "10px", sm: "10px", md: "10px", lg: "0px" }}
+            pb={{ base: "10px", sm: "5px" }}>
+            <Breadcrumb separator="/" fontSize={{base:"16px", md:'18px'}}>
               {urlPath &&
                 urlPath.map((path, i) =>
-                  i > 0 ? (
+                  i > 1 && i<4 ? (
                     <BreadcrumbItem key={i}>
                       <BreadcrumbLink href="#">{path}</BreadcrumbLink>
                     </BreadcrumbItem>
-                  ) : (
-                    <BreadcrumbItem key={i}>
-                      <BreadcrumbLink href="#">{path}</BreadcrumbLink>
-                    </BreadcrumbItem>
-                  )
+                  ) : i==4?<BreadcrumbItem key={i}>
+                  <Text>{path.split("%20").join(" ")}</Text>
+                </BreadcrumbItem>:  null
                 )}
             </Breadcrumb>
           </Flex>

@@ -9,19 +9,21 @@ export default function useFetch(url) {
 
   const fetch = (config, delay) => {
     setLoading(true);
-    setTimeout(
+    const id = setTimeout(
       () =>
         axios(url, config)
           .then((res) => {
             setLoading(false);
             setData(res.data);
             setMsg(res.data.message);
+            console.log("DATAAA", res);
           })
           .catch((err) => {
             setLoading(false);
             setError(true);
             setMsg(err.response.data);
-          }),
+          })
+          .finally((r) => clearTimeout(id)),
       delay
     );
   };

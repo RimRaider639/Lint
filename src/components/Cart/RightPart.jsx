@@ -8,7 +8,7 @@ import { blue, red, darkBlue } from './colors'
 
 const RightPart = () => {
   return (
-    <Flex direction={'column'} w="30%">
+    <Flex direction={'column'} w={{base:"100%",md:"30%"}}>
                 
                 <OrderSummary/>
                 <Flex direction={'column'} h="120px" justify={'space-evenly'} align="center" fontSize={"14px"}>

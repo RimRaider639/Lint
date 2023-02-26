@@ -70,6 +70,8 @@ export default function cartReducer(state = initState, action) {
     //     error: true,
     //     message: payload.message,
     //   };
+    case cart.RESET:
+      return initState;
     default:
       return initState;
   }

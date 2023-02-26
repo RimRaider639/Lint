@@ -12,7 +12,8 @@ import {
   InputRightElement,
   Text,
   Divider,
-  useToast
+  useToast,
+  Flex
 } from '@chakra-ui/react';
 import { Link, NavLink } from "react-router-dom"
 import { useForm } from 'react-hook-form';
@@ -20,6 +21,7 @@ import { RiEyeCloseFill } from "react-icons/ri"
 import { IoMdEye } from "react-icons/io"
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { blue } from './Cart/colors';
 function Signin() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [showPassword, setShowPassword] = useState(false);
@@ -90,7 +92,7 @@ function Signin() {
 
         }
         else if (res.data.role === "admin") {
-          navigate("/admin")
+          window.location = "https://admin-lint.netlify.app/"
           // console.log(res.data.role)
         } else {
           navigate("/signin")
@@ -145,7 +147,7 @@ function Signin() {
       </Box>
       <Text fontSize={'10px'} textAlign={'center'} pb={'20px'} marginTop={'10px'}>By signing into your account, you agree to Belk's Privacy Policy & Terms of Use.</Text>
       <Divider orientation='vertical' width={'20%'} mt={'50px'} margin={'auto'} borderColor="gray.500" borderWidth="1px" />
-      <Stack ml={'40.7%'}> <Link to='/register' color='blue.500' ><Button border={'2px solid blue'} mt='20px' w='30%' colorScheme={'whiteAlpha.400'} color={'blue.600'}>Create Account</Button> </Link></Stack>
+      <Flex w="100%" justify={'center'}> <Link to='/register' color='blue.500' ><Button border={'2px solid'} borderColor={blue} mt='20px' color={blue}>Create Account</Button> </Link></Flex>
     </Box>
   );
 }

@@ -18,7 +18,6 @@ import {
 import Carousel from "better-react-carousel"
 import useFetch from '../../Hooks/useFetch'
 import fallbackSrc from '../../assets/default-image.jpg'
-import { token } from '../../redux/cart/cart.actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { FaShippingFast } from 'react-icons/fa'
 import { getCartItems } from '../../redux/cart/cart.actions'
@@ -45,10 +44,13 @@ function AddedToCartModal({isOpen, onClose, prodID}) {
     React.useEffect(()=>{
         if (!items.length) dispatch(getCartItems())
         fetch({
-            headers: {token}
-        }, 1000)
-    }, [])
-    console.log("cartItem", data)
+            headers: {token:localStorage.getItem('token')}
+        }, 2000)
+    }, [items.length])
+    React.useEffect(()=>{
+        console.log("cartItem", data)
+    }, [data])
+    console.log("MODALLLALLAL", data)
     return (
       <>
         <Modal isOpen={isOpen} onClose={onClose} size={'3xl'}>
