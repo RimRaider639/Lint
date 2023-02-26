@@ -1,25 +1,21 @@
 import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  SimpleGrid,
-  Heading,
-  Button,
-  Text,
-  Box,
-  Avatar,
-  VStack,
-  Badge,
-} from "@chakra-ui/react";
-import tejas from '../Images/tejas.png'
-const Users = () => {
-  return (
-    <Box p="6">
-      <SimpleGrid
-        spacing={4}
-        templateColumns="repeat(auto-fill, minmax(200px, 1fr))">
-        <Card>
+    Card,
+    CardHeader,
+    CardBody,
+    CardFooter,
+    SimpleGrid,
+    Heading,
+    Button,
+    Text,
+    Box,
+    Avatar,
+    VStack,
+    Badge,
+  } from "@chakra-ui/react";
+
+const UserCard=()=>{
+    return <>
+    <Card>
           <CardHeader>
             <VStack>
               <Avatar src={tejas}/> 
@@ -39,10 +35,7 @@ const Users = () => {
             <Button>Delete</Button>
           </CardFooter>
         </Card>
-        
-      </SimpleGrid>
-    </Box>
-  );
-};
+    </>
+}
 
-export default Users;
+export default UserCard;

@@ -15,10 +15,12 @@ const addProduct=(payload)=>(dispatch)=>{
 }
 
 // Get products =>
-const getProducts=()=>async(dispatch)=>{
+const getProducts=(cat,page)=>async(dispatch)=>{
+    if(page===undefined) page=1
+    if(cat===undefined) cat="Clothing"
     dispatch({type:actionType.GET_PRODUCTS_REQUEST});
 
-    return await axios.get("https://wide-eyed-pinafore-duck.cyclic.app/products?limit=10").then((res)=>{
+    return await axios.get(`https://wide-eyed-pinafore-duck.cyclic.app/products?limit=10&category=${cat}&page=${page}`).then((res)=>{
         dispatch({type:actionType.GET_PRODUCTS_SUCCESS, payload:res.data})
     }).catch((err)=>{
         dispatch({type:actionType.GET_PRODUCTS_FAILURE})

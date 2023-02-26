@@ -246,15 +246,22 @@ const AddTable = () => {
                     value={cat2}
                     onChange={(e) => setCat2(e.target.value)}
                   >
-                    <option value="Clothing">Clothing</option>
-                    <option value="Footwear">Footwear</option>
-                    <option value="Beauty and Personal Care">
-                      Beauty and Personal Care
+                    <option value="Ethenic Wear">Ethenic Wear</option>
+                    <option value="Men's Casuals">Men's Casuals</option>
+                    <option value="Women's Casuals">Women's Casuals</option>
+                    <option value="Kid's Casuals">Kid's Casuals</option>
+                    <option value="Men's Shoes">Men's Shoes</option>
+                    <option value="Women's Shoes">Women's Shoes</option>
+                    <option value="Men's grooming">
+                      Men's Grooming
                     </option>
-                    <option value="Baby Care">Baby Care</option>
-                    <option value="Home Furnishing">Home Furnishing</option>
-                    <option value="Jewellery">Jewellery</option>
-                    <option value="Kitchen & Dining">Kitchen & Dining</option>
+                    <option value="Women's grooming">
+                      Women's Grooming
+                    </option>
+                    <option value="Kids">Kids</option>
+                    <option value="Table">Table</option>
+                    <option value="Necklace">Necklace</option>
+                    <option value="Knife">Knife</option>
                     <option value="Other">Other</option>
                   </Select>
                 </Td>
@@ -267,15 +274,19 @@ const AddTable = () => {
                     value={cat3}
                     onChange={(e) => setCat3(e.target.value)}
                   >
-                    <option value="Clothing">Clothing</option>
-                    <option value="Footwear">Footwear</option>
-                    <option value="Beauty and Personal Care">
-                      Beauty and Personal Care
+                    <option value="T-Shirt">T-Shirt</option>
+                    <option value="Casual Shoes">Casual Shoes</option>
+                    <option value="Formal Shoes">Formal Shoes</option>
+                    <option value="Makeup">
+                      Makeup
+                    </option>
+                    <option value="Deodorants">
+                      Deodorants
                     </option>
                     <option value="Baby Care">Baby Care</option>
-                    <option value="Home Furnishing">Home Furnishing</option>
-                    <option value="Jewellery">Jewellery</option>
-                    <option value="Kitchen & Dining">Kitchen & Dining</option>
+                    <option value="Chair">Chair</option>
+                    <option value="Earrings">Earrings</option>
+                    <option value="Kettle">Kettle</option>
                     <option value="Other">Other</option>
                   </Select>
                 </Td>
