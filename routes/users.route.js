@@ -55,7 +55,8 @@ usersRouter.get("/", (req, res, next) => {
 });
 
 usersRouter.patch("/", (req, res, next) => {
-  User.findByIdAndUpdate(req.body.userID)
+  const { userID, ...body } = req.body;
+  User.findByIdAndUpdate(userID, body)
     .then((_) => res.send({ message: "User account successfully updated" }))
     .catch(next);
 });
