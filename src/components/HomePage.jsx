@@ -74,8 +74,8 @@ const HomePage = () => {
     ]
 
     return (
-        <Stack id='home' >
-            <VStack w={"88%"} margin="auto" mt={{sm:'120px',md:'90px',lg:'150px'}}>
+        <Stack id='home' margin="auto" >
+            <VStack w={"88%"} margin="auto" mt={{sm:'150px',md:'90px',lg:'150px'}}>
                 <Image align={"center"} w="100%" mx="auto" src='https://belk.scene7.com/is/image/Belk/wk01_2023_clinique_gwp_hp?$DWP_PHOTO$' />
                 <VStack w={"100%"} >
                     <Box mt={'20px'} w={"100%"}>
@@ -185,13 +185,13 @@ const HomePage = () => {
                         <Image w="100%" src='https://belk.scene7.com/is/image/Belk/wk03_2022_services_4c_4?$DWP_PHOTO$' />
                     </Grid>
                 </VStack>
-                <VStack w={'100%'}>
+                <VStack >
                     <Text fontSize="24px" textAlign={'left'} mt={'20px'}>Top Sellers</Text>
                     <Divider borderColor="gray.500" borderWidth="1px" />
                 </VStack>
-                <VStack>
-                    <Box mt={'22px'} >
-                        <Carousel cols={3} gap={5} scrollSnap={true} loop={true}
+                <VStack w={"100%"} mt={'22px'}>
+                    <Box w={"100%"} mt={'22px'}>
+                        <Carousel cols={3} gap={1} scrollSnap={true} loop={true}
                             mobileBreakpoint={[
                                 { width: 500, itemsToShow: 5 },
                                 { width: 768, itemsToShow: 2 },
@@ -200,12 +200,12 @@ const HomePage = () => {
                         >
                             {topSellers.map((item) => (
                                 <Carousel.Item key={item}>
-                                    <VStack boxShadow={'rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px'}>
+                                    <Box margin='auto' w="100%" boxShadow={'rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px'}>
                                         <Image border={'1px solid gray'} margin='auto' w="50%" src={item.imageUrl} alt={item.title} />
-                                        <Text >{item.desc}</Text>
-                                        <Text fontWeight={'bold'}>{item.price}</Text>
-                                        <Text fontWeight={'bold'} color={'red.900'}>{item.coupon} {"after Coupon"}</Text>
-                                    </VStack>
+                                        <Text fontSize={{sm:"5px",md:"15px",lg:"20px"}} >{item.desc}</Text>
+                                        <Text fontSize={{sm:"5px",md:"15px",lg:"20px"}} fontWeight={'bold'}>{item.price}</Text>
+                                        <Text fontSize={{sm:"3px",md:"15px",lg:"20px"}} fontWeight={{sm:"none",md:"none",lg:'bold'}} color={'red.900'}>{item.coupon} {"after Coupon"}</Text>
+                                    </Box>
 
                                 </Carousel.Item>
                             ))}
