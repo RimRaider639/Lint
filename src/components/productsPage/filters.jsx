@@ -18,13 +18,14 @@ import {
 } from "@chakra-ui/layout";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearParams, getProducts } from "../../redux/products/products.action";
 import Loader from "../Loader";
 import PriceRadio from "./priceRadio";
+import { Button } from "@chakra-ui/react";
 
-function Filters({ filterHeading, price }) {
+function Filters({ filterHeading, price, handleGoBack }) {
   let dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -41,13 +42,11 @@ function Filters({ filterHeading, price }) {
   );
 
   const [brandParam, setBrandParam] = useState(params.brand);
-  // console.log("categorySelected", categorySelected);
-  // console.log("sub2CategoryParam", sub2CategoryParam);
-  // console.log("brandParam", brandParam);
 
   const HandleFilterHeading = (category) => {
     params.category = category;
     const path = `${location.pathname}/${category}`;
+
     navigate(path);
     setCategorySelected([category]);
     dispatch(getProducts(params));
@@ -63,12 +62,15 @@ function Filters({ filterHeading, price }) {
     });
     dispatch(getProducts(params));
   };
+
+  // when users select multiple brand
   const handleBrandParamChange = (name) => {
     params.brand = { ...brandParam, [name]: !brandParam[name] };
     setBrandParam({ ...brandParam, [name]: !brandParam[name] });
     dispatch(getProducts(params));
   };
 
+  // to clear all params
   const HandleCLearParams = () => {
     navigate(`/products/${path}`);
 
@@ -83,12 +85,18 @@ function Filters({ filterHeading, price }) {
   } else {
     return (
       <VStack p="10px">
-        <Flex w="full">
+        <Flex w="full" justifyContent={"space-around"}>
           <Heading
             fontWeight={"medium"}
-            fontSize={{ base: "30px", sm: "30px", md: "30px", lg: "35px" }}>
+            fontSize={{ base: "18px", sm: "20px", md: "25px", lg: "35px" }}>
             Filters
           </Heading>
+          <Button
+            mr="2%"
+            onClick={handleGoBack}
+            fontSize={{ base: "14px", sm: "16px", md: "18px", lg: "20px" }}>
+            Go Back
+          </Button>
         </Flex>
         <Divider borderColor={"black"} />
         {/* Category 1 */}
