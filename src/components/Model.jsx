@@ -5,13 +5,17 @@ import { HiClipboardList } from "react-icons/hi"
 import {BsPerson} from "react-icons/bs"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import {useDispatch} from "react-redux"
+import { cart } from "../redux/cart/cart.actionTypes";
 function AccountDropdown() {
     const [isOpen, setIsOpen] = useState(false);
     const istoken=localStorage.getItem("token")
     const navigate=useNavigate()
+    const dispatch = useDispatch()
     const handleClick=()=>{
         if(istoken){
             localStorage.removeItem("token")
+            dispatch({type:cart.RESET})
             navigate("/")
         }else{
             navigate("/signin")

@@ -28,11 +28,9 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import React from "react";
 import axios from "axios";
-import { token } from "../redux/cart/cart.actions";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/cart/cart.actions";
 import AddedToCartModal from "../components/Cart/AddedToCartModal";
-
 import Loader from "../components/Loader";
 
 function SingleProductPage() {
@@ -43,16 +41,12 @@ function SingleProductPage() {
   const toast = useToast();
   const { id } = useParams();
   const dispatch = useDispatch();
-  // const {loading, error, message, total} = useSelector(store=>store.cartManager) 
-  const [loading, setLoading] = React.useState(false)
-  const [error, setError] = React.useState(false)
-  const [msg, setMsg] = React.useState("")
+  const {loading, error, message, total} = useSelector(store=>store.cartManager) 
   const [product, setProduct] = React.useState([]);
-  const [cartItem, setCartItem] = React.useState({})
   const [currentImage, setCurrentImage] = React.useState("");
   const { isOpen, onOpen, onClose } = useDisclosure()
-
   const [imageHeight, setImageHeight] = React.useState("100");
+
   React.useEffect(() => {
     axios
       .get(`https://wide-eyed-pinafore-duck.cyclic.app/products/${id}`)
@@ -82,29 +76,7 @@ function SingleProductPage() {
   // Handle add to cart button click
   const handleAddToCart = () => {
     // Add logic to add product to cart
-    // dispatch(addToCart(id))
-    setLoading(true)
-    axios
-    .post(
-      `https://wide-eyed-pinafore-duck.cyclic.app/cart`,
-      {
-        productID:id,
-      },
-      {
-        headers: { token },
-      }
-    )
-    .then(res=>{
-      setLoading(false)
-      setCartItem(res.data.data)
-      setMsg(res.data.message)
-      onOpen()
-    })
-    .catch(err=>{
-      setLoading(false)
-      setError(true)
-      setMsg(err.response.data)
-    })
+    dispatch(addToCart(id, onOpen))
     
   };
   // React.useEffect(()=>{
@@ -116,7 +88,6 @@ function SingleProductPage() {
   //     isClosable: true,
   //   });
   // }, [setCartItem])
-
   if (product.length === 0) {
     return (
       <Box pt={"23%"} pb="15%">
@@ -127,9 +98,8 @@ function SingleProductPage() {
     return (
       <Box
         display={"grid"}
-        bg="gray.100"
         py={10}
-        pt={{ base: "33%", sm: "140px", md: "11%", lg: "9%" }}>
+        pt={{ base: "30px", sm: "90px", md: "80px", lg: "150px" }}>
         <Flex ml={{ base: "2%", sm: "2%", md: "2%", lg: "2%" }}>
           <Button
             onClick={handleGoBack}

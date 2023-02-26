@@ -27,7 +27,7 @@ export default function cartReducer(state = initState, action) {
           ...state.total,
           count: payload.length,
           price: payload.reduce(
-            (acc, item) => acc + item.productID.discounted_price,
+            (acc, item) => acc + item.productID.discounted_price * item.count,
             0
           ),
           items: payload.reduce((acc, item) => acc + item.count, 0),
@@ -70,6 +70,8 @@ export default function cartReducer(state = initState, action) {
     //     error: true,
     //     message: payload.message,
     //   };
+    case cart.RESET:
+      return initState;
     default:
       return initState;
   }

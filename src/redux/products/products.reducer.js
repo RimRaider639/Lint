@@ -40,7 +40,6 @@ let initialData = {
 };
 
 const ProductsReducer = (state = initialData, { type, payload }) => {
-  console.log("ProductsReducer", "type=", type, "payload=", payload);
   switch (type) {
     case GET_PRODUCTS_LOADING: {
       return {

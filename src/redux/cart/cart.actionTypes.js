@@ -11,4 +11,5 @@ export const cart = {
   ADD_ITEM_LOADING: "cart/add/loading",
   ADD_ITEM_SUCCESS: "cart/add/success",
   ADD_ITEM_ERROR: "cart/add/error",
+  RESET: "cart/reset/items",
 };

@@ -7,19 +7,25 @@ export default function useFetch(url) {
   const [msg, setMsg] = React.useState("");
   const [data, setData] = React.useState({});
 
-  const fetch = (config) => {
+  const fetch = (config, delay) => {
     setLoading(true);
-    axios(url, config)
-      .then((res) => {
-        setLoading(false);
-        setData(res.data);
-        setMsg(res.data.message);
-      })
-      .catch((err) => {
-        setLoading(false);
-        setError(true);
-        setMsg(err.response.data);
-      });
+    const id = setTimeout(
+      () =>
+        axios(url, config)
+          .then((res) => {
+            setLoading(false);
+            setData(res.data);
+            setMsg(res.data.message);
+            console.log("DATAAA", res);
+          })
+          .catch((err) => {
+            setLoading(false);
+            setError(true);
+            setMsg(err.response.data);
+          })
+          .finally((r) => clearTimeout(id)),
+      delay
+    );
   };
   return { loading, error, msg, data, fetch };
 }

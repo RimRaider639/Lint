@@ -5,10 +5,7 @@ import {Flex, Text, Image, Select, Switch, Divider, RadioGroup, Radio} from "@ch
 import { updateCartItem, removeCartItem } from '../../redux/cart/cart.actions'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-
-//colors
-const blue = `rgb(0,118,190)`
-const red = `#cc0000`
+import { blue, red, darkBlue } from './colors'
 
 const Item = ({cartItem}) => {
     const {productID:item, count, _id} = cartItem
@@ -24,15 +21,15 @@ const Item = ({cartItem}) => {
     }, [qtd])
   return (
     <Flex border="1px solid #e4e4e4"  p="1em 2em" bgColor={'white'} direction={'column'} minH="300px">
-        <Flex w="100%" gap="25px">
-            <Flex w="15%" h="150px" align={'center'}>
-                <Image src={item.image[0]} alt={item.product_name} w="100%" h="fit-content" fallbackSrc={fallbackSrc}/>
+        <Flex w="100%" gap="25px" direction={{base:"column", md:"row"}} align={{base:"center", md:"flex-start"}}>
+            <Flex w={{base:"80%",md:"15%"}} minH="150px" justify={'center'}>
+                <Image src={item.image[0]} alt={item.product_name} w="100%" h={"fit-content"} fallbackSrc={fallbackSrc}/>
             </Flex>
             <Flex direction={'column'} flexGrow={1} gap="20px">
                 <Flex flexGrow={1} justify={'space-between'} fontSize={'14px'} h="65%">
                     <Flex w="40%" direction={'column'} justify={'space-between'}>
                         <Flex direction={'column'}>
-                            <Link to={`/product/${item._id}`}><Text _hover={{textDecoration:"underline"}} fontWeight={'700'}>{item.product_name}</Text></Link>
+                            <Link to={`/products/${item._id}`}><Text _hover={{textDecoration:"underline"}} fontWeight={'700'}>{item.product_name}</Text></Link>
                             <Text>PID: {item.pid}</Text>
                             <Text>₹{item.discounted_price.toFixed(2)}</Text>
                         </Flex>
@@ -67,7 +64,7 @@ const Item = ({cartItem}) => {
                         <Text fontWeight='700'>Auto-Replenish: FREE shipping on all orders</Text>
                     </Flex>
                     <Text ml="20px">Sign up for Auto-Replenish and save 15% on your upcoming shipments, and 20% off your 3rd shipment. Savings will be applied to the item's list price of $28.00.</Text>
-                    <Flex w="400px" align={'center'}>
+                    <Flex w={{base:"250px",md:"400px"}} align={'center'}>
                         <Text w="50%" pl="20px" fontWeight={'700'}>Send every:</Text>
                         <Select borderRadius={0} size={'sm'} value={qtd} onChange={e=>setDays(+e.target.value)}>
                                 <option value={"60 Days (Recommended)"}>60 Days (Recommended)</option>
@@ -90,7 +87,10 @@ const Item = ({cartItem}) => {
                                 In stock.
                                 </Radio>
                                 <Radio colorScheme='black' name="shipment" value={2}>
-                                <Text fontSize={'14px'} fontWeight="700">FREE Store Pickup Today </Text>
+                                <Flex gap="5px">
+                                    <Text fontSize={'14px'} fontWeight="700">FREE Store Pickup Today </Text>
+                                    <Text fontSize={'14px'} borderBottom={'1px solid #0076be'}  _hover={{borderBottom:'1px solid white'}} color='#0076be' cursor='pointer'>Find a Store</Text>
+                                </Flex>
                                 </Radio>
                             </Flex>
                     </RadioGroup>
