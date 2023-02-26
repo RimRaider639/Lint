@@ -1,8 +1,8 @@
 import axios from "axios";
 import * as actionType from './actionTypes';
-const tkn = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjczM2Y2YWIwMDhkMzdjMDQyNzJiZiIsImlhdCI6MTY3NzE0NTIxMn0.U_Yr-cKZ4lWa1M02zgPdwXzZc1wZGbz4-nODV6x-WQQ'
+// const tkn = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjczM2Y2YWIwMDhkMzdjMDQyNzJiZiIsImlhdCI6MTY3NzE0NTIxMn0.U_Yr-cKZ4lWa1M02zgPdwXzZc1wZGbz4-nODV6x-WQQ'
 
-localStorage.setItem('token', JSON.stringify(tkn))
+// localStorage.setItem('token', JSON.stringify(tkn))
 const myToken = JSON.parse(localStorage.getItem("token"));
 
 
