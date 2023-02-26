@@ -45,7 +45,7 @@ const LowerFooter = () => {
             <Divider borderColor="gray.500" borderWidth="2px" mt='2rem' w='99%' />
             <Grid templateColumns={{ sm: 'repeat(4, 1fr)', md: 'repeat(6, 1fr)', lg: 'repeat(9, 1fr)' }} margin='auto' justifyContent={'space-evenly'} pb={'50px'}>
                 <GridItem>
-                    <Stack direction='row' h='80px' p={4}>
+                    <Stack direction='row' h={{sm:"15px",md:"25px",lg:"80px"}} p={4}>
                         <Text>Terms of Use</Text>
                         <Divider orientation='vertical' borderColor="gray.500" borderWidth="1px" />
                     </Stack>
@@ -117,9 +117,10 @@ const LowerFooter = () => {
                         <Text onClick={onToggle} textAlign='center' >Today's Offers!</Text>
                     </GridItem>
                 </Grid>
-                <Slide direction='bottom' in={isOpen} >
+                <Slide direction='bottom' in={isOpen} w="100%">
 
                     <Box
+                    w="100%"
                         p='40px'
                         color='white'
                         mt='4'
@@ -137,7 +138,7 @@ const LowerFooter = () => {
                             color={'blackAlpha.900'}
                             hover={{ cursor: "pointer", color: "blackAlpha.700" }} onClick={onToggle} />
                         {/* <BiDownArrow onClick={onClose} /> */}
-                        <Box maxW="8xl" mx={'auto'} pt={1} px={{ base: 2, sm: 12, md: 17 }}>
+                        <Box  w="100%" maxW="8xl" mx={'auto'} pt={1} px={{ base: 2, sm: 12, md: 17 }}>
                             {/* <chakra.h1
                                 textAlign={'center'}
                                 fontSize={'4xl'}
@@ -145,7 +146,7 @@ const LowerFooter = () => {
                                 fontWeight={'bold'}>
                                 What I have achieved ?
                             </chakra.h1> */}
-                            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
+                            <SimpleGrid  columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
                                 <StatsCard title={'Online Only'} stat={'Today only: up to 55% off select brands online with your Belk Rewards+ credit card & coupon.'} />
                                 <StatsCard title={'Online & In-Store'} stat={'Extra 10% off clearance purchases with Belk Rewards+ credit card & coupon'} />
                                 <StatsCard title={'Online Only'} stat={'Get your wardrobe ready for spring with up to 50% off select brands online.'} />
