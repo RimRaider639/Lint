@@ -89,13 +89,12 @@ const ProductsPage = () => {
   });
 
   useEffect(() => {
-    if (category !== undefined) {
-      params.category = category;
-    }
-    if (sub_category !== undefined) {
-      params.sub2Category = { ...params.sub2Category, [sub_category]: true };
-    }
-    if (params.subCategory_like !== path) {
+    console.log("get data on navigate");
+    if (
+      params.subCategory_like !== path ||
+      (params.subCategory_like === path && category === undefined)
+    ) {
+      console.log("current and previous category changed");
       params.page = initParams.page;
       params.limit = initParams.limit;
       params.subCategory_like = initParams.path;
@@ -108,16 +107,27 @@ const ProductsPage = () => {
       params.discounted_price_lt = initParams.discounted_price_lt;
       params.priceValue = initParams.priceValue;
     }
+    if (category !== undefined) {
+      console.log("category is defined");
+      params.category = category;
+    }
+    if (sub_category !== undefined) {
+      console.log("sub_category is defined");
+      params.sub2Category = { ...params.sub2Category, [sub_category]: true };
+    }
+
     params.subCategory_like = path;
     dispatch(getProducts(params));
   }, [navigate]);
 
   useEffect(() => {
+    console.log("get data on changing sortingByPrice");
     dispatch(getProducts(params));
-  }, [params, sortingByPrice]);
+  }, [sortingByPrice]);
 
   useEffect(() => {
     let subCategory_like = path;
+    console.log("get all data on changing params, without dependency");
     dispatch(getAllData(subCategory_like));
   }, []);
 
@@ -145,16 +155,18 @@ const ProductsPage = () => {
             alignItems={"center"}
             // mt={{ base: "10px", sm: "10px", md: "10px", lg: "0px" }}
             pb={{ base: "10px", sm: "5px" }}>
-            <Breadcrumb separator="/" fontSize={{base:"16px", md:'18px'}}>
+            <Breadcrumb separator="/" fontSize={{ base: "16px", md: "18px" }}>
               {urlPath &&
                 urlPath.map((path, i) =>
-                  i > 1 && i<4 ? (
+                  i > 1 && i < 4 ? (
                     <BreadcrumbItem key={i}>
                       <BreadcrumbLink href="#">{path}</BreadcrumbLink>
                     </BreadcrumbItem>
-                  ) : i==4?<BreadcrumbItem key={i}>
-                  <Text>{path.split("%20").join(" ")}</Text>
-                </BreadcrumbItem>:  null
+                  ) : i == 4 ? (
+                    <BreadcrumbItem key={i}>
+                      <Text>{path.split("%20").join(" ")}</Text>
+                    </BreadcrumbItem>
+                  ) : null
                 )}
             </Breadcrumb>
           </Flex>
