@@ -31,13 +31,12 @@ function Filters({ filterHeading, price, handleGoBack }) {
   const location = useLocation();
   const { path } = useParams();
   let { loading, params } = useSelector((store) => store.ProductsManager);
-  console.log("params in filters", params);
+  // console.log("params in filters", params);
 
   const [categorySelected, setCategorySelected] = React.useState(
     params.category === "" ? [] : [params.category]
   );
-  console.log("filterHeading", filterHeading);
-  console.log("categorySelected", categorySelected);
+
   const [sub2CategoryParam, setSub2CategoryParam] = useState(
     params.sub2Category
   );

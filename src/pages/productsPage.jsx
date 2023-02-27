@@ -89,12 +89,10 @@ const ProductsPage = () => {
   });
 
   useEffect(() => {
-    console.log("get data on navigate");
     if (
       params.subCategory_like !== path ||
       (params.subCategory_like === path && category === undefined)
     ) {
-      console.log("current and previous category changed");
       params.page = initParams.page;
       params.limit = initParams.limit;
       params.subCategory_like = initParams.path;
@@ -108,11 +106,9 @@ const ProductsPage = () => {
       params.priceValue = initParams.priceValue;
     }
     if (category !== undefined) {
-      console.log("category is defined");
       params.category = category;
     }
     if (sub_category !== undefined) {
-      console.log("sub_category is defined");
       params.sub2Category = { ...params.sub2Category, [sub_category]: true };
     }
 
@@ -121,13 +117,13 @@ const ProductsPage = () => {
   }, [navigate]);
 
   useEffect(() => {
-    console.log("get data on changing sortingByPrice");
+    // console.log("get data on changing sortingByPrice");
     dispatch(getProducts(params));
   }, [sortingByPrice]);
 
   useEffect(() => {
     let subCategory_like = path;
-    console.log("get all data on changing params, without dependency");
+    // console.log("get all data on changing params, without dependency");
     dispatch(getAllData(subCategory_like));
   }, []);
 
@@ -149,7 +145,7 @@ const ProductsPage = () => {
         <Box
           width={"90%"}
           margin="auto"
-          pt={{ base: "30px", sm: "90px", md: "80px", lg: "150px" }}>
+          pt={{ base: "30px", md: "60px", lg: "150px" }}>
           {/* <FilterTag title={appliedFilters.subCategory_like} /> */}
           <Flex
             alignItems={"center"}
@@ -162,7 +158,7 @@ const ProductsPage = () => {
                     <BreadcrumbItem key={i}>
                       <BreadcrumbLink href="#">{path}</BreadcrumbLink>
                     </BreadcrumbItem>
-                  ) : i == 4 ? (
+                  ) : i === 4 ? (
                     <BreadcrumbItem key={i}>
                       <Text>{path.split("%20").join(" ")}</Text>
                     </BreadcrumbItem>
