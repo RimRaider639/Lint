@@ -31,7 +31,7 @@ function Filters({ filterHeading, price, handleGoBack }) {
   const location = useLocation();
   const { path } = useParams();
   let { loading, params } = useSelector((store) => store.ProductsManager);
-  console.log("params in filters", params);
+  // console.log("params in filters", params);
 
   const [categorySelected, setCategorySelected] = React.useState(
     params.category === "" ? [] : [params.category]
@@ -129,8 +129,8 @@ function Filters({ filterHeading, price, handleGoBack }) {
             filterHeading.map((e, i) => {
               if (e[0] === categorySelected[0]) {
                 return (
-                  <>
-                    <Box maxH="400px" overflowY="scroll" w="full" key={i}>
+                  <Box key={i} w="full">
+                    <Box maxH="400px" overflowY="scroll" w="full">
                       <Accordion
                         flex="1"
                         allowToggle
@@ -382,7 +382,7 @@ function Filters({ filterHeading, price, handleGoBack }) {
                         </AccordionItem>
                       </Accordion>
                     </Box>
-                  </>
+                  </Box>
                 );
               } else {
                 return null;

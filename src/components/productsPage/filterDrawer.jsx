@@ -3,6 +3,7 @@ import { useDisclosure } from "@chakra-ui/hooks";
 import { Box, Heading } from "@chakra-ui/layout";
 import {
   Drawer,
+  DrawerCloseButton,
   DrawerContent,
   DrawerFooter,
   DrawerOverlay,
@@ -24,6 +25,7 @@ function FilterDrawer({ filterHeading, price }) {
       <Drawer placement={"left"} onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
+          <DrawerCloseButton onClick={onClose} />
           <Filters filterHeading={filterHeading} price={price} />
         </DrawerContent>
       </Drawer>

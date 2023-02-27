@@ -41,10 +41,12 @@ function SingleProductPage() {
   const toast = useToast();
   const { id } = useParams();
   const dispatch = useDispatch();
-  const {loading, error, message, total} = useSelector(store=>store.cartManager) 
+  const { loading, error, message, total } = useSelector(
+    (store) => store.cartManager
+  );
   const [product, setProduct] = React.useState([]);
   const [currentImage, setCurrentImage] = React.useState("");
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [imageHeight, setImageHeight] = React.useState("100");
 
   React.useEffect(() => {
@@ -76,8 +78,7 @@ function SingleProductPage() {
   // Handle add to cart button click
   const handleAddToCart = () => {
     // Add logic to add product to cart
-    dispatch(addToCart(id, onOpen))
-    
+    dispatch(addToCart(id, onOpen));
   };
   // React.useEffect(()=>{
   //   toast({
@@ -96,10 +97,7 @@ function SingleProductPage() {
     );
   } else {
     return (
-      <Box
-        display={"grid"}
-        py={10}
-        pt={{ base: "30px", sm: "90px", md: "80px", lg: "150px" }}>
+      <Box display={"grid"} py={10} pt={{ base: "30px", md: "120px" }}>
         <Flex ml={{ base: "2%", sm: "2%", md: "2%", lg: "2%" }}>
           <Button
             onClick={handleGoBack}
@@ -221,16 +219,14 @@ function SingleProductPage() {
                     {Array(5)
                       .fill("")
                       .map((_, i) => (
-                        <>
-                          <StarIcon
-                            key={i}
-                            color={
-                              i < Math.floor(product.rating)
-                                ? "yellow.500"
-                                : "gray.300"
-                            }
-                          />
-                        </>
+                        <StarIcon
+                          key={i}
+                          color={
+                            i < Math.floor(product.rating)
+                              ? "yellow.500"
+                              : "gray.300"
+                          }
+                        />
                       ))}
                   </Text>
                   <Text ml={2} color="gray.500">
@@ -316,14 +312,18 @@ function SingleProductPage() {
 
               <VStack spacing={3}>
                 <Button
-                isLoading={loading}
+                  isLoading={loading}
                   w="full"
                   colorScheme="blue"
                   size="lg"
                   onClick={handleAddToCart}>
                   Add to cart
                 </Button>
-                <AddedToCartModal onClose={onClose} isOpen={isOpen} prodID={id}/>
+                <AddedToCartModal
+                  onClose={onClose}
+                  isOpen={isOpen}
+                  prodID={id}
+                />
                 <HStack>
                   <Text
                     color={"#0076be"}
@@ -378,19 +378,16 @@ function SingleProductPage() {
                       {product &&
                         product.product_specifications.product_specification.map(
                           (spec, index) => (
-                            <>
-                              {" "}
-                              <ListItem key={index + spec}>
-                                <Text
-                                  fontSize={{ base: "16", md: "18px" }}
-                                  fontWeight="medium"
-                                  display="inline-block"
-                                  w="35%">
-                                  {spec.key}:
-                                </Text>
-                                <Text display="inline-block">{spec.value}</Text>
-                              </ListItem>
-                            </>
+                            <ListItem key={index + spec}>
+                              <Text
+                                fontSize={{ base: "16", md: "18px" }}
+                                fontWeight="medium"
+                                display="inline-block"
+                                w="35%">
+                                {spec.key}:
+                              </Text>
+                              <Text display="inline-block">{spec.value}</Text>
+                            </ListItem>
                           )
                         )}
                     </List>
