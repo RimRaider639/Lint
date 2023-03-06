@@ -1,4 +1,11 @@
 # Lint Backend API
+![nodeJS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![mongoDB](https://img.shields.io/badge/MongoDB-000000?style=for-the-badge&logo=mongodb&logoColor=4EA94B)
+![expressJS](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![nodemon](https://img.shields.io/badge/Nodemon-000000?style=for-the-badge&logo=Nodemon&logoColor=76D04B)
+![jwt](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white)
+![mongoose](https://img.shields.io/badge/Mongoose-000000?style=for-the-badge)
+![bcrypt](https://img.shields.io/badge/Bcrypt-000000?style=for-the-badge)
 
 Deployed link: https://wide-eyed-pinafore-duck.cyclic.app
 
