@@ -12,6 +12,7 @@ import {
   Text,
   Button,
   GridItem,
+  useToast,
 } from "@chakra-ui/react";
 import Carousel from "better-react-carousel";
 import "../styles/Hamburger.css";
@@ -250,6 +251,20 @@ const HomePage = () => {
     { id: 12, title: "Free People" },
     { id: 13, title: "Nine West" },
   ];
+
+  const toast = useToast();
+
+  React.useEffect(() => {
+    toast({
+      title: "Allow Insecure Content",
+      description:
+        "To see all Products in the website, Kindly allow INSECURE CONTENT from your browser setting (Site Settings)",
+      status: "warning",
+      isClosable: true,
+      duration: 150000,
+      position: "top",
+    });
+  }, []);
 
   return (
     <Stack id="home" margin="auto">
