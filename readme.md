@@ -1,15 +1,18 @@
 # LINT 
+![reactJS](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![chakra-reactJS](https://img.shields.io/badge/Chakra--UI-319795?style=for-the-badge&logo=chakra-ui&logoColor=white)
+![javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
 
+An online e-commerce website for clothing, accessories, and lifestyle products. Built and executed in a span of 5 days.
 
-An online e-commerce website for clothing, accessories, and lifestyle products. 
-
-Responsive | Dynamic
+**Responsive | Dynamic**
 
 ## Contributors:
-Team Lead: Madhurima Poddar ([backend](https://github.com/RimRaider639/Lint/tree/backend-main#readme), cart, responsiveness)
-* Rajendra Patel (all products page, product details page)
-* Chinta Siva (landing page, signup/login page, navbar, footer)
-* Tejas Bishnoi ([admin panel](https://github.com/RimRaider639/Lint/tree/admin-panel-main))
+**Team Lead**: Madhurima Poddar *([backend](https://github.com/RimRaider639/Lint/tree/backend-main#readme), cart, responsiveness)*
+* Rajendra Patel *(all products page, product details page)*
+* Chinta Siva *(landing page, signup/login page, navbar, footer)*
+* Tejas Bishnoi *([admin panel](https://github.com/RimRaider639/Lint/tree/admin-panel-main))*
 
 ## Main Website
 
