@@ -1,6 +1,13 @@
-LINT is online e-commerce website which will provide the clothes, jewelry, handbags etc.
+# LINT 
+An online e-commerce website for clothing, accessories, and lifestyle products. 
 
-# Features:
+## Contributors:
+* Team Lead: Madhurima Poddar ([backend](https://github.com/RimRaider639/Lint/tree/backend-main#readme), cart, responsiveness)
+* Rajendra Patel (all products page, product details page)
+* Chinta Siva (landing page, signup/login page, navbar, footer)
+* Tejas Bishnoi ([admin panel](https://github.com/RimRaider639/Lint/tree/admin-panel-main))
+
+## Features:
 
 -Fronted:-
 
