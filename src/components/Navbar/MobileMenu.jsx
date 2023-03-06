@@ -23,7 +23,7 @@ export default function MobileMenu({ isOpen, onOpen, onClose }) {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton onClick={onClose} />
-          <DrawerHeader borderBottomWidth="1px">Basic Drawer</DrawerHeader>
+          <DrawerHeader borderBottomWidth="1px">Categories</DrawerHeader>
           <DrawerBody>
             {gift.map(
               (label) => (
