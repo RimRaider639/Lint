@@ -14,6 +14,13 @@ An online e-commerce website for clothing, accessories, and lifestyle products. 
 * Chinta Siva *(landing page, signup/login page, navbar, footer)*
 * Tejas Bishnoi *([admin panel](https://github.com/RimRaider639/Lint/tree/admin-panel-main))*
 
+## Deployed Links:
+**Main Website:** https://lint-ecommerce.netlify.app/
+
+**Admin Panel:** https://admin-lint.netlify.app/
+
+**Backend:** https://wide-eyed-pinafore-duck.cyclic.app
+
 ## Main Website
 
 ### Features
