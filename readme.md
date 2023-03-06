@@ -33,24 +33,36 @@ An online e-commerce website for clothing, accessories, and lifestyle products. 
 
 ### Landing Page
 
-![image](https://user-images.githubusercontent.com/112633527/221854834-b0014fe0-7208-4e22-944b-9df1a4d180ef.png)
+
+![Screenshot (167)](https://user-images.githubusercontent.com/77979614/223178321-7318bf44-b6ab-453a-a22f-ae28baffb0f3.png)
+
 
 ### Signup Page
 
-![image](https://user-images.githubusercontent.com/112633527/221854994-eed2fb64-59e6-4588-884e-2f9d99fd7615.png)
+
+![Screenshot (169)](https://user-images.githubusercontent.com/77979614/223179235-197d6520-738b-4484-b947-273b487b796e.png)
+
 
 ### Login Page
 
-![image](https://user-images.githubusercontent.com/112633527/221855115-686255ea-1632-42b5-97ba-777aa0736db5.png)
+
+![Screenshot (168)](https://user-images.githubusercontent.com/77979614/223178838-3f921c3c-eb09-40ce-a9e9-2c9c2158c355.png)
+
 
 ### All Products Page
 
-![image](https://user-images.githubusercontent.com/112633527/221855242-e4332e8a-26d5-428c-b51d-013d7ef6ff4b.png)
+
+![Screenshot (170)](https://user-images.githubusercontent.com/77979614/223179187-a4006ae1-f3c4-45a4-8591-e12ff2996949.png)
+
 
 ### Product Details Page
 
-![image](https://user-images.githubusercontent.com/112633527/221855626-7c1ce3b7-83bf-4993-bbf3-508dbd9551df.png)
+
+![Screenshot (171)](https://user-images.githubusercontent.com/77979614/223179049-101ce64f-c510-4dbd-8656-d059e20b960d.png)
+
 
 ### Cart Page
 
-![image](https://user-images.githubusercontent.com/112633527/221855458-8051f460-782e-499a-aaf4-4516c66638db.png)
+
+![Screenshot (172)](https://user-images.githubusercontent.com/77979614/223179002-b232c52e-929b-489c-a471-db9450ece4d0.png)
+
